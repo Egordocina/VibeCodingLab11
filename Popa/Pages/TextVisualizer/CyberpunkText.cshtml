@@ -1,0 +1,50 @@
+﻿@page
+@model Pora.Pages.TextVisualizer.CyberpunkTextModel
+@{
+    Layout = "_Layout";
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const results = document.querySelector('.results-grid');
+        if (results) {
+            setTimeout(() => {
+                results.classList.add('appear');
+            }, 300);
+        }
+    });
+</script>
+
+<div class="cyber-container">
+    <h1 class="cyber-title">CYBER NUMBER CONVERTER</h1>
+
+    <form method="post" class="cyber-form">
+        <input type="number"
+               name="UserInput"
+               class="cyber-input"
+               placeholder="Введите десятичное число..."
+               value="@Model.UserInput">
+
+        <button type="submit" class="cyber-button">КОНВЕРТИРОВАТЬ</button>
+    </form>
+
+    @if (Model.UserInput != 0)
+    {
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-title">ДВОИЧНАЯ</div>
+                <div class="result-value">@Model.BinaryResult</div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">ВОСЬМЕРИЧНАЯ</div>
+                <div class="result-value">@Model.OctalResult</div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">ШЕСТНАДЦАТЕРИЧНАЯ</div>
+                <div class="result-value">@Model.HexResult</div>
+            </div>
+        </div>
+    }
+</div>
