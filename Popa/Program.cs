@@ -16,6 +16,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+/// Попробуем организовать конфликт
 app.MapRazorPages();
 
 app.Run();
