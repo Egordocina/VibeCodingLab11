@@ -3,7 +3,12 @@ namespace LAB1
 {
 	internal class Program
 	{
-		static void Wait() { Console.WriteLine("\nНажмите любую клавишу..."); Console.ReadKey(true); }
+		//TODO: XML
+		static void Wait() 
+		{ 
+			Console.WriteLine("\nНажмите любую клавишу..."); 
+			Console.ReadKey(true);
+		}
 
 		static void Main(string[] args)
 		{
