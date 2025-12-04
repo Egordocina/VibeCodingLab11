@@ -45,9 +45,12 @@ namespace LAB1
 			get { return _age; }
 			private set
 			{
-				if (value < 0 || value > 123)
+				const int minAge = 0;
+				const int maxAge = 123;
+				if (value < minAge || value > maxAge)
 				{
-					throw new ArgumentException("Возраст должен быть в диапазоне 0–123 лет");
+					throw new ArgumentException("Возраст должен быть в диапазоне " +
+						$"{minAge} – {maxAge} лет");
 				}
 				_age = value;
 			}
@@ -60,7 +63,7 @@ namespace LAB1
 		}
 
 		/// <summary>
-		/// Конструктор — единственное место для установки значений
+		/// Конструктор — место для установки значений
 		/// </summary>
 		/// <param name="firstName"></param>
 		/// <param name="lastName"></param>
@@ -75,7 +78,8 @@ namespace LAB1
 		}
 
 		/// <summary>
-		/// Вывод на экран
+		/// Вывод на экр
+		/// ан
 		/// </summary>
 		public void Print()
 		{
@@ -97,20 +101,49 @@ namespace LAB1
 		/// <returns></returns>
 		public static Person ReadFromKeyboard()
 		{
-			Console.Write("Введите имя: ");
-			string firstName = Console.ReadLine() ?? "";
-
-			Console.Write("Введите фамилию: ");
-			string lastName = Console.ReadLine() ?? "";
-
-			Console.Write("Введите возраст: ");
-			int age = int.Parse(Console.ReadLine() ?? "0");
-
-			Console.Write("Введите пол (м/ж): ");
-			string input = (Console.ReadLine() ?? "").ToLower();
-			Gender gender = input.StartsWith("м") ? Gender.Male : Gender.Female;
+			string firstName = ReadNonEmpty("Введите имя: ");
+			string lastName = ReadNonEmpty("Введите фамилию: ");
+			int age = ReadAge();
+			Gender gender = ReadGender();
 
 			return new Person(firstName, lastName, age, gender);
+		}
+
+
+		private static string ReadNonEmpty(string prompt)
+		{
+			while (true)
+			{
+				Console.Write(prompt);
+				string? input = Console.ReadLine()?.Trim();
+				if (!string.IsNullOrWhiteSpace(input))
+					return input;
+				Console.WriteLine("Ошибка: поле не может быть пустым. Попробуйте ещё раз.");
+			}
+		}
+
+		private static int ReadAge()
+		{
+			while (true)
+			{
+				Console.Write("Введите возраст (0-123): ");
+				string? input = Console.ReadLine()?.Trim();
+				if (int.TryParse(input, out int age) && age >= 0 && age <= 123)
+					return age;
+				Console.WriteLine("Ошибка: введите корректный возраст (число от 0 до 123).");
+			}
+		}
+
+		private static Gender ReadGender()
+		{
+			while (true)
+			{
+				Console.Write("Введите пол (м/ж): ");
+				string? input = Console.ReadLine()?.Trim().ToLower();
+				if (input is "м" or "муж" or "male") return Gender.Male;
+				if (input is "ж" or "жен" or "female") return Gender.Female;
+				Console.WriteLine("Ошибка: введите 'м' или 'ж'.");
+			}
 		}
 
 		/// <summary>
