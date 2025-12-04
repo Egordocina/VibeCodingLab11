@@ -1,5 +1,6 @@
 ﻿namespace LAB1
 {
+	//TODO: XML
 	public class PersonList
 	{
 		private readonly List<Person> _people = new();

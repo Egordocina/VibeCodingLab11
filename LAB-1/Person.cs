@@ -1,14 +1,21 @@
 ﻿
 namespace LAB1
 {
+	//TODO: XML
 	public class Person
 	{
 		/// <summary>
 		/// Приватные поля — настоящая инкапсуляция
 		/// </summary>
 		private string _firstName = string.Empty;
+
+		//TODO: XML
 		private string _lastName = string.Empty;
+
+		//TODO: XML
 		private int _age;
+
+		//TODO: XML
 		private Gender _gender;
 
 		/// <summary>
@@ -27,6 +34,7 @@ namespace LAB1
 			}
 		}
 
+		//TODO: XML
 		public string LastName
 		{
 			get { return _lastName; }
@@ -40,22 +48,24 @@ namespace LAB1
 			}
 		}
 
+		//TODO: XML
 		public int Age
 		{
 			get { return _age; }
 			private set
 			{
-				const int minAge = 0;
-				const int maxAge = 123;
-				if (value < minAge || value > maxAge)
+				const int minage = 0;
+				const int maxage = 123;
+				if (value < minage || value > maxage)
 				{
 					throw new ArgumentException("Возраст должен быть в диапазоне " +
-						$"{minAge} – {maxAge} лет");
+						$"{minage} – {maxage} лет");
 				}
 				_age = value;
 			}
 		}
 
+		//TODO: XML
 		public Gender Gender
 		{
 			get { return _gender; }
@@ -65,18 +75,20 @@ namespace LAB1
 		/// <summary>
 		/// Конструктор — место для установки значений
 		/// </summary>
-		/// <param name="firstName"></param>
+		/// <param name="firstName">//TODO: XML</param>
 		/// <param name="lastName"></param>
 		/// <param name="age"></param>
 		/// <param name="gender"></param>
 		public Person(string firstName, string lastName, int age, Gender gender)
 		{
-			FirstName = firstName;   // валидация сработает автоматически
+            // валидация сработает автоматически
+            FirstName = firstName;
 			LastName = lastName;
 			Age = age;
 			Gender = gender;
 		}
 
+		//TODO: remove
 		/// <summary>
 		/// Вывод на экр
 		/// ан
@@ -84,7 +96,11 @@ namespace LAB1
 		public void Print()
 		{
 			string genderStr;
-			if (Gender == Gender.Male)
+            //string genderStr =
+            //    Gender == Gender.Male
+            //    ? "Мужской"
+            //    : "Женский";
+            if (Gender == Gender.Male)
 			{
 				genderStr = "Мужской";
 			}
@@ -95,10 +111,12 @@ namespace LAB1
 			Console.WriteLine($"Имя: {FirstName} {LastName}, Возраст: {Age}, Пол: {genderStr}");
 		}
 
+		//TODO: remove
 		/// <summary>
 		/// Ввод с клавиатуры
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>
+		/// //TODO: XML</returns>
 		public static Person ReadFromKeyboard()
 		{
 			string firstName = ReadNonEmpty("Введите имя: ");
@@ -146,12 +164,14 @@ namespace LAB1
 			}
 		}
 
+		//TOOD: refactor
 		/// <summary>
 		/// Случайный человек
 		/// </summary>
 		/// <returns></returns>
 		public static Person GetRandomPerson()
 		{
+			//TODO: RSDN
 			string[] maleFirst = { "Венцеслав", "Златояр", "Горислав", "Драгомил", "Завид", "Никита" };
 			string[] femaleFirst = { "Купава", "Богдана", "Рада", "Лада", "Любава", "Добрава" };
 			string[] maleLast = { "Иванов", "Петров", "Сидоров", "Кузнецов", "Попов", "Смирнов" };
@@ -184,6 +204,7 @@ namespace LAB1
 		/// <returns></returns>
 		public override string ToString()
 		{
+
 			string genderStr = Gender == Gender.Male ? "М" : "Ж";
 			return $"{FirstName} {LastName}, {Age} лет ({genderStr})";
 		}
