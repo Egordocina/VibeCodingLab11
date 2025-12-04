@@ -1,4 +1,4 @@
-﻿namespace Person
+﻿namespace LAB1
 {
 	public class PersonList
 	{

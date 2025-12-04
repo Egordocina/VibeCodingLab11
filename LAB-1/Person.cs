@@ -1,6 +1,5 @@
-﻿using System.Xml.Linq;
-
-namespace Person
+﻿
+namespace LAB1
 {
 	public class Person
 	{
@@ -84,7 +83,7 @@ namespace Person
 			if (Gender == Gender.Male)
 			{
 				genderStr = "Мужской";
-			}	
+			}
 			else
 			{
 				genderStr = "Женский";
@@ -146,7 +145,10 @@ namespace Person
 
 			return new Person(first, last, 18 + rnd.Next(60), gender);
 		}
-
+		/// <summary>
+		/// Преобранование к единому стилю
+		/// </summary>
+		/// <returns></returns>
 		public override string ToString()
 		{
 			string genderStr = Gender == Gender.Male ? "М" : "Ж";
