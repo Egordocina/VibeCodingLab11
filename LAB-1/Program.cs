@@ -7,7 +7,7 @@ namespace LAB1
 
 		static void Main(string[] args)
 		{
-			Console.OutputEncoding = System.Text.Encoding.UTF8;
+			Console.OutputEncoding = System.Text.Encoding.UTF8;	
 
 			var list1 = new PersonList();
 			var list2 = new PersonList();

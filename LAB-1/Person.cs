@@ -45,9 +45,12 @@ namespace LAB1
 			get { return _age; }
 			private set
 			{
-				if (value < 0 || value > 123)
+				const int minage = 0;
+				const int maxage = 123;
+				if (value < minage || value > maxage)
 				{
-					throw new ArgumentException("Возраст должен быть в диапазоне 0–123 лет");
+					throw new ArgumentException("Возраст должен быть в диапазоне " +
+						$"{minage} – {maxage} лет");
 				}
 				_age = value;
 			}
@@ -60,7 +63,7 @@ namespace LAB1
 		}
 
 		/// <summary>
-		/// Конструктор — единственное место для установки значений
+		/// Конструктор — место для установки значений
 		/// </summary>
 		/// <param name="firstName"></param>
 		/// <param name="lastName"></param>
@@ -75,7 +78,8 @@ namespace LAB1
 		}
 
 		/// <summary>
-		/// Вывод на экран
+		/// Вывод на экр
+		/// ан
 		/// </summary>
 		public void Print()
 		{
