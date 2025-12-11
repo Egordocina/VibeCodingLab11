@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 namespace PersonLibrary
 {
+	//TODO: XML
 	public class Person
 	{
 		/// <summary>
@@ -37,13 +38,11 @@ namespace PersonLibrary
 		/// </summary>
 		private const string _englishLanguageCheck = @"(^[a-zA-Z]+-?[a-zA-Z]+$)";
 
-		//TODO: RSDN +
 		/// <summary>
 		/// Минимальный возраст
 		/// </summary>
 		public const int MinAge = 0;
 
-		//TODO: RSDN +
 		/// <summary>
 		/// Максимальный возраст
 		/// </summary>

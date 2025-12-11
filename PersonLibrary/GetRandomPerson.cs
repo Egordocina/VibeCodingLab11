@@ -1,5 +1,4 @@
-﻿using LAB1;
-using PersonLibrary;
+﻿using PersonLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace PersonLibrary
 {
-	//TODO: XML +
 	/// <summary>
 	/// Класс для генерации случайного человека
 	/// </summary>
 	public class RandomPerson
 	{
-		//TODO: XML +
 		/// <summary>
 		/// Метод для генерации случайного человека
 		/// </summary>

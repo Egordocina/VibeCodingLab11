@@ -8,7 +8,6 @@ using PersonLibrary;
 
 namespace LAB1
 {
-	//TODO: XML +
 	/// <summary>
 	/// Класс для для ввода с консоли
 	/// </summary>
