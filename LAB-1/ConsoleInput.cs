@@ -91,12 +91,7 @@ namespace LAB1
 		/// <param name="action">Действие.</param>
 		public static void ActionHandler(Action action)
 		{
-			List<Type> exceptionTypes = new List<Type>
-			{
-				typeof(ArgumentException),
-				typeof(FormatException),
-				typeof(ArgumentOutOfRangeException),
-			};
+
 
 			while (true)
 			{
@@ -107,14 +102,7 @@ namespace LAB1
 				}
 				catch (Exception exception)
 				{
-					if (exceptionTypes.Contains(exception.GetType()))
-					{
-						Console.WriteLine(exception.Message);
-					}
-					else
-					{
-						throw exception;
-					}
+                    Console.WriteLine(exception.Message);
 				}
 			}
 		}
