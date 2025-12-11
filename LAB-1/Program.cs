@@ -8,7 +8,6 @@ namespace LAB1
 	/// </summary>
 	internal class Program
 	{
-		//TODO: XML +
 		/// <summary>
 		/// Ожиадние действия пользователя
 		/// </summary>

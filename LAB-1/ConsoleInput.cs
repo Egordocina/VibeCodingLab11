@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace LAB1
 {
+	//TODO: XML
 	internal class ConsoleInput
 	{
 		/// <summary>

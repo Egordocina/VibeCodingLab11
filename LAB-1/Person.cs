@@ -5,7 +5,6 @@ using System.Xml.Linq;
 
 namespace LAB1
 {
-	//TODO: XML +
 	public class Person
 	{
 		/// <summary>
@@ -13,19 +12,16 @@ namespace LAB1
 		/// </summary>
 		private string _firstName = string.Empty;
 
-		//TODO: XML +
 		/// <summary>
 		/// Фамилия
 		/// </summary>
 		private string _lastName = string.Empty;
 
-		//TODO: XML +
 		/// <summary>
 		/// Возраст
 		/// </summary>
 		private int _age;
 
-		//TODO: XML +
 		/// <summary>
 		/// Пол (согласно законодательству Российской Федерации)
 		/// </summary>
@@ -41,11 +37,13 @@ namespace LAB1
 		/// </summary>
 		private const string _englishLanguageCheck = @"(^[a-zA-Z]+-?[a-zA-Z]+$)";
 
+		//TODO: RSDN
 		/// <summary>
 		/// Минимальный возраст
 		/// </summary>
 		public const int minAge = 0;
 
+		//TODO: RSDN
 		/// <summary>
 		/// Максимальный возраст
 		/// </summary>
@@ -67,7 +65,6 @@ namespace LAB1
 			}
 		}
 
-		//TODO: XML +
 		/// <summary>
 		/// Задание Фамилии
 		/// </summary>
@@ -90,7 +87,6 @@ namespace LAB1
 			}
 		}
 
-		//TODO: XML +
 		/// <summary>
 		/// Задание возраста
 		/// </summary>
@@ -112,7 +108,6 @@ namespace LAB1
 			}
 		}
 
-		//TODO: XML +
 		/// <summary>
 		/// Задание пола
 		/// </summary>
@@ -197,104 +192,15 @@ namespace LAB1
 					 $"{type} может быть двойным и записано через дефис.");
 			}
 		}
-
-		//TODO: remove +
-		/// <summary>
-		/// Вывод на экран
-		/// </summary>
-		//public void Print()
-		//{
-		//	string genderStr;
-        //    //string genderStr =
-        //    //    Gender == Gender.Male
-        //    //    ? "Мужской"
-        //    //    : "Женский";
-        //    if (Gender == Gender.Male)
-		//	{
-		//		genderStr = "Мужской";
-		//	}
-		//	else
-		//	{
-		//		genderStr = "Женский";
-		//	}
-		//	Console.WriteLine($"Имя: {FirstName} {LastName}, Возраст: {Age}, Пол: {genderStr}");
-		//}
-
-		//TODO: remove +
-		/// <summary>
-		/// Ввод с клавиатуры
-		/// </summary>
-		/// <returns>
-		/// //TODO: XML</returns>
-		//public static Person ReadFromKeyboard()
-		//{
-		//	string firstName = ReadNonEmpty("Введите имя: ");
-		//	string lastName = ReadNonEmpty("Введите фамилию: ");
-		//	int age = ReadAge();
-		//	Gender gender = ReadGender();
-		//
-		//	return new Person(firstName, lastName, age, gender);
-		//}
-		//
-		//
-		//private static string ReadNonEmpty(string prompt)
-		//{
-		//	while (true)
-		//	{
-		//		Console.Write(prompt);
-		//		string? input = Console.ReadLine()?.Trim();
-		//		if (!string.IsNullOrWhiteSpace(input))
-		//			return input;
-		//		Console.WriteLine("Ошибка: поле не может быть пустым. Попробуйте ещё раз.");
-		//	}
-		//}
-
-
-
-		//TOOD: refactor
-		/// <summary>
-		/// Случайный человек
-		/// </summary>
-		/// <returns></returns>
-		//public static Person GetRandomPerson()
-		//{
-		//	//TODO: RSDN
-		//	string[] maleFirst = { "Венцеслав", "Златояр", "Горислав", "Драгомил", "Завид", "Никита" };
-		//	string[] femaleFirst = { "Купава", "Богдана", "Рада", "Лада", "Любава", "Добрава" };
-		//	string[] maleLast = { "Иванов", "Петров", "Сидоров", "Кузнецов", "Попов", "Смирнов" };
-		//	string[] femaleLast = { "Иванова", "Петрова", "Сидорова", "Кузнецова", "Попова", "Смирнова" };
-		//
-		//	Random rnd = Random.Shared;
-		//	bool isMale = rnd.Next(2) == 0;
-		//
-		//	string first, last;
-		//	Gender gender;
-		//
-		//	if (isMale)
-		//	{
-		//		first = maleFirst[rnd.Next(maleFirst.Length)];
-		//		last = maleLast[rnd.Next(maleLast.Length)];
-		//		gender = Gender.Male;
-		//	}
-		//	else
-		//	{
-		//		first = femaleFirst[rnd.Next(femaleFirst.Length)];
-		//		last = femaleLast[rnd.Next(femaleLast.Length)];
-		//		gender = Gender.Female;
-		//	}
-		//
-		//	return new Person(first, last, 18 + rnd.Next(60), gender);
-		//}
+		
 		/// <summary>
 		/// Преобразование к единому стилю
 		/// </summary>
 		/// <returns></returns>
 		public override string ToString()
 		{
-
 			string genderStr = Gender == Gender.Male ? "М" : "Ж";
 			return $"{FirstName} {LastName}, {Age} лет ({genderStr})";
 		}
-
 	}
 }
