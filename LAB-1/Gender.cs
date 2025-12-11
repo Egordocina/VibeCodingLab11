@@ -5,13 +5,11 @@
 	/// </summary>
 	public enum Gender
 	{
-		//TODO: XML +
 		/// <summary>
 		/// Male.
 		/// </summary>
 		Male,
 
-		//TODO: XML +
 		/// <summary>
 		/// Female.
 		/// </summary>
