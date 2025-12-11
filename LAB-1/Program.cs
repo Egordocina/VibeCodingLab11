@@ -1,5 +1,6 @@
 ﻿
 using LAB1;
+using PersonLibrary;
 
 namespace LAB1
 {
@@ -15,6 +16,25 @@ namespace LAB1
 		{ 
 			Console.WriteLine("\nНажмите любую клавишу..."); 
 			Console.ReadKey(true);
+		}
+		/// <summary>
+		/// Получение информации о списке людей.
+		/// </summary>
+		/// <param name="personList">список людей</param>
+		/// <param name="title"></param>
+		public static void Print(PersonList personList, string title)
+		{
+			Console.WriteLine($"\n=== {title} === (количество: {personList.Count})");
+			if (personList.Count == 0)
+			{
+				Console.WriteLine("   [список пуст]");
+			}
+			else
+			{
+				for (int i = 0; i < personList.Count; i++)
+					Console.WriteLine($"{i + 1,2}. {personList.Get(i)}");
+			}
+			Console.WriteLine(new string('-', 40));
 		}
 
 		/// <summary>
@@ -34,13 +54,13 @@ namespace LAB1
 				list2.Add(RandomPerson.GetRandomPerson());
 			}
 			// Уведомление о создании списков и вывод
-			list1.Print("СПИСОК 1 — создан");
-			list2.Print("СПИСОК 2 — создан");
+			Print(list1, "СПИСОК 1 — создан");
+			Print(list2, "СПИСОК 2 — создан");
 			Wait();
 
 			// Добавление нового человека в список
 			list1.Add(ConsoleInput.ReadFromKeyboard());
-			list1.Print("СПИСОК 1 — добавлен новый человек");
+			Print(list1, "СПИСОК 1 — добавлен новый человек");
 			Wait();
 
 			// Копирование второго человека из первого списка в конец
@@ -49,21 +69,21 @@ namespace LAB1
 			Console.WriteLine($"Копируем человека → {sharedPerson} в список 2");
 			list2.Add(sharedPerson);
 
-			list1.Print("СПИСОК 1");
-			list2.Print("СПИСОК 2 — теперь содержит того же человека (по ссылке!)");
+			Print(list1, "СПИСОК 1");
+			Print(list2, "СПИСОК 2 — теперь содержит того же человека (по ссылке!)");
 			Wait();
 
 			// Удаление второго человека из первого списка
 			Console.WriteLine("Удаляем второго человека из СПИСОК 1...");
 			list1.RemoveAtIndex(1);
 
-			list1.Print("СПИСОК 1 — после удаления");
-			list2.Print("СПИСОК 2 — человек ОСТАЛСЯ! (ссылка жива)");
+			Print(list1, "СПИСОК 1 — после удаления");
+			Print(list2, "СПИСОК 2 — человек ОСТАЛСЯ! (ссылка жива)");
 			Wait();
 
 			// Очистка второго списка
 			list2.Clear();
-			list2.Print("СПИСОК 2 — после очистки");
+			Print(list2, "СПИСОК 2 — после очистки");
 			Wait();
 
 			Console.WriteLine("Демонстрация завершена. " +

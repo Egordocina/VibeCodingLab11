@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonLibrary;
 
 namespace LAB1
 {
-	//TODO: XML
+	//TODO: XML +
+	/// <summary>
+	/// Класс для для ввода с консоли
+	/// </summary>
 	internal class ConsoleInput
 	{
 		/// <summary>
@@ -39,7 +43,7 @@ namespace LAB1
 						{
 							throw new FormatException
 								($"Возраст - это число " +
-								$"от {Person.minAge} до {Person.maxAge}");
+								$"от {Person.MinAge} до {Person.MaxAge}");
 						}
 						person.Age = age;
 					},

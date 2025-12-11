@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
-namespace LAB1
+namespace PersonLibrary
 {
 	public class Person
 	{
@@ -37,17 +37,17 @@ namespace LAB1
 		/// </summary>
 		private const string _englishLanguageCheck = @"(^[a-zA-Z]+-?[a-zA-Z]+$)";
 
-		//TODO: RSDN
+		//TODO: RSDN +
 		/// <summary>
 		/// Минимальный возраст
 		/// </summary>
-		public const int minAge = 0;
+		public const int MinAge = 0;
 
-		//TODO: RSDN
+		//TODO: RSDN +
 		/// <summary>
 		/// Максимальный возраст
 		/// </summary>
-		public const int maxAge = 123;
+		public const int MaxAge = 123;
 
 		/// <summary>
 		/// Задание имени
@@ -92,17 +92,17 @@ namespace LAB1
 		/// </summary>
 		public int Age
 		{
-			get		
-			{ 
-				return _age; 
+			get
+			{
+				return _age;
 			}
-			
+
 			set
 			{
-				if (value < minAge || value > maxAge)
+				if (value < MinAge || value > MaxAge)
 				{
 					throw new ArgumentException("Возраст должен быть в диапазоне " +
-						$"{minAge} – {maxAge} лет");
+						$"{MinAge} – {MaxAge} лет");
 				}
 				_age = value;
 			}
@@ -126,8 +126,8 @@ namespace LAB1
 		/// <param name="gender">Пол</param>
 		public Person(string firstName, string lastName, int age, Gender gender)
 		{
-            // валидация сработает автоматически
-            FirstName = firstName;
+			// валидация сработает автоматически
+			FirstName = firstName;
 			LastName = lastName;
 			Age = age;
 			Gender = gender;
@@ -192,7 +192,7 @@ namespace LAB1
 					 $"{type} может быть двойным и записано через дефис.");
 			}
 		}
-		
+
 		/// <summary>
 		/// Преобразование к единому стилю
 		/// </summary>

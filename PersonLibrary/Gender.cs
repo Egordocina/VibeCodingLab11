@@ -1,7 +1,7 @@
-﻿namespace LAB1
+﻿namespace PersonLibrary
 {
 	/// <summary>
-	/// Выбор гендера, использование enum удобно для перечисления
+	/// Выбор пола, использование enum удобно для перечисления
 	/// </summary>
 	public enum Gender
 	{

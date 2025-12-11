@@ -1,4 +1,4 @@
-﻿namespace LAB1
+﻿namespace PersonLibrary
 {
 	//TODO: XML +
 	/// <summary>
@@ -10,19 +10,19 @@
 		/// Объявление списка объектов типа Person
 		/// </summary>
 		private readonly List<Person> _people = new();
-		
+
 		/// <summary>
 		/// Добавление человека
 		/// </summary>
 		/// <param name="person">Объект класса Person</param>
 		public void Add(Person person) => _people.Add(person);
-		
+
 		/// <summary>
 		/// Удаление человека
 		/// </summary>
 		/// <param name="person">Объект класса Person.</param>
 		public bool Remove(Person person) => _people.Remove(person);
-		
+
 		/// <summary>
 		/// Удаление персон по индексу.
 		/// </summary>
@@ -33,12 +33,14 @@
 		public void RemoveAtIndex(int index)
 		{
 			if (index < 0 || index >= _people.Count)
-				//TODO: {}
-				throw new ArgumentOutOfRangeException(nameof(index), 
+				//TODO: {} +
+				{
+					throw new ArgumentOutOfRangeException(nameof(index),
 					"Индекс вне диапазона");
-			_people.RemoveAt(index);
+				}
+			 _people.RemoveAt(index);
 		}
-		
+
 		/// <summary>
 		/// Поиск персоны по указанному индексу.
 		/// </summary>
@@ -50,47 +52,49 @@
 		public Person Get(int index)
 		{
 			if (index < 0 || index >= _people.Count)
-				//TODO: {}
+				//TODO: {} +
+				{
 				throw new ArgumentOutOfRangeException(nameof(index));
+				}
 			return _people[index];
 		}
-		
+
 		/// <summary>
 		/// Получение индекса по человеку.
 		/// </summary>
 		/// <param name="person">Объект класса Person.</param>
 		/// <returns>Индекс объекта.</returns>
 		public int IndexOf(Person person) => _people.IndexOf(person);
-		
+
 		/// <summary>
 		/// Удаление всех людей.
 		/// </summary>
 		public void Clear() => _people.Clear();
-		
+
 		/// <summary>
 		/// Количество персон в списке.
 		/// </summary>
 		/// <returns>Количество персон в списке.</returns>
 		public int Count => _people.Count;
 
-		//TODO: remove
-		/// <summary>
-		/// Получение информации о списке людей.
-		/// </summary>
-		/// <returns>Строка с данными полей объектов списка.</returns>
-		public void Print(string title)
-		{
-			Console.WriteLine($"\n=== {title} === (количество: {Count})");
-			if (Count == 0)
-			{
-				Console.WriteLine("   [список пуст]");
-			}
-			else
-			{
-				for (int i = 0; i < _people.Count; i++)
-					Console.WriteLine($"{i + 1,2}. {_people[i]}");
-			}
-			Console.WriteLine(new string('-', 40));
-		}
+		//TODO: remove +
+		////// <summary>
+		////// Получение информации о списке людей.
+		////// </summary>
+		////// <returns>Строка с данными полей объектов списка.</returns>
+		///public void Print(string title)
+		///{
+		///	Console.WriteLine($"\n=== {title} === (количество: {Count})");
+		///	if (Count == 0)
+		///	{
+		///		Console.WriteLine("   [список пуст]");
+		///	}
+		///	else
+		///	{
+		///		for (int i = 0; i < _people.Count; i++)
+		///			Console.WriteLine($"{i + 1,2}. {_people[i]}");
+		///	}
+		///	Console.WriteLine(new string('-', 40));
+		///}
 	}
 }
