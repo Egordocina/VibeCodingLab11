@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LAB_1
+namespace LAB1
 {
 	internal class ConsoleInput
 	{

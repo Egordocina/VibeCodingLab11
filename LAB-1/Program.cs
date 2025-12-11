@@ -1,5 +1,5 @@
 ﻿
-using LAB_1;
+using LAB1;
 
 namespace LAB1
 {
