@@ -1,6 +1,5 @@
 ﻿namespace PersonLibrary
 {
-	//TODO: XML +
 	/// <summary>
 	/// Класс PersonList
 	/// </summary>
@@ -51,7 +50,6 @@
 		public PersonBase Get(int index)
 		{
 			if (index < 0 || index >= _people.Count)
-			//TODO: rewrite+
 			{
 				throw new ArgumentOutOfRangeException(nameof(index));
 			}
@@ -76,7 +74,6 @@
 		/// <returns>Количество персон в списке.</returns>
 		public int Count() => _people.Count;
 
-		//TODO: XML+
 		/// <summary>
 		/// Получение информации о списке персон.
 		/// </summary>

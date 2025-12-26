@@ -52,7 +52,6 @@ namespace PersonLibrary
 
 			switch (person.Gender)
 			{
-				//TODO: rewrite+
 				case Gender.Male:
 				{
 					person.FirstName = maleFirst
@@ -112,7 +111,6 @@ namespace PersonLibrary
 
 			switch (person.Gender)
 			{
-				//TODO: rewrite+
 				case Gender.Male:
 				{
 					person.FirstName = maleFirst
@@ -233,7 +231,6 @@ namespace PersonLibrary
 
 			mother.LastName = father.LastName + "а";
 
-			//TODO: switch-case+
 			switch (child.Gender)
 			{
 				case Gender.Male:
@@ -242,9 +239,9 @@ namespace PersonLibrary
 				case Gender.Female:
 					child.LastName = mother.LastName;
 					break;
-					// default не нужен, Gender имеет только два значения
 			}
-					}
+		}
+
 		/// <summary>
 		/// Метод заполнения полей обьекта класса Child.
 		/// </summary>

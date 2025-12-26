@@ -9,7 +9,6 @@ namespace LAB1
 	/// </summary>
 	internal class Program
 	{
-		//TODO: RSDN+
 		/// <summary>
 		/// Ожиадние действия пользователя
 		/// </summary>
@@ -19,7 +18,6 @@ namespace LAB1
 			Console.ReadKey(true);
 		}
 
-		//TODO: RSDN+
 		/// <summary>
 		/// Точка входа в программу.
 		/// </summary>
@@ -64,10 +62,8 @@ namespace LAB1
 
 				switch (fourthPerson)
 				{
-					//TODO: rewrite+
 					case Adult adult:
 					{
-						//TODO: RSDN+
 						Console.WriteLine($"Четвертый взрослый: {adult.LastName}" +
 							$"{adult.FirstName}");
 						Console.WriteLine(adult.GetExtraIncome());
@@ -75,7 +71,6 @@ namespace LAB1
 					}
 					case Child child:
 					{
-						//TODO: RSDN+
 						Console.WriteLine($"Четвертый ребенок: {child.LastName}" +
 							$"{child.FirstName}");
 						Console.WriteLine(child.GetViolinLessons());
@@ -87,7 +82,6 @@ namespace LAB1
 			Console.WriteLine("Характеристики человека  выведены");
 			Wait();
 
-			//TODO: RSDN+
 			Console.WriteLine("Демонстрация завершена." +
 				"Спасибо, что выбрали наш сервис!");
 			Console.ReadKey();

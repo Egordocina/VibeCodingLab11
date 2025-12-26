@@ -122,7 +122,6 @@ namespace PersonLibrary
 			}
 		}
 
-		//TODO: XML+
 		/// <summary>
 		/// Поучение партнера
 		/// </summary>
