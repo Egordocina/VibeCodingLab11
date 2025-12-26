@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace PersonLibrary
 {
-	//TODO: XML +
 	/// <summary>
 	/// Класс для генерации случайного человека
 	/// </summary>
 	public class RandomPerson
 	{
-		//TODO: XML +
 		/// <summary>
 		/// Метод для генерации случайного человека
 		/// </summary>
@@ -54,6 +52,7 @@ namespace PersonLibrary
 
 			switch (person.Gender)
 			{
+				//TODO: rewrite
 				case Gender.Male:
 					{
 						person.FirstName = maleFirst
@@ -106,14 +105,14 @@ namespace PersonLibrary
 			};
 
 
-			Random random = new Random
-				 (Guid.NewGuid().GetHashCode());
+			Random random = new Random(Guid.NewGuid().GetHashCode());
 
 			person.Age = random.Next(person.MinAge, person.MaxAge);
 			person.Gender = gender;
 
 			switch (person.Gender)
 			{
+				//TODO: rewrite
 				case Gender.Male:
 					{
 						person.FirstName = maleFirst
@@ -139,8 +138,7 @@ namespace PersonLibrary
 		/// <param name="adult">Объект класса Adult.</param>
 		public static void SetRandomAdult(Adult adult)
 		{
-			Random random = new Random
-				(Guid.NewGuid().GetHashCode());
+			Random random = new Random(Guid.NewGuid().GetHashCode());
 
 			string[] jobPlace =
 			{
@@ -235,6 +233,7 @@ namespace PersonLibrary
 
 			mother.LastName = father.LastName + "а";
 
+			//TODO: switch-case
 			if (child.Gender == Gender.Male)
 			{
 				child.LastName = father.LastName;

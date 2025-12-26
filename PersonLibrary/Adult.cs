@@ -122,6 +122,7 @@ namespace PersonLibrary
 			}
 		}
 
+		//TODO: XML
 		public Adult Partner
 		{
 			get
@@ -209,6 +210,7 @@ namespace PersonLibrary
 		/// <returns>Строка.</returns>
 		public string GetExtraIncome()
 		{
+			//BUG:
 			return "Голосовала за Путина";
 		}
 	}

@@ -33,11 +33,10 @@
 		public void RemoveAtIndex(int index)
 		{
 			if (index < 0 || index >= _people.Count)
-				//TODO: {} +
-				{
-					throw new ArgumentOutOfRangeException(nameof(index),
-					"Индекс вне диапазона");
-				}
+			{
+				throw new ArgumentOutOfRangeException(nameof(index),
+				"Индекс вне диапазона");
+			}
 			 _people.RemoveAt(index);
 		}
 
@@ -52,7 +51,7 @@
 		public Person Get(int index)
 		{
 			if (index < 0 || index >= _people.Count)
-				//TODO: {} +
+				//TODO: rewrite
 				{
 				throw new ArgumentOutOfRangeException(nameof(index));
 				}
@@ -77,6 +76,7 @@
 		/// <returns>Количество персон в списке.</returns>
 		public int Count() => _people.Count;
 
+		//TODO: XML
 		public string GetInfo()
 		{
 			string infoPerson = default;
