@@ -41,13 +41,13 @@ namespace PersonLibrary
 		/// <summary>
 		/// Минимальный возраст
 		/// </summary>
-		public const int MinAge = 0;
+		public virtual int MinAge { get; } = 0;
 
 		//TODO: RSDN +
 		/// <summary>
 		/// Максимальный возраст
 		/// </summary>
-		public const int MaxAge = 123;
+		public virtual int MaxAge { get; } = 123;
 
 		/// <summary>
 		/// Задание имени
@@ -138,6 +138,15 @@ namespace PersonLibrary
 		/// </summary>
 		public Person() : this("Жаныкбек", "Алмагаанов", 11, Gender.Female)
 		{ }
+
+		/// <summary>
+		/// Получение информации о персоне, пункт 2.
+		/// </summary>
+		/// <returns>Строка с данными полей объекта класса Person.</returns>
+		public virtual string GetInfo()
+		{
+			return $"{LastName} {FirstName}, возраст: {Age}, пол: {Gender}";
+		}
 
 		/// <summary>
 		/// Преобразование имени и фамилии в правильные регистры.

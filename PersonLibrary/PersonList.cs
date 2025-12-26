@@ -75,26 +75,16 @@
 		/// Количество персон в списке.
 		/// </summary>
 		/// <returns>Количество персон в списке.</returns>
-		public int Count => _people.Count;
+		public int Count() => _people.Count;
 
-		//TODO: remove +
-		////// <summary>
-		////// Получение информации о списке людей.
-		////// </summary>
-		////// <returns>Строка с данными полей объектов списка.</returns>
-		///public void Print(string title)
-		///{
-		///	Console.WriteLine($"\n=== {title} === (количество: {Count})");
-		///	if (Count == 0)
-		///	{
-		///		Console.WriteLine("   [список пуст]");
-		///	}
-		///	else
-		///	{
-		///		for (int i = 0; i < _people.Count; i++)
-		///			Console.WriteLine($"{i + 1,2}. {_people[i]}");
-		///	}
-		///	Console.WriteLine(new string('-', 40));
-		///}
+		public string GetInfo()
+		{
+			string infoPerson = default;
+			foreach (Person persona in _people)
+			{
+				infoPerson += persona.GetInfo();
+			}
+			return infoPerson;
+		}
 	}
 }
