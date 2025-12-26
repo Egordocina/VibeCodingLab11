@@ -5,7 +5,7 @@ namespace PersonLibrary
 	/// <summary>
 	/// Класс Child.
 	/// </summary>
-	public class Child : Person
+	public class Child : PersonBase
 	{
 		/// <summary>
 		/// Поле мамы.

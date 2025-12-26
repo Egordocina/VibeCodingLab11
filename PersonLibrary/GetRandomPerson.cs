@@ -16,7 +16,7 @@ namespace PersonLibrary
 		/// Метод для генерации случайного человека
 		/// </summary>
 		/// <returns></returns>
-		public static void SetRandomPerson(Person person)
+		public static void SetRandomPerson(PersonBase person)
 		{
 			string[] maleFirst =
 			{
@@ -77,7 +77,7 @@ namespace PersonLibrary
 		/// с заданным полом.
 		/// </summary>
 		/// <param name="person">Объект класса Person.</param>
-		public static void SetRandomPerson(Person person,
+		public static void SetRandomPerson(PersonBase person,
 			Gender gender)
 		{
 			string[] maleFirst =

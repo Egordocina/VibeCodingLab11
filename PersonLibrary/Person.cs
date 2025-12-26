@@ -127,7 +127,7 @@ namespace PersonLibrary
 		/// <param name="lastName">Фамилия</param>
 		/// <param name="age">Возраст</param>
 		/// <param name="gender">Пол</param>
-		public Person(string firstName, string lastName, int age, Gender gender)
+		public PersonBase(string firstName, string lastName, int age, Gender gender)
 		{
 			// валидация сработает автоматически
 			FirstName = firstName;
@@ -139,7 +139,7 @@ namespace PersonLibrary
 		/// <summary>
 		/// Конструктор класса по умолчанию.
 		/// </summary>
-		public Person() : this("Жаныкбек", "Алмагаанов", 11, Gender.Female)
+		public PersonBase() : this("Жаныкбек", "Алмагаанов", 11, Gender.Female)
 		{ }
 
 		/// <summary>
