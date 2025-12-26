@@ -6,7 +6,6 @@ using System.Xml.Linq;
 namespace PersonLibrary
 {
 	/// <summary>
-	/// //TODO: XML
 	/// Класс Person.
 	/// </summary>
 	public abstract class PersonBase

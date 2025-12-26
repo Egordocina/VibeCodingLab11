@@ -86,6 +86,5 @@ namespace LAB1
 				"Спасибо, что выбрали наш сервис!");
 			Console.ReadKey();
 		}
-		//TODO: polymorphism?
 	}
 }
