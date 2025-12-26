@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace PersonLibrary
 {
-	public class Person
+	public abstract class Person
 	{
 		/// <summary>
 		/// Имя
@@ -145,7 +145,9 @@ namespace PersonLibrary
 		/// <returns>Строка с данными полей объекта класса Person.</returns>
 		public virtual string GetInfo()
 		{
-			return $"{LastName} {FirstName}, возраст: {Age}, пол: {Gender}";
+			string genderStr = _gender == Gender.Male ? "мужской" : "женский";
+	
+			return $"{LastName} {FirstName}, возраст: {Age}, пол: {genderStr}";
 		}
 
 		/// <summary>

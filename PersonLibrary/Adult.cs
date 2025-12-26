@@ -209,7 +209,7 @@ namespace PersonLibrary
 		/// <returns>Строка.</returns>
 		public string GetExtraIncome()
 		{
-			return "Ищет дополнительный заработок (Мечтательный)";
+			return "Голосовала за Путина";
 		}
 	}
 }
