@@ -51,10 +51,10 @@
 		public Person Get(int index)
 		{
 			if (index < 0 || index >= _people.Count)
-				//TODO: rewrite
-				{
+			//TODO: rewrite+
+			{
 				throw new ArgumentOutOfRangeException(nameof(index));
-				}
+			}
 			return _people[index];
 		}
 
@@ -76,7 +76,11 @@
 		/// <returns>Количество персон в списке.</returns>
 		public int Count() => _people.Count;
 
-		//TODO: XML
+		//TODO: XML+
+		/// <summary>
+		/// Получение информации о списке персон.
+		/// </summary>
+		/// <returns></returns>
 		public string GetInfo()
 		{
 			string infoPerson = default;

@@ -5,9 +5,12 @@ using System.Xml.Linq;
 
 namespace PersonLibrary
 {
-	//TODO: XML
-	//TODO: RSDN
-	public abstract class Person
+	//TODO: XML+
+	//TODO: RSDN+
+	/// <summary>
+	/// Класс Person.
+	/// </summary>
+	public abstract class PersonBase
 	{
 		/// <summary>
 		/// Имя

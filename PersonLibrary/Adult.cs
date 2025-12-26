@@ -122,7 +122,10 @@ namespace PersonLibrary
 			}
 		}
 
-		//TODO: XML
+		//TODO: XML+
+		/// <summary>
+		/// Поучение партнера
+		/// </summary>
 		public Adult Partner
 		{
 			get
@@ -210,8 +213,8 @@ namespace PersonLibrary
 		/// <returns>Строка.</returns>
 		public string GetExtraIncome()
 		{
-			//BUG:
-			return "Голосовала за Путина";
+			//BUG:+
+			return "Голосует за Путина";
 		}
 	}
 }

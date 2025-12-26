@@ -9,21 +9,21 @@ namespace LAB1
 	/// </summary>
 	internal class Program
 	{
-		//TODO: RSDN
+		//TODO: RSDN+
 		/// <summary>
 		/// Ожиадние действия пользователя
 		/// </summary>
-		static void Wait() 
+		private static void Wait() 
 		{ 
 			Console.WriteLine("\nНажмите любую клавишу..."); 
 			Console.ReadKey(true);
 		}
 
-		//TODO: RSDN
+		//TODO: RSDN+
 		/// <summary>
 		/// Точка входа в программу.
 		/// </summary>
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			// 5.a. Создание списка PersonList, состоящего из рандомного кол-ва
 			// взрослых и детей
@@ -64,30 +64,32 @@ namespace LAB1
 
 				switch (fourthPerson)
 				{
-					//TODO: rewrite
+					//TODO: rewrite+
 					case Adult adult:
-						{
-							//TODO: RSDN
-							Console.WriteLine($"Четвертый взрослый: {adult.LastName} {adult.FirstName}");
-							Console.WriteLine(adult.GetExtraIncome());
-							break;
-						}
+					{
+						//TODO: RSDN+
+						Console.WriteLine($"Четвертый взрослый: {adult.LastName}" +
+							$"{adult.FirstName}");
+						Console.WriteLine(adult.GetExtraIncome());
+						break;
+					}
 					case Child child:
-						{
-							//TODO: RSDN
-							Console.WriteLine($"Четвертый ребенок: {child.LastName} {child.FirstName}");
-							Console.WriteLine(child.GetViolinLessons());
-							break;
-						}
+					{
+						//TODO: RSDN+
+						Console.WriteLine($"Четвертый ребенок: {child.LastName}" +
+							$"{child.FirstName}");
+						Console.WriteLine(child.GetViolinLessons());
+						break;
+					}
 				}
 			}
 
 			Console.WriteLine("Характеристики человека  выведены");
 			Wait();
 
-			//TODO: RSDN
-			Console.WriteLine("Демонстрация завершена. " +
-		"Спасибо, что выбрали наш сервис!");
+			//TODO: RSDN+
+			Console.WriteLine("Демонстрация завершена." +
+				"Спасибо, что выбрали наш сервис!");
 			Console.ReadKey();
 		}
 		//TODO: polymorphism?

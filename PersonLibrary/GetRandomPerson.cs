@@ -52,23 +52,23 @@ namespace PersonLibrary
 
 			switch (person.Gender)
 			{
-				//TODO: rewrite
+				//TODO: rewrite+
 				case Gender.Male:
-					{
-						person.FirstName = maleFirst
-							[random.Next(0, maleFirst.Length)];
-						person.LastName = maleLast
-							[random.Next(0, maleLast.Length)];
-						break;
-					}
+				{
+					person.FirstName = maleFirst
+						[random.Next(0, maleFirst.Length)];
+					person.LastName = maleLast
+						[random.Next(0, maleLast.Length)];
+					break;
+				}
 				case Gender.Female:
-					{
-						person.FirstName = femaleFirst
-							 [random.Next(0, femaleFirst.Length)];
-						person.LastName = femaleLast
-							 [random.Next(0, femaleLast.Length)];
-						break;
-					}
+				{
+					person.FirstName = femaleFirst
+						 [random.Next(0, femaleFirst.Length)];
+					person.LastName = femaleLast
+						 [random.Next(0, femaleLast.Length)];
+					break;
+				}
 			}
 		}
 
@@ -112,23 +112,23 @@ namespace PersonLibrary
 
 			switch (person.Gender)
 			{
-				//TODO: rewrite
+				//TODO: rewrite+
 				case Gender.Male:
-					{
-						person.FirstName = maleFirst
-							[random.Next(0, maleFirst.Length)];
-						person.LastName = maleLast
-							[random.Next(0, maleLast.Length)];
-						break;
-					}
+				{
+					person.FirstName = maleFirst
+						[random.Next(0, maleFirst.Length)];
+					person.LastName = maleLast
+						[random.Next(0, maleLast.Length)];
+					break;
+				}
 				case Gender.Female:
-					{
-						person.FirstName = femaleFirst
-							 [random.Next(0, femaleFirst.Length)];
-						person.LastName = femaleLast
-							 [random.Next(0, femaleLast.Length)];
-						break;
-					}
+				{
+					person.FirstName = femaleFirst
+						 [random.Next(0, femaleFirst.Length)];
+					person.LastName = femaleLast
+						 [random.Next(0, femaleLast.Length)];
+					break;
+				}
 			}
 		}
 
@@ -233,16 +233,18 @@ namespace PersonLibrary
 
 			mother.LastName = father.LastName + "а";
 
-			//TODO: switch-case
-			if (child.Gender == Gender.Male)
+			//TODO: switch-case+
+			switch (child.Gender)
 			{
-				child.LastName = father.LastName;
+				case Gender.Male:
+					child.LastName = father.LastName;
+					break;
+				case Gender.Female:
+					child.LastName = mother.LastName;
+					break;
+					// default не нужен, Gender имеет только два значения
 			}
-			else if (child.Gender == Gender.Female)
-			{
-				child.LastName = mother.LastName;
-			}
-		}
+					}
 		/// <summary>
 		/// Метод заполнения полей обьекта класса Child.
 		/// </summary>
