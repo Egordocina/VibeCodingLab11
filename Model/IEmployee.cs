@@ -21,7 +21,7 @@
 		string Position { get; set; }
 
 		/// <summary>
-		/// Служба (отдел) гонщика.
+		/// Страна гонщика.
 		/// </summary>
 		string Country { get; set; }
 
