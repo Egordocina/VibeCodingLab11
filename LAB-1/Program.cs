@@ -1,93 +1,387 @@
-﻿
-using LAB1;
-using PersonLibrary;
+﻿using Model;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
-namespace LAB1
+namespace ConsoleLoader
 {
 	/// <summary>
-	/// Основной класс программы.
+	/// Основной класс программы для расчета зарплат сотрудников(гонщиков) лыжной команды "Сутулые псы".
 	/// </summary>
-	internal class Program
+	public class Program
 	{
 		/// <summary>
-		/// Ожиадние действия пользователя
+		/// Создаёт сотрудника, отображает зарплату и возвращает сотрудника.
 		/// </summary>
-		static void Wait() 
-		{ 
-			Console.WriteLine("\nНажмите любую клавишу..."); 
-			Console.ReadKey(true);
-		}
-		/// <summary>
-		/// Получение информации о списке людей.
-		/// </summary>
-		/// <param name="personList">список людей</param>
-		/// <param name="title"></param>
-		public static void Print(PersonList personList, string title)
+		/// <typeparam name="T">Тип сотрудника.</typeparam>
+		/// <param name="handlers">Список обработчиков свойств.</param>
+		/// <returns>Созднный сотрудник с отображённой зарплатой.</returns>
+		private static IEmployee CreateAndShowEmployee<T>(List<PropertyHandlerDTO> handlers)
+			where T : BaseEmployee, new()
 		{
-			Console.WriteLine($"\n=== {title} === (количество: {personList.Count})");
-			if (personList.Count == 0)
-			{
-				Console.WriteLine("   [список пуст]");
-			}
-			else
-			{
-				for (int i = 0; i < personList.Count; i++)
-					Console.WriteLine($"{i + 1,2}. {personList.Get(i)}");
-			}
-			Console.WriteLine(new string('-', 40));
+			var employee = CreateEmployee<T>(handlers);
+			return ShowSalary(employee);
 		}
 
 		/// <summary>
-		/// Точка входа в программу.
+		/// Главное.
 		/// </summary>
-		static void Main(string[] args)
+		/// <remarks>
+		/// Запускает консольное приложение для ввода и расчёта зарплат.
+		/// </remarks>
+		public static void Main()
 		{
-			// Создание двух списков людей по 3 человека
-			Console.OutputEncoding = System.Text.Encoding.UTF8;	
-			var list1 = new PersonList();
-			var list2 = new PersonList();
+			Console.WriteLine("Расчет зарплат членов лыжной комнанды \"Сутулые псы\"");
 
-			// Генерирование списка случайных людей
-			for (int i = 0; i < 3; i++)
+			var employeeList = new List<IEmployee>();
+			while (true)
 			{
-				list1.Add(RandomPerson.GetRandomPerson());
-				list2.Add(RandomPerson.GetRandomPerson());
+				// Переменная-ссылка на интерфейс
+				IEmployee employee;
+				switch (SelectEmployeeType())
+				{
+					case 1:
+						{
+							// Присваивание экземпляра класса HourlyEmployee в переменную интерфейса
+							employee = CreateAndShowEmployee<HourlyEmployee>(
+							GetPropertyHandlersForHourly());
+							employeeList.Add(employee);
+							break;
+						}
+					case 2:
+						{
+							// Присваивание экземпляра класса SalariedEmployee в переменную интерфейса
+							employee = CreateAndShowEmployee<SalariedEmployee>(
+							GetPropertyHandlersForSalaried());
+							employeeList.Add(employee);
+							break;
+						}
+
+					case 3:
+						{
+							// Присваивание экземпляра класса CommissionEmployee в переменную интерфейса
+							employee = CreateAndShowEmployee<CommissionEmployee>(
+							GetPropertyHandlersForCommission());
+							employeeList.Add(employee);
+							break;
+						}
+
+					case 4:
+						return;
+				}
 			}
-			// Уведомление о создании списков и вывод
-			Print(list1, "СПИСОК 1 — создан");
-			Print(list2, "СПИСОК 2 — создан");
-			Wait();
+		}
 
-			// Добавление нового человека в список
-			list1.Add(ConsoleInput.ReadFromKeyboard());
-			Print(list1, "СПИСОК 1 — добавлен новый человек");
-			Wait();
+		/// <summary>
+		/// Создание сотрудника с использованием обработчиков свойств.
+		/// </summary>
+		/// <typeparam name="T">Тип сотрудника.</typeparam>
+		/// <param name="handlers">Список обработчиков.</param>
+		/// <returns>Сотрудник.</returns>
+		private static T CreateEmployee<T>(List<PropertyHandlerDTO> handlers)
+			where T : BaseEmployee, new()
+		{
+			var employee = new T();
+			foreach (var handler in handlers)
+			{
+				ActionHandlerWithDTO(employee, handler);
+			}
+			return (T)employee;
+		}
 
-			// Копирование второго человека из первого списка в конец
-			// второго
-			Person sharedPerson = list1.Get(1);
-			Console.WriteLine($"Копируем человека → {sharedPerson} в список 2");
-			list2.Add(sharedPerson);
+		/// <summary>
+		/// Получение общих обработчиков для всех типов сотрудников.
+		/// </summary>
+		/// <returns>Список общих обработчиков.</returns>
+		private static List<PropertyHandlerDTO> GetCommonPropertyHandlers()
+		{
+			var exceptionTypesString = new List<Type>
+			{
+				typeof(IncorrectArgumentException)
+			};
+			return new List<PropertyHandlerDTO>
+			{
+				new PropertyHandlerDTO("Имя гонщика", exceptionTypesString,
+					emp =>
+					{
+						var input = Console.ReadLine();
+						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
+							{
+							throw new IncorrectArgumentException("Имя должно содержать только буквы.");
+							}
+						emp.Name = CapitalizeFirstLetter(input);
+					}),
+				new PropertyHandlerDTO("Фамилия гонщика", exceptionTypesString,
+					emp =>
+					{
+						var input = Console.ReadLine();
+						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
+							{
+							throw new IncorrectArgumentException("Фамилия должна содержать только буквы.");
+							}
+						emp.LastName = CapitalizeFirstLetter(input);
+					}),
+				new PropertyHandlerDTO("Разряд (выберите из списка ниже)",
+					exceptionTypesString,
+					emp => emp.Position = SelectPosition()),
+				new PropertyHandlerDTO("Страна выступления (выберите из списка ниже)",
+					exceptionTypesString,
+					emp => emp.Country = SelectDepartment())
+			};
+		}
 
-			Print(list1, "СПИСОК 1");
-			Print(list2, "СПИСОК 2 — теперь содержит того же человека (по ссылке!)");
-			Wait();
+		/// <summary>
+		/// Получение обработчиков для гонщика с почасовой оплатой.
+		/// </summary>
+		/// <returns>Список обработчиков.</returns>
+		private static List<PropertyHandlerDTO> GetPropertyHandlersForHourly()
+		{
+			var exceptionTypesNumeric = new List<Type>
+			{
+				typeof(IncorrectArgumentException),
+				typeof(FormatException)
+			};
+			var common = GetCommonPropertyHandlers();
+			common.Add(new PropertyHandlerDTO("Почасовая ставка",
+				exceptionTypesNumeric,
+				emp => ((HourlyEmployee)emp).HourlyRate =
+					Convert.ToDouble(Console.ReadLine())));
+			common.Add(new PropertyHandlerDTO("Отработанные часы",
+				exceptionTypesNumeric,
+				emp => ((HourlyEmployee)emp).HoursWorked =
+					Convert.ToDouble(Console.ReadLine())));
+			return common;
+		}
 
-			// Удаление второго человека из первого списка
-			Console.WriteLine("Удаляем второго человека из СПИСОК 1...");
-			list1.RemoveAtIndex(1);
+		/// <summary>
+		/// Получение обработчиков для гонщика по окладу.
+		/// </summary>
+		/// <returns>Список обработчиков.</returns>
+		private static List<PropertyHandlerDTO> GetPropertyHandlersForSalaried()
+		{
+			return GetCommonPropertyHandlers();
+		}
 
-			Print(list1, "СПИСОК 1 — после удаления");
-			Print(list2, "СПИСОК 2 — человек ОСТАЛСЯ! (ссылка жива)");
-			Wait();
+		/// <summary>
+		/// Получение обработчиков для гонщика с комиссионными.
+		/// </summary>
+		/// <returns>Список обработчиков.</returns>
+		private static List<PropertyHandlerDTO> GetPropertyHandlersForCommission()
+		{
+			var exceptionTypesNumeric = new List<Type>
+			{
+				typeof(IncorrectArgumentException),
+				typeof(FormatException)
+			};
+			var common = GetCommonPropertyHandlers();
+			common.Add(new PropertyHandlerDTO("Базовая зарплата",
+				exceptionTypesNumeric,
+				emp => ((CommissionEmployee)emp).BaseSalary =
+					Convert.ToDouble(Console.ReadLine())));
+			common.Add(new PropertyHandlerDTO("Ставка премии (%)",
+				exceptionTypesNumeric,
+				emp => ((CommissionEmployee)emp).CommissionRate =
+					Convert.ToDouble(Console.ReadLine())));
+			common.Add(new PropertyHandlerDTO("Сумма премии (руб., за KPI)",
+				exceptionTypesNumeric,
+				emp => ((CommissionEmployee)emp).BonusAmount =
+					Convert.ToDouble(Console.ReadLine())));
+			return common;
+		}
 
-			// Очистка второго списка
-			list2.Clear();
-			Print(list2, "СПИСОК 2 — после очистки");
-			Wait();
+		/// <summary>
+		/// Выбор разряда из предложенного списка.
+		/// </summary>
+		/// <returns>Выбранный разряд.</returns>
+		private static string SelectPosition()
+		{
+			var positions = new Dictionary<int, string>
+			{
+				{1, "3 разряд"},
+				{2, "2 разряд"},
+				{3, "1 разряд"},
+				{4, "КМС"},
+				{5, "МС"},
+				{6, "МСМК"}
+			};
 
-			Console.WriteLine("Демонстрация завершена. " +
-				"Спасибо, что выбрали наш сервис!");
+			Console.WriteLine("\nДоступные разряды:");
+			foreach (var pos in positions)
+			{
+				Console.WriteLine($"{pos.Key} - {pos.Value}");
+			}
+
+			while (true)
+			{
+				Console.WriteLine("Введите номер разряда:");
+				if (int.TryParse(Console.ReadLine(), out int choice)
+					&& positions.ContainsKey(choice))
+				{
+					return positions[choice];
+				}
+				Console.WriteLine("Неверный выбор. Повторите ввод.");
+			}
+		}
+
+		/// <summary>
+		/// Выбор страны гражданства из предложенного списка.
+		/// </summary>
+		/// <returns>Выбранная страна.</returns>
+		private static string SelectDepartment()
+		{
+			var departments = new Dictionary<int, string>
+			{
+				{1, "РОССИЯ"},
+				{2, "ФРАНЦИЯ"},
+				{3, "НОРВЕГИЯ"},
+				{4, "ГЕРМАНИЯ"},
+				{5, "ФИНЛЯНДИЯ"},
+				{6, "КАНАДА"},
+				{7, "ИТАЛИЯ"},
+				{8, "ЧЕХИЯ"},
+				{9, "ШВЕЦИЯ"},
+			};
+
+			Console.WriteLine("\nДоступные страны:");
+			foreach (var dep in departments)
+			{
+				Console.WriteLine($"{dep.Key} - {dep.Value}");
+			}
+
+			while (true)
+			{
+				Console.WriteLine("Введите номер страны:");
+				if (int.TryParse(Console.ReadLine(), out int choice)
+					&& departments.ContainsKey(choice))
+				{
+					return departments[choice];
+				}
+				Console.WriteLine("Неверный выбор. Повторите ввод.");
+			}
+		}
+
+		/// <summary>
+		/// Обработчик действий с DTO.
+		/// </summary>
+		/// <param name="employee">гонщик.</param>
+		/// <param name="dto">DTO обработчика.</param>
+		private static void ActionHandlerWithDTO(IEmployee employee, PropertyHandlerDTO dto)
+		{
+			while (true)
+			{
+				Console.WriteLine($"\nВведите {dto.PropertyName}:");
+				try
+				{
+					dto.PropertyHandlingAction(employee);
+					return;
+				}
+				catch (Exception exception)
+				{
+					if (dto.ExceptionTypes.Contains(exception.GetType()))
+					{
+						if (exception is FormatException)
+						{
+							Console.WriteLine("Значение должно быть числом.");
+						}
+						else
+						{
+							Console.WriteLine(exception.Message);
+						}
+						Console.WriteLine("Повторите ввод");
+					}
+					else
+					{
+						// Неожиданное исключение
+						throw;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Отображение зарплаты с помощью консоли.
+		/// </summary>
+		/// <param name="employee">гонщик.</param>
+		/// <returns>Работник.</returns>
+		public static IEmployee ShowSalary(IEmployee employee)
+		{
+			Console.ForegroundColor = ConsoleColor.Yellow;
+
+			Console.WriteLine($"Зарплата для {employee.Name} {employee.LastName} " +
+							  $"({employee.Position}, {employee.Country}): " +
+							  $"{Math.Round(employee.CalculateSalary(), 2)} руб.");
+			Console.ForegroundColor = ConsoleColor.White;
+			return employee;
+		}
+
+		/// <summary>
+		/// Выбирает тип гонщика на основе ввода пользователя.
+		/// </summary>
+		/// <returns>
+		/// Код типа гонщика: 1 - почасовая оплата,
+		/// 2 - оплата по окладу, 3 - оплата по ставке.
+		/// 4 - выход.
+		/// </returns>
+		public static int SelectEmployeeType()
+		{
+			const int MinValueChoice = 1;
+			const int MaxValueChoice = 4;
+
+			while (true)
+			{
+				Console.WriteLine("\nПожалуйста, введите число:\n" +
+								  "1 - почасовая оплата, 2 - оплата по окладу, " +
+								  "3 - оплата по ставке, 4 - выход:");
+				string input = Console.ReadLine();
+				if (int.TryParse(input, out int chosenType) &&
+					chosenType >= MinValueChoice &&
+					chosenType <= MaxValueChoice)
+				{
+					return chosenType;
+				}
+				Console.WriteLine("Повторите ввод");
+				if (!int.TryParse(input, out int _))
+				{
+					Console.WriteLine("Введите число.");
+				}
+				else
+				{
+					Console.WriteLine(
+						$"Число должно быть в диапазоне от {MinValueChoice} " +
+						$"до {MaxValueChoice}.");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Преобразует первую букву каждого слова в заглавную.
+		/// </summary>
+		/// <param name="text">Исходный текст.</param>
+		/// <returns>Текст с заглавными первыми буквами каждого слова.</returns>
+		private static string CapitalizeFirstLetter(string text)
+		{
+			if (string.IsNullOrWhiteSpace(text))
+			{
+				return text;
+			}
+
+			var cultureInfo = CultureInfo.CurrentCulture;
+
+			// Разбиваем строку на слова по пробелам
+			var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+			var capitalizedWords = new List<string>();
+
+			foreach (var word in words)
+			{
+				if (word.Length > 0)
+				{
+					// Преобразуем первую букву в заглавную, остальные в строчные
+					var capitalizedWord = char.ToUpper(word[0], cultureInfo) +
+										 word.Substring(1).ToLower(cultureInfo);
+					capitalizedWords.Add(capitalizedWord);
+				}
+			}
+
+			return string.Join(" ", capitalizedWords);
 		}
 	}
 }
