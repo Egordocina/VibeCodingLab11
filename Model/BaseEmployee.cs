@@ -93,7 +93,7 @@
 		/// </param>
 		private void SetPosition(string value)
 		{
-			ValidateString(value, 100, "Должность");
+			ValidateString(value, 100, "Разряд");
 			_position = value;
 		}
 
