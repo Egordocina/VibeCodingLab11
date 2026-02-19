@@ -5,8 +5,8 @@ using System.Globalization;
 namespace ConsoleLoader
 {
 	/// <summary>
-	/// Основной класс программы для расчета зарплат сотрудников(гонщиков)
-	/// лыжной команды "Сутулые псы".
+	/// Основной класс программы для расчета зарплат сотрудников(гонщиков) лыжной команды 
+	/// "Сутулые псы".
 	/// </summary>
 	public class Program
 	{
@@ -107,8 +107,8 @@ namespace ConsoleLoader
 						var input = Console.ReadLine();
 						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
 							{
-							throw new IncorrectArgumentException("Имя должно содержать " +
-							"только буквы.");
+							throw new IncorrectArgumentException("Имя должно содержать" +
+								" только буквы.");
 							}
 						emp.Name = CapitalizeFirstLetter(input);
 					}),
@@ -118,8 +118,8 @@ namespace ConsoleLoader
 						var input = Console.ReadLine();
 						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
 							{
-							throw new IncorrectArgumentException("Фамилия должна содержать " +
-							"только буквы.");
+							throw new IncorrectArgumentException("Фамилия должна содержать" +
+								" только буквы.");
 							}
 						emp.LastName = CapitalizeFirstLetter(input);
 					}),
@@ -268,7 +268,7 @@ namespace ConsoleLoader
 		/// <param name="employee">гонщик.</param>
 		/// <param name="dto">DTO обработчика.</param>
 		private static void ActionHandlerWithDTO(IEmployee employee, 
-		PropertyHandlerDTO dto)
+			PropertyHandlerDTO dto)
 		{
 			while (true)
 			{
@@ -387,7 +387,5 @@ namespace ConsoleLoader
 
 			return string.Join(" ", capitalizedWords);
 		}
-		//TODO: polymorphism?+
-		//GetInfo в PersinList
 	}
 }
