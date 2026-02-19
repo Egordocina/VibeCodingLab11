@@ -3,8 +3,8 @@
 	/// <summary>
 	/// Базовый класс гонщика с фиксированным окладом по разряду.
 	/// </summary>
-	/// //TODO: RSDN
-	public abstract class BaseEmployee : IEmployee
+	/// //TODO: RSDN+
+	public abstract class EmployeeBase : IEmployee
 	{
 		/// <summary>
 		/// Имя гонщика.
@@ -25,6 +25,19 @@
 		/// Страна гонщика.
 		/// </summary>
 		private string _country;
+
+		/// <summary>
+		/// Данные о разрядах: номер → (название, оклад).
+		/// </summary>
+		public static readonly Dictionary<int, (string Name, double Salary)> PositionData = new()
+		{
+			{ 1, ("3 разряд", 60000) },
+			{ 2, ("2 разряд", 75000) },
+			{ 3, ("1 разряд", 90000) },
+			{ 4, ("КМС", 110000) },
+			{ 5, ("МС", 130000) },
+			{ 6, ("МСМК", 150000) }
+		};
 
 		/// <summary>
 		/// Имя гонщика.
@@ -131,25 +144,11 @@
 			}
 		}
 
-		//TODO: abstract
+		//TODO: abstract+
 		/// <summary>
 		/// Расчет зарплаты на основе разряда.
 		/// </summary>
 		/// <returns>Оклад в рублях.</returns>
-		public virtual double CalculateSalary()
-		{
-			return Position switch
-			{
-				//TODO: duplication
-				"3 разряд" => 60000,
-				"2 разряд" => 75000,
-				"1 разряд" => 90000,
-				"КМС" => 110000,
-				"МС" => 130000,
-				"МСМК" => 150000,
-				_ => throw new IncorrectArgumentException("Неизвестный разряд для " +
-				"расчета оклада.")
-			};
-		}
+		public abstract double CalculateSalary();
 	}
 }

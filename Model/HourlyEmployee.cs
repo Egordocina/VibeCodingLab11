@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Гонщик с почасовой оплатой.
 	/// </summary>
-	public class HourlyEmployee : BaseEmployee
+	public class HourlyEmployee : EmployeeBase
 	{
 		/// <summary>
 		/// Поле для почасовой ставки.

@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Гонщик с оплатой по ставке.
 	/// </summary>
-	public class CommissionEmployee : BaseEmployee
+	public class CommissionEmployee : EmployeeBase
 	{
 		/// <summary>
 		/// Поле для базовой зарплаты.

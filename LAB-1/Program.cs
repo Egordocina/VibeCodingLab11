@@ -17,7 +17,7 @@ namespace ConsoleLoader
 		/// <param name="handlers">Список обработчиков свойств.</param>
 		/// <returns>Созднный сотрудник с отображённой зарплатой.</returns>
 		private static IEmployee CreateAndShowEmployee<T>(List<PropertyHandlerDTO> handlers)
-			where T : BaseEmployee, new()
+			where T : EmployeeBase, new()
 		{
 			var employee = CreateEmployee<T>(handlers);
 			return ShowSalary(employee);
@@ -79,7 +79,7 @@ namespace ConsoleLoader
 		/// <param name="handlers">Список обработчиков.</param>
 		/// <returns>Сотрудник.</returns>
 		private static T CreateEmployee<T>(List<PropertyHandlerDTO> handlers)
-			where T : BaseEmployee, new()
+			where T : EmployeeBase, new()
 		{
 			var employee = new T();
 			foreach (var handler in handlers)
@@ -87,6 +87,24 @@ namespace ConsoleLoader
 				ActionHandlerWithDTO(employee, handler);
 			}
 			return (T)employee;
+		}
+
+		/// <summary>
+		/// Валидация и установка строкового свойства.
+		/// </summary>
+		/// <param name="input">Введённое значение.</param>
+		/// <param name="setter">Действие установки значения.</param>
+		/// <param name="errorMessage">Сообщение об ошибке.</param>
+		private static void ValidateAndSetProperty(
+			string input,
+			Action<string> setter,
+			string errorMessage)
+		{
+			if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
+			{
+				throw new IncorrectArgumentException(errorMessage);
+			}
+			setter(CapitalizeFirstLetter(input));
 		}
 
 		/// <summary>
@@ -105,25 +123,15 @@ namespace ConsoleLoader
 					emp =>
 					{
 						var input = Console.ReadLine();
-						//TODO: duplication
-						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
-							{
-							throw new IncorrectArgumentException("Имя должно содержать" +
-								" только буквы.");
-							}
-						emp.Name = CapitalizeFirstLetter(input);
+						ValidateAndSetProperty(input, val => emp.Name = val,
+							"Имя должно содержать только буквы.");
 					}),
 				new PropertyHandlerDTO("Фамилия гонщика", exceptionTypesString,
 					emp =>
 					{
 						var input = Console.ReadLine();
-						//TODO: duplication
-						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
-							{
-							throw new IncorrectArgumentException("Фамилия должна содержать" +
-								" только буквы.");
-							}
-						emp.LastName = CapitalizeFirstLetter(input);
+						ValidateAndSetProperty(input, val => emp.LastName = val,
+							"Фамилия должна содержать только буквы.");
 					}),
 				new PropertyHandlerDTO("Разряд (выберите из списка ниже)",
 					exceptionTypesString,
@@ -199,30 +207,19 @@ namespace ConsoleLoader
 		/// <returns>Выбранный разряд.</returns>
 		private static string SelectPosition()
 		{
-			var positions = new Dictionary<int, string>
-			{
-				//TODO: duplication
-				{1, "3 разряд"},
-				{2, "2 разряд"},
-				{3, "1 разряд"},
-				{4, "КМС"},
-				{5, "МС"},
-				{6, "МСМК"}
-			};
-
 			Console.WriteLine("\nДоступные разряды:");
-			foreach (var pos in positions)
+			foreach (var pos in EmployeeBase.PositionData)
 			{
-				Console.WriteLine($"{pos.Key} - {pos.Value}");
+				Console.WriteLine($"{pos.Key} - {pos.Value.Name}");
 			}
 
 			while (true)
 			{
 				Console.WriteLine("Введите номер разряда:");
 				if (int.TryParse(Console.ReadLine(), out int choice)
-					&& positions.ContainsKey(choice))
+					&& EmployeeBase.PositionData.ContainsKey(choice))
 				{
-					return positions[choice];
+					return EmployeeBase.PositionData[choice].Name;
 				}
 				Console.WriteLine("Неверный выбор. Повторите ввод.");
 			}
