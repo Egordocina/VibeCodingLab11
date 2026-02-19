@@ -115,7 +115,8 @@
 		/// <param name="value">Значение.</param>
 		/// <param name="maxLength">Максимальная длина.</param>
 		/// <param name="fieldName">Имя поля для ошибки.</param>
-		private static void ValidateString(string value, int maxLength, string fieldName)
+		private static void ValidateString(string value, int maxLength, 
+		string fieldName)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 			{
@@ -143,7 +144,8 @@
 				"КМС" => 110000,
 				"МС" => 130000,
 				"МСМК" => 150000,
-				_ => throw new IncorrectArgumentException("Неизвестный разряд для расчета оклада.")
+				_ => throw new IncorrectArgumentException("Неизвестный разряд для " +
+				"расчета оклада.")
 			};
 		}
 	}

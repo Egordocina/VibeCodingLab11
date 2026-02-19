@@ -27,7 +27,8 @@ namespace ConsoleLoader
 		/// </summary>
 		/// <param name="propertyName">Значение атрибута</param>
 		/// <param name="exceptionTypes">Список исключений атрибутов</param>
-		/// <param name="propertyHandlingAction"> Делегат для выполнения ввода атрибутов</param>
+		/// <param name="propertyHandlingAction"> Делегат для выполнения ввода 
+		/// атрибутов</param>
 		public PropertyHandlerDTO(string propertyName,
 			List<Type> exceptionTypes,
 			Action<IEmployee> propertyHandlingAction)

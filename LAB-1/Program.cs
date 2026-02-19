@@ -5,7 +5,8 @@ using System.Globalization;
 namespace ConsoleLoader
 {
 	/// <summary>
-	/// Основной класс программы для расчета зарплат сотрудников(гонщиков) лыжной команды "Сутулые псы".
+	/// Основной класс программы для расчета зарплат сотрудников(гонщиков)
+	/// лыжной команды "Сутулые псы".
 	/// </summary>
 	public class Program
 	{
@@ -38,7 +39,8 @@ namespace ConsoleLoader
 				{
 					case 1:
 						{
-							// Присваивание экземпляра класса HourlyEmployee в переменную интерфейса
+							// Присваивание экземпляра класса HourlyEmployee в переменную
+							// интерфейса
 							employee = CreateAndShowEmployee<HourlyEmployee>(
 							GetPropertyHandlersForHourly());
 							employeeList.Add(employee);
@@ -46,7 +48,8 @@ namespace ConsoleLoader
 						}
 					case 2:
 						{
-							// Присваивание экземпляра класса SalariedEmployee в переменную интерфейса
+							// Присваивание экземпляра класса SalariedEmployee в переменную
+							// интерфейса
 							employee = CreateAndShowEmployee<SalariedEmployee>(
 							GetPropertyHandlersForSalaried());
 							employeeList.Add(employee);
@@ -55,7 +58,8 @@ namespace ConsoleLoader
 
 					case 3:
 						{
-							// Присваивание экземпляра класса CommissionEmployee в переменную интерфейса
+							// Присваивание экземпляра класса CommissionEmployee в переменную
+							// интерфейса
 							employee = CreateAndShowEmployee<CommissionEmployee>(
 							GetPropertyHandlersForCommission());
 							employeeList.Add(employee);
@@ -103,7 +107,8 @@ namespace ConsoleLoader
 						var input = Console.ReadLine();
 						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
 							{
-							throw new IncorrectArgumentException("Имя должно содержать только буквы.");
+							throw new IncorrectArgumentException("Имя должно содержать " +
+							"только буквы.");
 							}
 						emp.Name = CapitalizeFirstLetter(input);
 					}),
@@ -113,7 +118,8 @@ namespace ConsoleLoader
 						var input = Console.ReadLine();
 						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
 							{
-							throw new IncorrectArgumentException("Фамилия должна содержать только буквы.");
+							throw new IncorrectArgumentException("Фамилия должна содержать " +
+							"только буквы.");
 							}
 						emp.LastName = CapitalizeFirstLetter(input);
 					}),
@@ -261,7 +267,8 @@ namespace ConsoleLoader
 		/// </summary>
 		/// <param name="employee">гонщик.</param>
 		/// <param name="dto">DTO обработчика.</param>
-		private static void ActionHandlerWithDTO(IEmployee employee, PropertyHandlerDTO dto)
+		private static void ActionHandlerWithDTO(IEmployee employee, 
+		PropertyHandlerDTO dto)
 		{
 			while (true)
 			{
