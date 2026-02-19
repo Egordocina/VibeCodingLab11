@@ -387,5 +387,7 @@ namespace ConsoleLoader
 
 			return string.Join(" ", capitalizedWords);
 		}
+		//TODO: polymorphism?+
+		//GetInfo в PersinList
 	}
 }
