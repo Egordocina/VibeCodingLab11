@@ -5,7 +5,12 @@
 	/// </summary>
 	public class SalariedEmployee : EmployeeBase
 	{
-		//TODO: XML
+		//TODO: XML+
+		/// <summary>
+		/// Назначение оклада для гонщика согласно разряду.
+		/// </summary>
+		/// <returns></returns>
+		/// <exception cref="IncorrectArgumentException"></exception>
 		public override double CalculateSalary()
 		{
 			foreach (var pos in PositionData)
