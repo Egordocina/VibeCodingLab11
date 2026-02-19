@@ -37,7 +37,7 @@ namespace ConsoleLoader
 				IEmployee employee;
 				switch (SelectEmployeeType())
 				{
-					//TOOD: отступы+
+					//TOOD: отступы+ ЛЯЛЯЛЯЛЯ
 					case 1:
 					{
 						// Присваивание экземпляра класса HourlyEmployee в переменную
