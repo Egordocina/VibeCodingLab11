@@ -3,6 +3,7 @@
 	/// <summary>
 	/// Базовый класс гонщика с фиксированным окладом по разряду.
 	/// </summary>
+	/// //TODO: RSDN
 	public abstract class BaseEmployee : IEmployee
 	{
 		/// <summary>
@@ -116,7 +117,7 @@
 		/// <param name="maxLength">Максимальная длина.</param>
 		/// <param name="fieldName">Имя поля для ошибки.</param>
 		private static void ValidateString(string value, int maxLength, 
-		string fieldName)
+			string fieldName)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 			{
@@ -130,6 +131,7 @@
 			}
 		}
 
+		//TODO: abstract
 		/// <summary>
 		/// Расчет зарплаты на основе разряда.
 		/// </summary>
@@ -138,6 +140,7 @@
 		{
 			return Position switch
 			{
+				//TODO: duplication
 				"3 разряд" => 60000,
 				"2 разряд" => 75000,
 				"1 разряд" => 90000,

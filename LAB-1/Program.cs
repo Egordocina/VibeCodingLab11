@@ -105,6 +105,7 @@ namespace ConsoleLoader
 					emp =>
 					{
 						var input = Console.ReadLine();
+						//TODO: duplication
 						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
 							{
 							throw new IncorrectArgumentException("Имя должно содержать" +
@@ -116,6 +117,7 @@ namespace ConsoleLoader
 					emp =>
 					{
 						var input = Console.ReadLine();
+						//TODO: duplication
 						if (!Regex.IsMatch(input ?? "", @"^[а-яА-Яa-zA-Z\s]+$"))
 							{
 							throw new IncorrectArgumentException("Фамилия должна содержать" +
@@ -199,6 +201,7 @@ namespace ConsoleLoader
 		{
 			var positions = new Dictionary<int, string>
 			{
+				//TODO: duplication
 				{1, "3 разряд"},
 				{2, "2 разряд"},
 				{3, "1 разряд"},
