@@ -23,11 +23,8 @@ namespace ConsoleLoader
 		}
 
 		/// <summary>
-		/// Главное.
+		/// Точка входа
 		/// </summary>
-		/// <remarks>
-		/// Запускает консольное приложение для ввода и расчёта зарплат.
-		/// </remarks>
 		public static void Main()
 		{
 			Console.WriteLine("Расчет зарплат членов лыжной комнанды \"Сутулые псы\"");
