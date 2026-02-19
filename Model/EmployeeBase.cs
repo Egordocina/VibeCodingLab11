@@ -3,7 +3,6 @@
 	/// <summary>
 	/// Базовый класс гонщика с фиксированным окладом по разряду.
 	/// </summary>
-	/// //TODO: RSDN+
 	public abstract class EmployeeBase : IEmployee
 	{
 		/// <summary>
@@ -144,7 +143,6 @@
 			}
 		}
 
-		//TODO: abstract+
 		/// <summary>
 		/// Расчет зарплаты на основе разряда.
 		/// </summary>

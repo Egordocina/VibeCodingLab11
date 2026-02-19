@@ -5,6 +5,7 @@
 	/// </summary>
 	public class SalariedEmployee : EmployeeBase
 	{
+		//TODO: XML
 		public override double CalculateSalary()
 		{
 			foreach (var pos in PositionData)
