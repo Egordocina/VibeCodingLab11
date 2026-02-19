@@ -10,11 +10,11 @@
             "request": "launch",
             "preLaunchTask": "build",
             // Если вы изменили требуемые версии .NET Framework, обязательно обновите путь к программе.
-            "program": "${workspaceFolder}/LAB-1/bin/Debug/net7.0/LAB-3.dll",
+            "program": "${workspaceFolder}/LAB-1/bin/Debug/net8.0/ConsoleLoader.dll",
             "args": [],
             "cwd": "${workspaceFolder}/LAB-1",
-            // Дополнительные сведения о поле \"console\" см. в https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
+            // integratedTerminal — реальный терминал с вводом; internalConsole не поддерживает Console.ReadLine()
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {
