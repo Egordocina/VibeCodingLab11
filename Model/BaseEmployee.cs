@@ -16,12 +16,12 @@
 		private string _lastName;
 
 		/// <summary>
-		/// Должность гонщика.
+		/// Разряд гонщика.
 		/// </summary>
 		private string _position;
 
 		/// <summary>
-		/// Отдел гонщика.
+		/// Страна гонщика.
 		/// </summary>
 		private string _country;
 

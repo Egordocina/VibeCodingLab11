@@ -16,7 +16,7 @@
 		string LastName { get; set; }
 
 		/// <summary>
-		/// Должность гонщика (определяет оклад).
+		/// Разряд гонщика (определяет оклад).
 		/// </summary>
 		string Position { get; set; }
 

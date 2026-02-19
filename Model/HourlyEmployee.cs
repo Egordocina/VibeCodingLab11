@@ -54,7 +54,7 @@
 		}
 
 		/// <summary>
-		/// Расчет: оклад по должности + (ставка * часы).
+		/// Расчет: оклад по разряду + (ставка * часы).
 		/// </summary>
 		public override double CalculateSalary()
 		{
