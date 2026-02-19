@@ -37,32 +37,24 @@ namespace ConsoleLoader
 				IEmployee employee;
 				switch (SelectEmployeeType())
 				{
-					//TOOD: отступы+ ЛЯЛЯЛЯЛЯ
 					case 1:
 					{
-						// Присваивание экземпляра класса HourlyEmployee в переменную
-						// интерфейса
 						employee = CreateAndShowEmployee<HourlyEmployee>(
-						GetPropertyHandlersForHourly());
+							GetPropertyHandlersForHourly());
 						employeeList.Add(employee);
 						break;
 					}
 					case 2:
 					{
-						// Присваивание экземпляра класса SalariedEmployee в переменную
-						// интерфейса
 						employee = CreateAndShowEmployee<SalariedEmployee>(
-						GetPropertyHandlersForSalaried());
+							GetPropertyHandlersForSalaried());
 						employeeList.Add(employee);
 						break;
 					}
-
 					case 3:
 					{
-						// Присваивание экземпляра класса CommissionEmployee в переменную
-						// интерфейса
 						employee = CreateAndShowEmployee<CommissionEmployee>(
-						GetPropertyHandlersForCommission());
+							GetPropertyHandlersForCommission());
 						employeeList.Add(employee);
 						break;
 					}

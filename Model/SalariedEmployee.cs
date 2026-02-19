@@ -5,7 +5,6 @@
 	/// </summary>
 	public class SalariedEmployee : EmployeeBase
 	{
-		//TODO: XML+
 		/// <summary>
 		/// Назначение оклада для гонщика согласно разряду.
 		/// </summary>
