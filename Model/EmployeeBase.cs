@@ -144,7 +144,7 @@
 		}
 
 		/// <summary>
-		/// Расчет зарплаты на основе разряда.
+		/// Расчет зарплаты
 		/// </summary>
 		/// <returns>Оклад в рублях.</returns>
 		public abstract double CalculateSalary();
