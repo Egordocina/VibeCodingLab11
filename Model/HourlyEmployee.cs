@@ -6,6 +6,11 @@
 	public class HourlyEmployee : EmployeeBase
 	{
 		/// <summary>
+		/// Русское название типа сотрудника.
+		/// </summary>
+		public override string TypeName => "Почасовая";
+
+		/// <summary>
 		/// Поле для почасовой ставки.
 		/// </summary>
 		private double _hourlyRate;

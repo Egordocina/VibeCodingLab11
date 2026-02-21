@@ -4,73 +4,87 @@ using View;
 namespace View
 {
     /// <summary>
-    /// Главная форма приложения для управления списком гонщиков.
+    /// Р“Р»Р°РІРЅР°СЏ С„РѕСЂРјР° РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ СЃРїРёСЃРєРѕРј РіРѕРЅС‰РёРєРѕРІ.
     /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Список гонщиков.
+        /// РЎРїРёСЃРѕРє РіРѕРЅС‰РёРєРѕРІ.
         /// </summary>
         private List<EmployeeBase> employees = new List<EmployeeBase>();
 
         /// <summary>
-        /// Инициализирует главную форму.
+        /// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РєРѕРјРїРѕРЅРµРЅС‚С‹ С„РѕСЂРјС‹.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+            ApplyStyles();
             InitializeGridColumns();
             RefreshGrid();
         }
 
         /// <summary>
-        /// Инициализирует столбцы в таблице гонщиков.
+        /// РџСЂРёРјРµРЅСЏРµС‚ СЃС‚РёР»СЊ Windows 11 Dark РєРѕ РІСЃРµРј СЌР»РµРјРµРЅС‚Р°Рј С„РѕСЂРјС‹.
+        /// </summary>
+        private void ApplyStyles()
+        {
+            StyleHelper.ApplyFormStyle(this);
+            StyleHelper.ApplyButtonStyle(addButton);
+            StyleHelper.ApplyButtonStyle(removeButton);
+            StyleHelper.ApplyButtonStyle(searchButton);
+            StyleHelper.ApplyButtonStyle(saveButton);
+            StyleHelper.ApplyButtonStyle(loadButton);
+            StyleHelper.ApplyDataGridViewStyle(employeesDataGridView);
+        }
+
+        /// <summary>
+        /// РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РєРѕР»РѕРЅРєРё РІ DataGridView.
         /// </summary>
         private void InitializeGridColumns()
         {
+            employeesDataGridView.AutoGenerateColumns = false;
             employeesDataGridView.Columns.Clear();
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Имя",
+                HeaderText = "РРјСЏ",
                 DataPropertyName = "Name"
             });
 
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Фамилия",
+                HeaderText = "Р¤Р°РјРёР»РёСЏ",
                 DataPropertyName = "LastName"
             });
 
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Разряд",
+                HeaderText = "Р Р°Р·СЂСЏРґ",
                 DataPropertyName = "Position"
             });
 
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Страна",
-                DataPropertyName = "Department"
+                HeaderText = "РЎС‚СЂР°РЅР°",
+                DataPropertyName = "Country"
             });
 
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Тип",
-                DataPropertyName = "EmployeeType"
+                HeaderText = "РўРёРї",
+                DataPropertyName = "TypeName"
             });
 
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Зарплата (руб.)",
+                HeaderText = "Р—Р°СЂРїР»Р°С‚Р° (СЂСѓР±.)",
                 DataPropertyName = "Salary"
             });
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Добавить": открывает форму добавления.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє РєР»РёРєР° РїРѕ РєРЅРѕРїРєРµ "Р”РѕР±Р°РІРёС‚СЊ": РѕС‚РєСЂС‹РІР°РµС‚ С„РѕСЂРјСѓ РґРѕР±Р°РІР»РµРЅРёСЏ.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="eventArgs">Аргументы события.</param>
         private void addButton_Click(object sender, EventArgs eventArgs)
         {
             using var addEmployeeForm = new AddEmployeeForm();
@@ -85,17 +99,15 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Удалить": удаляет выбранного гонщика.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє РєР»РёРєР° РїРѕ РєРЅРѕРїРєРµ "РЈРґР°Р»РёС‚СЊ": СѓРґР°Р»СЏРµС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РіРѕРЅС‰РёРєР°.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="eventArgs">Аргументы события.</param>
         private void removeButton_Click(object sender, EventArgs eventArgs)
         {
             if (employeesDataGridView.SelectedRows.Count == 0)
             {
                 MessageBox.Show(
-                    "Выберите гонщика для удаления.",
-                    "Инфо",
+                    "Р’С‹Р±РµСЂРёС‚Рµ РіРѕРЅС‰РёРєР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ.",
+                    "РћС€РёР±РєР°",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 return;
@@ -105,8 +117,8 @@ namespace View
             if (index >= 0 && index < employees.Count)
             {
                 if (MessageBox.Show(
-                    "Удалить выбранного гонщика?",
-                    "Подтверждение",
+                    "РЈРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РіРѕРЅС‰РёРєР°?",
+                    "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -117,10 +129,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Поиск": открывает форму поиска.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє РєР»РёРєР° РїРѕ РєРЅРѕРїРєРµ "РџРѕРёСЃРє": РѕС‚РєСЂС‹РІР°РµС‚ С„РѕСЂРјСѓ РїРѕРёСЃРєР°.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="eventArgs">Аргументы события.</param>
         private void searchButton_Click(object sender, EventArgs eventArgs)
         {
             var searchForm = new SearchForm(employees, this);
@@ -128,18 +138,16 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Сохранить": сохраняет список в файл.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє РєР»РёРєР° РїРѕ РєРЅРѕРїРєРµ "РЎРѕС…СЂР°РЅРёС‚СЊ": СЃРѕС…СЂР°РЅСЏРµС‚ РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р».
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="eventArgs">Аргументы события.</param>
         private void saveButton_Click(object sender, EventArgs eventArgs)
         {
             using var saveFileDialog = new SaveFileDialog
             {
-                Filter = "Файлы 'СО ЕЭС' (*.soees)|*.soees|" +
+                Filter = "Р¤Р°Р№Р»С‹ 'РїСЂРёРєРѕР»СЊРЅС‹Рµ' (*.xaxalol)|*.xaxalol|" +
                          "JSON files (*.json)|*.json",
-                DefaultExt = "soees"
-            };
+                DefaultExt = "xaxalol"
+			};
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -147,16 +155,16 @@ namespace View
                 {
                     EmployeeSerializer.Save(employees, saveFileDialog.FileName);
                     MessageBox.Show(
-                        "Сохранено.",
-                        "ОК",
+                        "РЎРѕС…СЂР°РЅРµРЅРѕ.",
+                        "РЈСЃРїРµС…",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
                 catch (Exception exception)
                 {
                     MessageBox.Show(
-                        $"Ошибка при сохранении: {exception.Message}",
-                        "Ошибка",
+                        $"РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё: {exception.Message}",
+                        "РћС€РёР±РєР°",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
@@ -164,18 +172,16 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Загрузить": загружает список из файла.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРє РєР»РёРєР° РїРѕ РєРЅРѕРїРєРµ "Р—Р°РіСЂСѓР·РёС‚СЊ": Р·Р°РіСЂСѓР¶Р°РµС‚ РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="eventArgs">Аргументы события.</param>
         private void loadButton_Click(object sender, EventArgs eventArgs)
         {
             using var openFileDialog = new OpenFileDialog
             {
-                Filter = "Файлы 'СО ЕЭС' (*.soees)|*.soees|" +
+                Filter = "Р¤Р°Р№Р»С‹ 'РїСЂРёРєРѕР»СЊРЅС‹Рµ' (*.xaxalol)|*.xaxalol|" +
                          "JSON files (*.json)|*.json",
-                DefaultExt = "soees"
-            };
+                DefaultExt = "xaxalol"
+			};
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -185,16 +191,16 @@ namespace View
                     employees = new List<EmployeeBase>(loadedList);
                     RefreshGrid();
                     MessageBox.Show(
-                        "Загружено.",
-                        "ОК",
+                        "Р—Р°РіСЂСѓР¶РµРЅРѕ.",
+                        "РЈСЃРїРµС…",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
                 catch (Exception exception)
                 {
                     MessageBox.Show(
-                        $"Ошибка при загрузке: {exception.Message}",
-                        "Ошибка",
+                        $"РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ: {exception.Message}",
+                        "РћС€РёР±РєР°",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
@@ -202,12 +208,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обновляет таблицу гонщиков данными из источника
-        /// (или полного списка по умолчанию).
+        /// РћР±РЅРѕРІР»СЏРµС‚ РґР°РЅРЅС‹Рµ РІ DataGridView.
         /// </summary>
-        /// <param name="source">
-        /// Источник данных для таблицы (опционально).
-        /// </param>
         public void RefreshGrid(IEnumerable<EmployeeBase>? source = null)
         {
             var dataSource = (source ?? employees).Select(employee => new
@@ -216,7 +218,7 @@ namespace View
                 employee.LastName,
                 employee.Position,
                 employee.Country,
-                EmployeeType = employee.GetType().Name,
+                employee.TypeName,
                 Salary = Math.Round(employee.CalculateSalary(), 2)
             }).ToList();
 
@@ -225,6 +227,11 @@ namespace View
         }
 
         private void employeesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

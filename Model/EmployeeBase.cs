@@ -39,6 +39,27 @@
 		};
 
 		/// <summary>
+		/// Данные о странах: номер → название.
+		/// </summary>
+		public static readonly Dictionary<int, string> CountryData = new()
+		{
+			{ 1, "РОССИЯ" },
+			{ 2, "ФРАНЦИЯ" },
+			{ 3, "НОРВЕГИЯ" },
+			{ 4, "ГЕРМАНИЯ" },
+			{ 5, "ФИНЛЯНДИЯ" },
+			{ 6, "КАНАДА" },
+			{ 7, "ИТАЛИЯ" },
+			{ 8, "ЧЕХИЯ" },
+			{ 9, "ШВЕЦИЯ" }
+		};
+
+		/// <summary>
+		/// Русское название типа сотрудника.
+		/// </summary>
+		public abstract string TypeName { get; }
+
+		/// <summary>
 		/// Имя гонщика.
 		/// </summary>
 		public string Name

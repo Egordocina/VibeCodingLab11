@@ -3,84 +3,95 @@ using View;
 
 namespace View
 {
-	/// <summary>
-	/// Форма для поиска гонщиков по критериям.
-	/// </summary>
-	public partial class SearchForm : Form
-	{
-		/// <summary>
-		/// Исходный список гонщиков для поиска.
-		/// </summary>
-		private List<EmployeeBase> sourceEmployees;
+    /// <summary>
+    /// Форма для поиска гонщиков по критериям.
+    /// </summary>
+    public partial class SearchForm : Form
+    {
+        /// <summary>
+        /// Исходный список гонщиков для поиска.
+        /// </summary>
+        private List<EmployeeBase> sourceEmployees;
 
-		/// <summary>
-		/// Ссылка на главную форму.
-		/// </summary>
-		private MainForm mainForm;
+        /// <summary>
+        /// Ссылка на главную форму.
+        /// </summary>
+        private MainForm mainForm;
 
-		/// <summary>
-		/// Инициализирует форму поиска с исходным списком гонщиков.
-		/// </summary>
-		/// <param name="source">Исходный список гонщиков для поиска.</param>
-		/// <param name="parentForm">Ссылка на главную форму.</param>
-		public SearchForm(List<EmployeeBase> source, MainForm parentForm)
-		{
-			sourceEmployees = source;
-			mainForm = parentForm;
-			InitializeComponent();
-		}
+        /// <summary>
+        /// Инициализирует форму поиска с исходным списком гонщиков.
+        /// </summary>
+        public SearchForm(List<EmployeeBase> source, MainForm parentForm)
+        {
+            sourceEmployees = source;
+            mainForm = parentForm;
+            InitializeComponent();
+            ApplyStyles();
+        }
 
-		/// <summary>
-		/// Обработчик клика по кнопке "Найти":
-		/// выполняет поиск и обновляет таблицу главной формы.
-		/// </summary>
-		/// <param name="sender">Источник события.</param>
-		/// <param name="eventArgs">Аргументы события.</param>
-		private void findButton_Click(object sender, EventArgs eventArgs)
-		{
-			var queryName = nameTextBox.Text?.Trim();
-			var queryLastName = lastNameTextBox.Text?.Trim();
-			var queryPosition = positionTextBox.Text?.Trim();
-			var queryDepartment = departmentTextBox.Text?.Trim();
-			const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
+        /// <summary>
+        /// Применяет стиль Windows 11 Dark ко всем элементам формы.
+        /// </summary>
+        private void ApplyStyles()
+        {
+            StyleHelper.ApplyFormStyle(this);
+            StyleHelper.ApplyLabelStyle(nameLabel);
+            StyleHelper.ApplyTextBoxStyle(nameTextBox);
+            StyleHelper.ApplyLabelStyle(lastNameLabel);
+            StyleHelper.ApplyTextBoxStyle(lastNameTextBox);
+            StyleHelper.ApplyLabelStyle(positionLabel);
+            StyleHelper.ApplyTextBoxStyle(positionTextBox);
+            StyleHelper.ApplyLabelStyle(departmentLabel);
+            StyleHelper.ApplyTextBoxStyle(departmentTextBox);
+            StyleHelper.ApplyButtonStyle(findButton);
+            StyleHelper.ApplyButtonStyle(resetButton);
+            StyleHelper.ApplyButtonStyle(cancelButton);
+        }
 
-			var filteredEmployees = sourceEmployees.Where(
-				employee =>
-					(string.IsNullOrEmpty(queryName)
-					 || employee.Name.IndexOf(queryName, stringComparison) >= 0)
-					&& (string.IsNullOrEmpty(queryLastName)
-						|| employee.LastName.IndexOf(queryLastName, stringComparison) >= 0)
-					&& (string.IsNullOrEmpty(queryPosition)
-						|| employee.Position.IndexOf(queryPosition, stringComparison) >= 0)
-					&& (string.IsNullOrEmpty(queryDepartment)
-						|| employee.Country.IndexOf(queryDepartment, stringComparison) >= 0)
-			).ToList();
+        /// <summary>
+        /// Обработчик клика по кнопке "Найти": выполняет поиск.
+        /// </summary>
+        private void findButton_Click(object sender, EventArgs eventArgs)
+        {
+            var queryName = nameTextBox.Text?.Trim();
+            var queryLastName = lastNameTextBox.Text?.Trim();
+            var queryPosition = positionTextBox.Text?.Trim();
+            var queryDepartment = departmentTextBox.Text?.Trim();
+            const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
 
-			mainForm.RefreshGrid(filteredEmployees);
-		}
+            var filteredEmployees = sourceEmployees.Where(
+                employee =>
+                    (string.IsNullOrEmpty(queryName)
+                     || employee.Name.IndexOf(queryName, stringComparison) >= 0)
+                    && (string.IsNullOrEmpty(queryLastName)
+                        || employee.LastName.IndexOf(queryLastName, stringComparison) >= 0)
+                    && (string.IsNullOrEmpty(queryPosition)
+                        || employee.Position.IndexOf(queryPosition, stringComparison) >= 0)
+                    && (string.IsNullOrEmpty(queryDepartment)
+                        || employee.Country.IndexOf(queryDepartment, stringComparison) >= 0)
+            ).ToList();
 
-		/// <summary>
-		/// Обработчик клика по кнопке "Сброс": очищает поля и показывает полный список.
-		/// </summary>
-		/// <param name="sender">Источник события.</param>
-		/// <param name="eventArgs">Аргументы события.</param>
-		private void resetButton_Click(object sender, EventArgs eventArgs)
-		{
-			nameTextBox.Clear();
-			lastNameTextBox.Clear();
-			positionTextBox.Clear();
-			departmentTextBox.Clear();
-			mainForm.RefreshGrid(sourceEmployees);
-		}
+            mainForm.RefreshGrid(filteredEmployees);
+        }
 
-		/// <summary>
-		/// Обработчик клика по кнопке "Отмена": закрывает форму.
-		/// </summary>
-		/// <param name="sender">Источник события.</param>
-		/// <param name="eventArgs">Аргументы события.</param>
-		private void cancelButton_Click(object sender, EventArgs eventArgs)
-		{
-			Close();
-		}
-	}
+        /// <summary>
+        /// Обработчик клика по кнопке "Сброс": очищает поля.
+        /// </summary>
+        private void resetButton_Click(object sender, EventArgs eventArgs)
+        {
+            nameTextBox.Clear();
+            lastNameTextBox.Clear();
+            positionTextBox.Clear();
+            departmentTextBox.Clear();
+            mainForm.RefreshGrid(sourceEmployees);
+        }
+
+        /// <summary>
+        /// Обработчик клика по кнопке "Отмена": закрывает форму.
+        /// </summary>
+        private void cancelButton_Click(object sender, EventArgs eventArgs)
+        {
+            Close();
+        }
+    }
 }

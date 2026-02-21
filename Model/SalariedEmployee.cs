@@ -6,6 +6,11 @@
 	public class SalariedEmployee : EmployeeBase
 	{
 		/// <summary>
+		/// Русское название типа сотрудника.
+		/// </summary>
+		public override string TypeName => "По окладу";
+
+		/// <summary>
 		/// Назначение оклада для гонщика согласно разряду.
 		/// </summary>
 		/// <returns></returns>

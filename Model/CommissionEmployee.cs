@@ -6,6 +6,11 @@
 	public class CommissionEmployee : EmployeeBase
 	{
 		/// <summary>
+		/// Русское название типа сотрудника.
+		/// </summary>
+		public override string TypeName => "С комиссией";
+
+		/// <summary>
 		/// Поле для базовой зарплаты.
 		/// </summary>
 		private double _baseSalary;
