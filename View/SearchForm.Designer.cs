@@ -49,12 +49,12 @@ namespace View
         /// <summary>
         /// Лейбл для поля Страна.
         /// </summary>
-        private System.Windows.Forms.Label departmentLabel;
+        private System.Windows.Forms.Label countryLabel;
 
         /// <summary>
         /// Текстовое поле для Страны.
         /// </summary>
-        private System.Windows.Forms.TextBox departmentTextBox;
+        private System.Windows.Forms.TextBox countryTextBox;
 
         /// <summary>
         /// Кнопка Найти.
@@ -98,8 +98,8 @@ namespace View
             lastNameTextBox = new TextBox();
             positionLabel = new Label();
             positionTextBox = new TextBox();
-            departmentLabel = new Label();
-            departmentTextBox = new TextBox();
+            countryLabel = new Label();
+            countryTextBox = new TextBox();
             findButton = new Button();
             resetButton = new Button();
             cancelButton = new Button();
@@ -182,35 +182,37 @@ namespace View
             positionTextBox.Size = new Size(260, 27);
             positionTextBox.TabIndex = 5;
             // 
-            // departmentLabel
+            // countryLabel
             // 
-            departmentLabel.AutoSize = true;
-            departmentLabel.BackColor = Color.Transparent;
-            departmentLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            departmentLabel.ForeColor = Color.FromArgb(255, 255, 255);
-            departmentLabel.Location = new Point(73, 122);
-            departmentLabel.Name = "departmentLabel";
-            departmentLabel.Size = new Size(61, 20);
-            departmentLabel.TabIndex = 6;
-            departmentLabel.Text = "Страна:";
+            countryLabel.AutoSize = true;
+            countryLabel.BackColor = Color.Transparent;
+            countryLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            countryLabel.ForeColor = Color.FromArgb(255, 255, 255);
+            countryLabel.Location = new Point(73, 122);
+            countryLabel.Name = "countryLabel";
+            countryLabel.Size = new Size(61, 20);
+            countryLabel.TabIndex = 6;
+            countryLabel.Text = "Страна:";
             // 
-            // departmentTextBox
+            // countryTextBox
             // 
-            departmentTextBox.BackColor = Color.FromArgb(45, 45, 45);
-            departmentTextBox.BorderStyle = BorderStyle.FixedSingle;
-            departmentTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            departmentTextBox.ForeColor = Color.FromArgb(255, 255, 255);
-            departmentTextBox.Location = new Point(140, 120);
-            departmentTextBox.Name = "departmentTextBox";
-            departmentTextBox.Size = new Size(260, 27);
-            departmentTextBox.TabIndex = 7;
+            countryTextBox.BackColor = Color.FromArgb(45, 45, 45);
+            countryTextBox.BorderStyle = BorderStyle.FixedSingle;
+            countryTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            countryTextBox.ForeColor = Color.FromArgb(255, 255, 255);
+            countryTextBox.Location = new Point(140, 120);
+            countryTextBox.Name = "countryTextBox";
+            countryTextBox.Size = new Size(260, 27);
+            countryTextBox.TabIndex = 7;
             // 
             // findButton
-            // 
+            //
             findButton.BackColor = Color.FromArgb(103, 58, 183);
             findButton.FlatAppearance.BorderSize = 0;
-            findButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            findButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            findButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            findButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             findButton.FlatStyle = FlatStyle.Flat;
             findButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             findButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -223,11 +225,13 @@ namespace View
             findButton.Click += findButton_Click;
             // 
             // resetButton
-            // 
+            //
             resetButton.BackColor = Color.FromArgb(103, 58, 183);
             resetButton.FlatAppearance.BorderSize = 0;
-            resetButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            resetButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            resetButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            resetButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             resetButton.FlatStyle = FlatStyle.Flat;
             resetButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             resetButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -240,11 +244,13 @@ namespace View
             resetButton.Click += resetButton_Click;
             // 
             // cancelButton
-            // 
+            //
             cancelButton.BackColor = Color.FromArgb(103, 58, 183);
             cancelButton.FlatAppearance.BorderSize = 0;
-            cancelButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            cancelButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            cancelButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            cancelButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             cancelButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -310,8 +316,8 @@ namespace View
             Controls.Add(lastNameTextBox);
             Controls.Add(positionLabel);
             Controls.Add(positionTextBox);
-            Controls.Add(departmentLabel);
-            Controls.Add(departmentTextBox);
+            Controls.Add(countryLabel);
+            Controls.Add(countryTextBox);
             Controls.Add(findButton);
             Controls.Add(resetButton);
             Controls.Add(cancelButton);

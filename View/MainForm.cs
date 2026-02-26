@@ -83,7 +83,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Добавить": открывает форму добавления.
+        /// Обработчик клика по кнопке "Добавить": 
+        /// открывает форму добавления.
         /// </summary>
         private void addButton_Click(object sender, EventArgs eventArgs)
         {
@@ -99,7 +100,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Удалить": удаляет выбранного гонщика.
+        /// Обработчик клика по кнопке "Удалить":
+        /// удаляет выбранного гонщика.
         /// </summary>
         private void removeButton_Click(object sender, EventArgs eventArgs)
         {
@@ -138,7 +140,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Сохранить": сохраняет данные в файл.
+        /// Обработчик клика по кнопке "Сохранить":
+        /// сохраняет данные в файл.
         /// </summary>
         private void saveButton_Click(object sender, EventArgs eventArgs)
         {
@@ -153,7 +156,8 @@ namespace View
             {
                 try
                 {
-                    EmployeeSerializer.Save(employees, saveFileDialog.FileName);
+                    EmployeeSerializer.Save(
+                        employees, saveFileDialog.FileName);
                     MessageBox.Show(
                         "Сохранено.",
                         "Успех",
@@ -172,7 +176,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Загрузить": загружает данные из файла.
+        /// Обработчик клика по кнопке "Загрузить":
+        /// загружает данные из файла.
         /// </summary>
         private void loadButton_Click(object sender, EventArgs eventArgs)
         {
@@ -187,7 +192,8 @@ namespace View
             {
                 try
                 {
-                    var loadedList = EmployeeSerializer.Load(openFileDialog.FileName);
+                    var loadedList = EmployeeSerializer.Load(
+                        openFileDialog.FileName);
                     employees = new List<EmployeeBase>(loadedList);
                     RefreshGrid();
                     MessageBox.Show(
@@ -226,7 +232,8 @@ namespace View
             employeesDataGridView.DataSource = dataSource;
         }
 
-        private void employeesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void employeesDataGridView_CellContentClick(
+            object sender, DataGridViewCellEventArgs e)
         {
 
         }

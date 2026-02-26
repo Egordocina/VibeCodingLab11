@@ -28,7 +28,8 @@
 		/// <summary>
 		/// Данные о разрядах: номер → (название, оклад).
 		/// </summary>
-		public static readonly Dictionary<int, (string Name, double Salary)> PositionData = new()
+		public static readonly Dictionary<int, (string Name, double Salary)>
+			PositionData = new()
 		{
 			{ 1, ("3 разряд", 60000) },
 			{ 2, ("2 разряд", 75000) },
@@ -150,7 +151,7 @@
 		/// <param name="value">Значение.</param>
 		/// <param name="maxLength">Максимальная длина.</param>
 		/// <param name="fieldName">Имя поля для ошибки.</param>
-		private static void ValidateString(string value, int maxLength, 
+		private static void ValidateString(string value, int maxLength,
 			string fieldName)
 		{
 			if (string.IsNullOrWhiteSpace(value))
@@ -161,7 +162,8 @@
 			if (value.Length > maxLength)
 			{
 				throw new IncorrectArgumentException(
-					$"{fieldName} не может превышать {maxLength} символов.");
+					$"{fieldName} не может превышать " +
+					$"{maxLength} символов.");
 			}
 		}
 

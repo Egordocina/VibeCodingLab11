@@ -4,16 +4,16 @@ using Model;
 namespace View
 {
 	/// <summary>
-	/// Статический класс для сериализации и десериализации списка гонщиков
-	/// в/из JSON-формата.
+	/// Статический класс для сериализации и десериализации
+	/// списка гонщиков в/из JSON-формата.
 	/// </summary>
 	public static class EmployeeSerializer
 	{
 		/// <summary>
 		/// Сохраняет список гонщиков в файл в формате JSON.
 		/// </summary>
-		/// <param name="employees">Список гонщиков для сохранения.</param>
-		/// <param name="path">Путь к файлу для сохранения.</param>
+		/// <param name="employees">Список гонщиков.</param>
+		/// <param name="path">Путь к файлу.</param>
 		/// <exception cref="System.IO.IOException">
 		/// Если произошла ошибка записи в файл.
 		/// </exception>
@@ -35,7 +35,7 @@ namespace View
 		/// <summary>
 		/// Загружает список гонщиков из файла в формате JSON.
 		/// </summary>
-		/// <param name="path">Путь к файлу для загрузки.</param>
+		/// <param name="path">Путь к файлу.</param>
 		/// <returns>Список загруженных гонщиков.</returns>
 		/// <exception cref="System.IO.FileNotFoundException">
 		/// Если файл не найден.
@@ -53,24 +53,26 @@ namespace View
 
 			foreach (var element in root.EnumerateArray())
 			{
-				if (element.TryGetProperty(nameof(HourlyEmployee.HourlyRate), out _))
+				if (element.TryGetProperty(
+					nameof(HourlyEmployee.HourlyRate), out _))
 				{
-					var hourlyEmployee = JsonSerializer.Deserialize<HourlyEmployee>(
-						element.GetRawText())!;
+					var hourlyEmployee = JsonSerializer
+						.Deserialize<HourlyEmployee>(element.GetRawText())!;
 					result.Add(hourlyEmployee);
 					continue;
 				}
 
-				if (element.TryGetProperty(nameof(CommissionEmployee.CommissionRate), out _))
+				if (element.TryGetProperty(
+					nameof(CommissionEmployee.CommissionRate), out _))
 				{
-					var commissionEmployee = JsonSerializer.Deserialize<CommissionEmployee>(
-						element.GetRawText())!;
+					var commissionEmployee = JsonSerializer
+						.Deserialize<CommissionEmployee>(element.GetRawText())!;
 					result.Add(commissionEmployee);
 					continue;
 				}
 
-				var salariedEmployee = JsonSerializer.Deserialize<SalariedEmployee>(
-					element.GetRawText())!;
+				var salariedEmployee = JsonSerializer
+					.Deserialize<SalariedEmployee>(element.GetRawText())!;
 				result.Add(salariedEmployee);
 			}
 

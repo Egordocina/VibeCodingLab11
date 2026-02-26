@@ -22,9 +22,12 @@ namespace View
             ApplyStyles();
             LoadComboBoxes();
             UpdateParameterLabels();
-            hourlyRadioButton.CheckedChanged += (sender, eventArgs) => UpdateParameterLabels();
-            salariedRadioButton.CheckedChanged += (sender, eventArgs) => UpdateParameterLabels();
-            commissionRadioButton.CheckedChanged += (sender, eventArgs) => UpdateParameterLabels();
+            hourlyRadioButton.CheckedChanged += 
+                (sender, eventArgs) => UpdateParameterLabels();
+            salariedRadioButton.CheckedChanged += 
+                (sender, eventArgs) => UpdateParameterLabels();
+            commissionRadioButton.CheckedChanged += 
+                (sender, eventArgs) => UpdateParameterLabels();
         }
 
         /// <summary>
@@ -74,7 +77,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обновляет лейблы и видимость параметров в зависимости от типа оплаты.
+        /// Обновляет лейблы и видимость параметров
+        /// в зависимости от типа оплаты.
         /// </summary>
         private void UpdateParameterLabels()
         {
@@ -126,16 +130,21 @@ namespace View
                 if (hourlyRadioButton.Checked)
                 {
                     var hourlyEmployee = new HourlyEmployee();
-                    hourlyEmployee.HourlyRate = ParseDouble(parameter1TextBox.Text, "Почасовая ставка");
-                    hourlyEmployee.HoursWorked = ParseDouble(parameter2TextBox.Text, "Отработанные часы");
+                    hourlyEmployee.HourlyRate = ParseDouble(
+                        parameter1TextBox.Text, "Почасовая ставка");
+                    hourlyEmployee.HoursWorked = ParseDouble(
+                        parameter2TextBox.Text, "Отработанные часы");
                     employee = hourlyEmployee;
                 }
                 else if (commissionRadioButton.Checked)
                 {
                     var commissionEmployee = new CommissionEmployee();
-                    commissionEmployee.BaseSalary = ParseDouble(parameter1TextBox.Text, "Базовая зарплата");
-                    commissionEmployee.CommissionRate = ParseDouble(parameter2TextBox.Text, "Ставка премии");
-                    commissionEmployee.BonusAmount = ParseDouble(parameter3TextBox.Text, "Сумма премии");
+                    commissionEmployee.BaseSalary = ParseDouble(
+                        parameter1TextBox.Text, "Базовая зарплата");
+                    commissionEmployee.CommissionRate = ParseDouble(
+                        parameter2TextBox.Text, "Ставка премии");
+                    commissionEmployee.BonusAmount = ParseDouble(
+                        parameter3TextBox.Text, "Сумма премии");
                     employee = commissionEmployee;
                 }
                 else
@@ -143,10 +152,14 @@ namespace View
                     employee = new SalariedEmployee();
                 }
 
-                employee.Name = CapitalizeFirstLetter(nameTextBox.Text.Trim());
-                employee.LastName = CapitalizeFirstLetter(lastNameTextBox.Text.Trim());
-                employee.Position = positionComboBox.SelectedItem?.ToString() ?? string.Empty;
-                employee.Country = countryComboBox.SelectedItem?.ToString() ?? string.Empty;
+                employee.Name = CapitalizeFirstLetter(
+                    nameTextBox.Text.Trim());
+                employee.LastName = CapitalizeFirstLetter(
+                    lastNameTextBox.Text.Trim());
+                employee.Position = 
+                    positionComboBox.SelectedItem?.ToString() ?? string.Empty;
+                employee.Country = 
+                    countryComboBox.SelectedItem?.ToString() ?? string.Empty;
                 CreatedEmployee = employee;
                 DialogResult = DialogResult.OK;
             }
@@ -161,7 +174,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Отмена": закрывает форму без сохранения.
+        /// Обработчик клика по кнопке "Отмена":
+        /// закрывает форму без сохранения.
         /// </summary>
         private void cancelButton_Click(object sender, EventArgs eventArgs)
         {
@@ -169,7 +183,8 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Создать случайного гонщика": заполняет поля случайными данными.
+        /// Обработчик клика по кнопке "Создать случайного 
+        /// гонщика": заполняет поля случайными данными.
         /// </summary>
         private void randomButton_Click(object sender, EventArgs eventArgs)
         {
@@ -242,22 +257,29 @@ namespace View
 
             nameTextBox.Text = name;
             lastNameTextBox.Text = lastName;
-            positionComboBox.SelectedIndex = random.Next(positionComboBox.Items.Count);
-            countryComboBox.SelectedIndex = random.Next(countryComboBox.Items.Count);
+            positionComboBox.SelectedIndex = 
+                random.Next(positionComboBox.Items.Count);
+            countryComboBox.SelectedIndex = 
+                random.Next(countryComboBox.Items.Count);
             int type = random.Next(3);
             hourlyRadioButton.Checked = type == 0;
             salariedRadioButton.Checked = type == 1;
             commissionRadioButton.Checked = type == 2;
             if (hourlyRadioButton.Checked)
             {
-                parameter1TextBox.Text = (random.Next(1000, 2000) / 10.0).ToString("F1", cultureInfo);
+                parameter1TextBox.Text = (random.Next(1000, 2000) / 10.0)
+                    .ToString("F1", cultureInfo);
                 parameter2TextBox.Text = random.Next(160, 200).ToString();
             }
             else if (commissionRadioButton.Checked)
             {
-                parameter1TextBox.Text = (random.Next(30000, 80000) / 100.0).ToString("F2", cultureInfo);
+                parameter1TextBox.Text = 
+                    (random.Next(30000, 80000) / 100.0).ToString(
+                        "F2", cultureInfo);
                 parameter2TextBox.Text = random.Next(10, 25).ToString();
-                parameter3TextBox.Text = (random.Next(5000, 30000) / 100.0).ToString("F2", cultureInfo);
+                parameter3TextBox.Text = 
+                    (random.Next(5000, 30000) / 100.0).ToString(
+                        "F2", cultureInfo);
             }
 
             UpdateParameterLabels();
@@ -271,8 +293,7 @@ namespace View
             var namePattern = @"^[а-яА-ЯёЁa-zA-Z\s]+$";
             if (string.IsNullOrWhiteSpace(nameTextBox.Text) ||
                 !System.Text.RegularExpressions.Regex.IsMatch(
-                    nameTextBox.Text.Trim(),
-                    namePattern))
+                    nameTextBox.Text.Trim(), namePattern))
             {
                 throw new IncorrectArgumentException(
                     "Имя должно содержать только буквы и не быть пустым.");
@@ -280,22 +301,24 @@ namespace View
 
             if (string.IsNullOrWhiteSpace(lastNameTextBox.Text) ||
                 !System.Text.RegularExpressions.Regex.IsMatch(
-                    lastNameTextBox.Text.Trim(),
-                    namePattern))
+                    lastNameTextBox.Text.Trim(), namePattern))
             {
                 throw new IncorrectArgumentException(
-                    "Фамилия должна содержать только буквы и не быть пустой.");
+                    "Фамилия должна содержать только буквы " +
+                    "и не быть пустой.");
             }
 
             if (positionComboBox.SelectedIndex < 0 ||
-                string.IsNullOrEmpty(positionComboBox.SelectedItem?.ToString()))
+                string.IsNullOrEmpty(
+                    positionComboBox.SelectedItem?.ToString()))
             {
                 throw new IncorrectArgumentException(
                     "Разряд должна быть выбрана.");
             }
 
             if (countryComboBox.SelectedIndex < 0 ||
-                string.IsNullOrEmpty(countryComboBox.SelectedItem?.ToString()))
+                string.IsNullOrEmpty(
+                    countryComboBox.SelectedItem?.ToString()))
             {
                 throw new IncorrectArgumentException(
                     "Страна должна быть выбрана.");
@@ -309,10 +332,8 @@ namespace View
         {
             if (string.IsNullOrWhiteSpace(input) ||
                 !double.TryParse(
-                    input,
-                    NumberStyles.Any,
-                    CultureInfo.InvariantCulture,
-                    out var value))
+                    input,NumberStyles.Any,
+                    CultureInfo.InvariantCulture,out var value))
             {
                 throw new IncorrectArgumentException(
                     $"{field} должно быть числом.");
@@ -331,7 +352,7 @@ namespace View
         /// Преобразует первую букву каждого слова в заглавную.
         /// </summary>
         /// <param name="text">Исходный текст.</param>
-        /// <returns>Текст с заглавными первыми буквами каждого слова.</returns>
+        /// <returns>Текст с заглавными буквами.</returns>
         private string CapitalizeFirstLetter(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
@@ -340,18 +361,16 @@ namespace View
             }
 
             var cultureInfo = CultureInfo.CurrentCulture;
-
-            // Разбиваем строку на слова по пробелам
-            var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var words = text.Split(
+            new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var capitalizedWords = new List<string>();
 
             foreach (var word in words)
             {
                 if (word.Length > 0)
                 {
-                    // Преобразуем первую букву в заглавную, остальные в строчные
-                    var capitalizedWord = char.ToUpper(word[0], cultureInfo) +
-                                         word.Substring(1).ToLower(cultureInfo);
+                    var capitalizedWord = char.ToUpper(word[0], cultureInfo) + 
+                        word.Substring(1).ToLower(cultureInfo);
                     capitalizedWords.Add(capitalizedWord);
                 }
             }

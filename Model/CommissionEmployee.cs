@@ -50,13 +50,14 @@
 			get => _commissionRate;
 			set
 			{
+				// Минимум: 0%, максимум: 100%
 				const int MinCommissionRate = 0;
 				const int MaxCommissionRate = 100;
 				if (value <= MinCommissionRate || value > MaxCommissionRate)
 				{
 					throw new IncorrectArgumentException(
 						$"Ставка премии должна быть больше 0 " +
-						$"до {MaxCommissionRate}%.");
+						$"и до {MaxCommissionRate}%.");
 				}
 				_commissionRate = value;
 			}

@@ -46,13 +46,14 @@
 			get => _hoursWorked;
 			set
 			{
+				// Минимум: 1 час, максимум: 744 часа (31 × 24)
 				const int MinHours = 1;
 				const int MaxHours = 744;
 				if (value < MinHours || value > MaxHours)
 				{
 					throw new IncorrectArgumentException(
-						$"Отработанные часы должны быть от {MinHours} " +
-						$"до {MaxHours}.");
+						$"Отработанные часы должны быть " +
+						$"от {MinHours} до {MaxHours}.");
 				}
 				_hoursWorked = value;
 			}

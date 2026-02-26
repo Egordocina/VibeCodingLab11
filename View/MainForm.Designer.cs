@@ -76,7 +76,8 @@ namespace View
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)employeesDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)
+                employeesDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -85,14 +86,16 @@ namespace View
             SuspendLayout();
             // 
             // employeesDataGridView
-            // 
+            //
             employeesDataGridView.AccessibleRole = AccessibleRole.IpAddress;
             employeesDataGridView.AllowUserToDeleteRows = false;
             employeesDataGridView.AllowUserToResizeRows = false;
             employeesDataGridView.Anchor = AnchorStyles.Top;
-            employeesDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            employeesDataGridView.AutoSizeColumnsMode = 
+                DataGridViewAutoSizeColumnsMode.Fill;
             employeesDataGridView.BackgroundColor = Color.FromArgb(40, 40, 45);
-            employeesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            employeesDataGridView.ColumnHeadersHeightSizeMode = 
+                DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             employeesDataGridView.Location = new Point(14, 16);
             employeesDataGridView.Margin = new Padding(3, 4, 3, 4);
             employeesDataGridView.MultiSelect = false;
@@ -100,17 +103,21 @@ namespace View
             employeesDataGridView.ReadOnly = true;
             employeesDataGridView.RowHeadersWidth = 51;
             employeesDataGridView.RowTemplate.Height = 25;
-            employeesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            employeesDataGridView.SelectionMode = 
+                DataGridViewSelectionMode.FullRowSelect;
             employeesDataGridView.Size = new Size(983, 533);
             employeesDataGridView.TabIndex = 0;
-            employeesDataGridView.CellContentClick += employeesDataGridView_CellContentClick;
+            employeesDataGridView.CellContentClick += 
+                employeesDataGridView_CellContentClick;
             // 
             // addButton
-            // 
+            //
             addButton.BackColor = Color.FromArgb(103, 58, 183);
             addButton.FlatAppearance.BorderSize = 0;
-            addButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            addButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            addButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            addButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             addButton.FlatStyle = FlatStyle.Flat;
             addButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             addButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -124,11 +131,13 @@ namespace View
             addButton.Click += addButton_Click;
             // 
             // removeButton
-            // 
+            //
             removeButton.BackColor = Color.FromArgb(103, 58, 183);
             removeButton.FlatAppearance.BorderSize = 0;
-            removeButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            removeButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            removeButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            removeButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             removeButton.FlatStyle = FlatStyle.Flat;
             removeButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             removeButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -142,12 +151,14 @@ namespace View
             removeButton.Click += removeButton_Click;
             // 
             // searchButton
-            // 
+            //
             searchButton.Anchor = AnchorStyles.None;
             searchButton.BackColor = Color.FromArgb(103, 58, 183);
             searchButton.FlatAppearance.BorderSize = 0;
-            searchButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            searchButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            searchButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            searchButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             searchButton.FlatStyle = FlatStyle.Flat;
             searchButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             searchButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -161,11 +172,13 @@ namespace View
             searchButton.Click += searchButton_Click;
             // 
             // saveButton
-            // 
+            //
             saveButton.BackColor = Color.FromArgb(103, 58, 183);
             saveButton.FlatAppearance.BorderSize = 0;
-            saveButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            saveButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            saveButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            saveButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             saveButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -179,11 +192,13 @@ namespace View
             saveButton.Click += saveButton_Click;
             // 
             // loadButton
-            // 
+            //
             loadButton.BackColor = Color.FromArgb(103, 58, 183);
             loadButton.FlatAppearance.BorderSize = 0;
-            loadButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
-            loadButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
+            loadButton.FlatAppearance.MouseDownBackColor = 
+                Color.FromArgb(77, 43, 137);
+            loadButton.FlatAppearance.MouseOverBackColor = 
+                Color.FromArgb(129, 83, 207);
             loadButton.FlatStyle = FlatStyle.Flat;
             loadButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             loadButton.ForeColor = Color.FromArgb(255, 255, 255);
@@ -274,8 +289,10 @@ namespace View
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Список гонщиков в лыжной команде \"Сутутлые псы\"";
-            ((System.ComponentModel.ISupportInitialize)employeesDataGridView).EndInit();
+            Text = "Список гонщиков в лыжной команде " +
+                   "\"Сутулые псы\"";
+            ((System.ComponentModel.ISupportInitialize)
+                employeesDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

@@ -41,8 +41,8 @@ namespace View
             StyleHelper.ApplyTextBoxStyle(lastNameTextBox);
             StyleHelper.ApplyLabelStyle(positionLabel);
             StyleHelper.ApplyTextBoxStyle(positionTextBox);
-            StyleHelper.ApplyLabelStyle(departmentLabel);
-            StyleHelper.ApplyTextBoxStyle(departmentTextBox);
+            StyleHelper.ApplyLabelStyle(countryLabel);
+            StyleHelper.ApplyTextBoxStyle(countryTextBox);
             StyleHelper.ApplyButtonStyle(findButton);
             StyleHelper.ApplyButtonStyle(resetButton);
             StyleHelper.ApplyButtonStyle(cancelButton);
@@ -56,19 +56,24 @@ namespace View
             var queryName = nameTextBox.Text?.Trim();
             var queryLastName = lastNameTextBox.Text?.Trim();
             var queryPosition = positionTextBox.Text?.Trim();
-            var queryDepartment = departmentTextBox.Text?.Trim();
-            const StringComparison stringComparison = StringComparison.OrdinalIgnoreCase;
+            var queryCountry = countryTextBox.Text?.Trim();
+            const StringComparison comparison = 
+                StringComparison.OrdinalIgnoreCase;
 
             var filteredEmployees = sourceEmployees.Where(
                 employee =>
                     (string.IsNullOrEmpty(queryName)
-                     || employee.Name.IndexOf(queryName, stringComparison) >= 0)
+                     || employee.Name.IndexOf(
+                         queryName, comparison) >= 0)
                     && (string.IsNullOrEmpty(queryLastName)
-                        || employee.LastName.IndexOf(queryLastName, stringComparison) >= 0)
+                        || employee.LastName.IndexOf(
+                            queryLastName, comparison) >= 0)
                     && (string.IsNullOrEmpty(queryPosition)
-                        || employee.Position.IndexOf(queryPosition, stringComparison) >= 0)
-                    && (string.IsNullOrEmpty(queryDepartment)
-                        || employee.Country.IndexOf(queryDepartment, stringComparison) >= 0)
+                        || employee.Position.IndexOf(
+                            queryPosition, comparison) >= 0)
+                    && (string.IsNullOrEmpty(queryCountry)
+                        || employee.Country.IndexOf(
+                            queryCountry, comparison) >= 0)
             ).ToList();
 
             mainForm.RefreshGrid(filteredEmployees);
@@ -82,7 +87,7 @@ namespace View
             nameTextBox.Clear();
             lastNameTextBox.Clear();
             positionTextBox.Clear();
-            departmentTextBox.Clear();
+            countryTextBox.Clear();
             mainForm.RefreshGrid(sourceEmployees);
         }
 

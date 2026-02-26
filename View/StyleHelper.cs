@@ -4,25 +4,36 @@ using System.Windows.Forms;
 namespace View
 {
     /// <summary>
-    /// Помощник для применения стиля Windows 11 Dark с тёмно-фиолетовыми акцентами.
+    /// Помощник для применения стиля Windows 11 Dark.
     /// </summary>
     public static class StyleHelper
     {
-        // Цветовая палитра Windows 11 Dark с фиолетовыми акцентами
-        public static readonly Color BackgroundPrimary = Color.FromArgb(32, 32, 32);        // Основной фон
-        public static readonly Color BackgroundSecondary = Color.FromArgb(45, 45, 45);     // Вторичный фон
-        public static readonly Color BackgroundTertiary = Color.FromArgb(52, 52, 52);      // Третичный фон
-        public static readonly Color Surface = Color.FromArgb(38, 38, 38);                 // Поверхность
-        public static readonly Color Accent = Color.FromArgb(103, 58, 183);                // Тёмно-фиолетовый акцент
-        public static readonly Color AccentLight = Color.FromArgb(129, 83, 207);           // Светлый акцент
-        public static readonly Color AccentDark = Color.FromArgb(77, 43, 137);             // Тёмный акцент
-        public static readonly Color TextPrimary = Color.FromArgb(255, 255, 255);          // Основной текст
-        public static readonly Color TextSecondary = Color.FromArgb(200, 200, 200);        // Вторичный текст
-        public static readonly Color TextDisabled = Color.FromArgb(150, 150, 150);         // Отключённый текст
-        public static readonly Color Border = Color.FromArgb(60, 60, 60);                  // Границы
-        public static readonly Color GridBackground = Color.FromArgb(40, 40, 45);          // Фон сетки
-        public static readonly Color GridRowAlternate = Color.FromArgb(50, 50, 58);        // Чередующийся ряд
-        public static readonly Color GridHeader = Color.FromArgb(45, 45, 52);              // Заголовок сетки
+        // Цветовая палитра
+        public static readonly Color BackgroundPrimary = 
+            Color.FromArgb(32, 32, 32);
+        public static readonly Color BackgroundSecondary = 
+            Color.FromArgb(45, 45, 45);
+        public static readonly Color BackgroundTertiary = 
+            Color.FromArgb(52, 52, 52);
+        public static readonly Color Surface = Color.FromArgb(38, 38, 38);
+        public static readonly Color Accent = Color.FromArgb(103, 58, 183);
+        public static readonly Color AccentLight = 
+            Color.FromArgb(129, 83, 207);
+        public static readonly Color AccentDark = 
+            Color.FromArgb(77, 43, 137);
+        public static readonly Color TextPrimary = 
+            Color.FromArgb(255, 255, 255);
+        public static readonly Color TextSecondary = 
+            Color.FromArgb(200, 200, 200);
+        public static readonly Color TextDisabled = 
+            Color.FromArgb(150, 150, 150);
+        public static readonly Color Border = Color.FromArgb(60, 60, 60);
+        public static readonly Color GridBackground = 
+            Color.FromArgb(40, 40, 45);
+        public static readonly Color GridRowAlternate = 
+            Color.FromArgb(50, 50, 58);
+        public static readonly Color GridHeader = 
+            Color.FromArgb(45, 45, 52);
 
         /// <summary>
         /// Применяет стиль Windows 11 Dark к форме.
@@ -31,7 +42,8 @@ namespace View
         {
             form.BackColor = BackgroundPrimary;
             form.ForeColor = TextPrimary;
-            form.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            form.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -45,7 +57,8 @@ namespace View
             button.FlatAppearance.BorderSize = 0;
             button.FlatAppearance.MouseOverBackColor = AccentLight;
             button.FlatAppearance.MouseDownBackColor = AccentDark;
-            button.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button.Cursor = Cursors.Hand;
         }
 
@@ -57,7 +70,8 @@ namespace View
             textBox.BackColor = BackgroundSecondary;
             textBox.ForeColor = TextPrimary;
             textBox.BorderStyle = BorderStyle.FixedSingle;
-            textBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -67,7 +81,8 @@ namespace View
         {
             label.BackColor = Color.Transparent;
             label.ForeColor = TextPrimary;
-            label.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -78,7 +93,8 @@ namespace View
             comboBox.BackColor = BackgroundSecondary;
             comboBox.ForeColor = TextPrimary;
             comboBox.FlatStyle = FlatStyle.Flat;
-            comboBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -88,7 +104,8 @@ namespace View
         {
             groupBox.BackColor = Color.Transparent;
             groupBox.ForeColor = TextPrimary;
-            groupBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -98,7 +115,8 @@ namespace View
         {
             radioButton.BackColor = Color.Transparent;
             radioButton.ForeColor = TextPrimary;
-            radioButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -115,17 +133,22 @@ namespace View
             dataGridView.DefaultCellStyle.ForeColor = TextPrimary;
             dataGridView.DefaultCellStyle.SelectionBackColor = Accent;
             dataGridView.DefaultCellStyle.SelectionForeColor = TextPrimary;
-            dataGridView.DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridView.AlternatingRowsDefaultCellStyle.BackColor = GridRowAlternate;
+            dataGridView.DefaultCellStyle.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridView.AlternatingRowsDefaultCellStyle.BackColor = 
+                GridRowAlternate;
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = GridHeader;
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = TextPrimary;
-            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(
+                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridView.ColumnHeadersDefaultCellStyle.Alignment = 
+                DataGridViewContentAlignment.MiddleLeft;
             dataGridView.ColumnHeadersHeight = 30;
             dataGridView.RowHeadersDefaultCellStyle.BackColor = GridHeader;
             dataGridView.RowHeadersDefaultCellStyle.ForeColor = TextPrimary;
             dataGridView.RowHeadersDefaultCellStyle.SelectionBackColor = Accent;
-            dataGridView.RowHeadersDefaultCellStyle.SelectionForeColor = TextPrimary;
+            dataGridView.RowHeadersDefaultCellStyle.SelectionForeColor = 
+                TextPrimary;
             dataGridView.EnableHeadersVisualStyles = false;
         }
     }
