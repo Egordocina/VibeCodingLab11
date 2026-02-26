@@ -26,7 +26,7 @@
 		private string _country;
 
 		/// <summary>
-		/// Данные о разрядах: номер → (название, оклад).
+		/// Данные о разрядах: номер (название, оклад).
 		/// </summary>
 		public static readonly Dictionary<int, (string Name, double Salary)>
 			PositionData = new()
@@ -40,7 +40,7 @@
 		};
 
 		/// <summary>
-		/// Данные о странах: номер → название.
+		/// Данные о странах: номер название.
 		/// </summary>
 		public static readonly Dictionary<int, string> CountryData = new()
 		{

@@ -289,8 +289,8 @@ namespace View
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Список гонщиков в лыжной команде " +
-                   "\"Сутулые псы\"";
+            Text = "Список гонщиков в лыжной команде " + 
+                "\"Сутулые псы\"";
             ((System.ComponentModel.ISupportInitialize)
                 employeesDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
