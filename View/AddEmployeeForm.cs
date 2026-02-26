@@ -143,8 +143,8 @@ namespace View
                     employee = new SalariedEmployee();
                 }
 
-                employee.Name = nameTextBox.Text;
-                employee.LastName = lastNameTextBox.Text;
+                employee.Name = CapitalizeFirstLetter(nameTextBox.Text.Trim());
+                employee.LastName = CapitalizeFirstLetter(lastNameTextBox.Text.Trim());
                 employee.Position = positionComboBox.SelectedItem?.ToString() ?? string.Empty;
                 employee.Country = countryComboBox.SelectedItem?.ToString() ?? string.Empty;
                 CreatedEmployee = employee;
@@ -325,6 +325,38 @@ namespace View
             }
 
             return value;
+        }
+
+        /// <summary>
+        /// Преобразует первую букву каждого слова в заглавную.
+        /// </summary>
+        /// <param name="text">Исходный текст.</param>
+        /// <returns>Текст с заглавными первыми буквами каждого слова.</returns>
+        private string CapitalizeFirstLetter(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return text;
+            }
+
+            var cultureInfo = CultureInfo.CurrentCulture;
+
+            // Разбиваем строку на слова по пробелам
+            var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var capitalizedWords = new List<string>();
+
+            foreach (var word in words)
+            {
+                if (word.Length > 0)
+                {
+                    // Преобразуем первую букву в заглавную, остальные в строчные
+                    var capitalizedWord = char.ToUpper(word[0], cultureInfo) +
+                                         word.Substring(1).ToLower(cultureInfo);
+                    capitalizedWords.Add(capitalizedWord);
+                }
+            }
+
+            return string.Join(" ", capitalizedWords);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
