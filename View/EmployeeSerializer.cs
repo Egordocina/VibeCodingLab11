@@ -53,6 +53,7 @@ namespace View
 
 			foreach (var element in root.EnumerateArray())
 			{
+				//TODO: refactor
 				if (element.TryGetProperty(
 					nameof(HourlyEmployee.HourlyRate), out _))
 				{

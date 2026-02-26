@@ -13,6 +13,7 @@ namespace View
         /// </summary>
         private List<EmployeeBase> sourceEmployees;
 
+        //TODO: нарушение инкапсуляции
         /// <summary>
         /// Ссылка на главную форму.
         /// </summary>

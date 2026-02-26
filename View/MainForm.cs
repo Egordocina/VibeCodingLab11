@@ -8,6 +8,7 @@ namespace View
     /// </summary>
     public partial class MainForm : Form
     {
+        //TODO: RSDN
         /// <summary>
         /// Список гонщиков.
         /// </summary>
@@ -45,6 +46,8 @@ namespace View
         {
             employeesDataGridView.AutoGenerateColumns = false;
             employeesDataGridView.Columns.Clear();
+            //TODO: refactor
+            //TODO: datagrid binding
             employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Имя",
@@ -82,6 +85,7 @@ namespace View
             });
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Обработчик клика по кнопке "Добавить": 
         /// открывает форму добавления.
@@ -213,6 +217,7 @@ namespace View
             }
         }
 
+        //TODO: нарушение инкапсуляции
         /// <summary>
         /// Обновляет данные в DataGridView.
         /// </summary>
