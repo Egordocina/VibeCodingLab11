@@ -3,11 +3,13 @@ using Model;
 
 namespace View
 {
+    //TODO: refactor
     /// <summary>
     /// Форма для добавления нового гонщика.
     /// </summary>
     public partial class AddEmployeeForm : Form
     {
+        //TODO: refactor
         /// <summary>
         /// Созданный гонщик или null, если не создан.
         /// </summary>
@@ -82,6 +84,7 @@ namespace View
         /// </summary>
         private void UpdateParameterLabels()
         {
+
             if (hourlyRadioButton.Checked)
             {
                 parameter1Label.Text = "Почасовая ставка:";
@@ -378,6 +381,7 @@ namespace View
             return string.Join(" ", capitalizedWords);
         }
 
+        //TODO: remove
         private void PictureBox2_Click(object sender, EventArgs e)
         {
 

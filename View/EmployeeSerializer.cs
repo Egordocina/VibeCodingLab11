@@ -9,6 +9,7 @@ namespace View
 	/// </summary>
 	public static class EmployeeSerializer
 	{
+		//TODO: XML
 		private static readonly JsonSerializerOptions _jsonOptions = new()
 		{
 			WriteIndented = true
@@ -39,6 +40,7 @@ namespace View
 		public static List<EmployeeBase> Load(string path) =>
 			JsonSerializer.Deserialize<List<EmployeeBase>>(
 				File.ReadAllText(path), _jsonOptions)
+			//TODO: rewrite
 			?? throw new JsonException("Не удалось десериализовать сотрудников.");
 	}
 }
