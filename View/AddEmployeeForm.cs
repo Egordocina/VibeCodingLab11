@@ -381,10 +381,6 @@ namespace View
             return string.Join(" ", capitalizedWords);
         }
 
-        //TODO: remove
-        private void PictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
+        //TODO: remove+
     }
 }

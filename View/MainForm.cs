@@ -13,7 +13,7 @@ namespace View
         /// <summary>
         /// Список гонщиков.
         /// </summary>
-        private List<EmployeeBase> employees = new List<EmployeeBase>();
+        private List<EmployeeBase> _employees = new List<EmployeeBase>();
 
         /// <summary>
         /// Источник данных для привязки к DataGridView.
@@ -28,7 +28,7 @@ namespace View
             InitializeComponent();
 
             // Инициализация BindingSource
-            _bindingSource.DataSource = employees;
+            _bindingSource.DataSource = _employees;
             employeesDataGridView.DataSource = _bindingSource;
 
             ApplyStyles();
@@ -78,7 +78,7 @@ namespace View
             {
                 if (addEmployeeForm.CreatedEmployee != null)
                 {
-                    employees.Add(addEmployeeForm.CreatedEmployee);
+                    _employees.Add(addEmployeeForm.CreatedEmployee);
                     _bindingSource.ResetBindings(false);
                 }
             }
@@ -101,7 +101,7 @@ namespace View
             }
 
             int index = employeesDataGridView.SelectedRows[0].Index;
-            if (index >= 0 && index < employees.Count)
+            if (index >= 0 && index < _employees.Count)
             {
                 if (MessageBox.Show(
                     "Удалить выбранного гонщика?",
@@ -109,7 +109,7 @@ namespace View
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    employees.RemoveAt(index);
+                    _employees.RemoveAt(index);
                     _bindingSource.ResetBindings(false);
                 }
             }
@@ -120,7 +120,7 @@ namespace View
         /// </summary>
         private void SearchButton_Click(object sender, EventArgs eventArgs)
         {
-            var searchForm = new SearchForm(employees);
+            var searchForm = new SearchForm(_employees);
             searchForm.EmployeesSelected += RefreshGrid;
             searchForm.Show();
         }
@@ -143,7 +143,7 @@ namespace View
                 try
                 {
                     EmployeeSerializer.Save(
-                        employees, saveFileDialog.FileName);
+                        _employees, saveFileDialog.FileName);
                     MessageBox.Show(
                         "Сохранено.",
                         "Успех",
@@ -180,8 +180,8 @@ namespace View
                 {
                     var loadedList = EmployeeSerializer.Load(
                         openFileDialog.FileName);
-                    employees = new List<EmployeeBase>(loadedList);
-                    _bindingSource.DataSource = employees;
+                    _employees = new List<EmployeeBase>(loadedList);
+                    _bindingSource.DataSource = _employees;
                     MessageBox.Show(
                         "Загружено.",
                         "Успех",
@@ -204,7 +204,7 @@ namespace View
         /// </summary>
         private void RefreshGrid(IEnumerable<EmployeeBase>? source = null)
         {
-            _bindingSource.DataSource = source ?? employees;
+            _bindingSource.DataSource = source ?? _employees;
         }
     }
 }
