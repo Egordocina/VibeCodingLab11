@@ -9,7 +9,7 @@ namespace View
     /// </summary>
     public partial class MainForm : Form
     {
-        //TODO: RSDN
+        //TODO: RSDN+
         /// <summary>
         /// Список гонщиков.
         /// </summary>
