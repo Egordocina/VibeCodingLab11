@@ -12,11 +12,10 @@ namespace View
         /// </summary>
         private List<EmployeeBase> sourceEmployees;
 
-        //TODO: EventHandler
         /// <summary>
-        /// Событие выбора гонщиков (для слабой связанности с MainForm).
+        /// Событие выбора сотрудников (для слабой связанности с MainForm).
         /// </summary>
-        public event Action<List<EmployeeBase>>? EmployeesSelected;
+        public event EventHandler<List<EmployeeBase>>? EmployeesSelected;
 
         /// <summary>
         /// Инициализирует форму поиска с исходным списком гонщиков.
@@ -26,6 +25,15 @@ namespace View
             sourceEmployees = source;
             InitializeComponent();
             ApplyStyles();
+            FormClosing += SearchForm_FormClosing;
+        }
+
+        /// <summary>
+        /// Обработчик закрытия формы: восстанавливает полный список.
+        /// </summary>
+        private void SearchForm_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            EmployeesSelected?.Invoke(this, sourceEmployees);
         }
 
         /// <summary>
@@ -75,7 +83,7 @@ namespace View
                             queryCountry, comparison) >= 0)
             ).ToList();
 
-            EmployeesSelected?.Invoke(filteredEmployees);
+            EmployeesSelected?.Invoke(this, filteredEmployees);
         }
 
         /// <summary>
@@ -87,7 +95,7 @@ namespace View
             lastNameTextBox.Clear();
             positionTextBox.Clear();
             countryTextBox.Clear();
-            EmployeesSelected?.Invoke(sourceEmployees);
+            EmployeesSelected?.Invoke(this, sourceEmployees);
         }
 
         /// <summary>

@@ -73,15 +73,13 @@ namespace View
         /// </summary>
         private void AddButton_Click(object sender, EventArgs eventArgs)
         {
-            using var addEmployeeForm = new AddEmployeeForm();
-            if (addEmployeeForm.ShowDialog() == DialogResult.OK)
+            var addEmployeeForm = new AddEmployeeForm();
+            addEmployeeForm.EmployeeCreated += (s, employee) =>
             {
-                if (addEmployeeForm.CreatedEmployee != null)
-                {
-                    _employees.Add(addEmployeeForm.CreatedEmployee);
-                    _bindingSource.ResetBindings(false);
-                }
-            }
+                _employees.Add(employee);
+                _bindingSource.ResetBindings(false);
+            };
+            addEmployeeForm.Show();
         }
 
         /// <summary>
@@ -121,7 +119,7 @@ namespace View
         private void SearchButton_Click(object sender, EventArgs eventArgs)
         {
             var searchForm = new SearchForm(_employees);
-            searchForm.EmployeesSelected += RefreshGrid;
+            searchForm.EmployeesSelected += (s, args) => RefreshGrid(args);
             searchForm.Show();
         }
 

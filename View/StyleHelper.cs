@@ -9,42 +9,53 @@ namespace View
     public static class StyleHelper
     {
         // Цветовая палитра
-        public static readonly Color BackgroundPrimary = 
+        public static readonly Color BackgroundPrimary =
             Color.FromArgb(32, 32, 32);
-        public static readonly Color BackgroundSecondary = 
+        public static readonly Color BackgroundSecondary =
             Color.FromArgb(45, 45, 45);
-        public static readonly Color BackgroundTertiary = 
+        public static readonly Color BackgroundTertiary =
             Color.FromArgb(52, 52, 52);
         public static readonly Color Surface = Color.FromArgb(38, 38, 38);
         public static readonly Color Accent = Color.FromArgb(103, 58, 183);
-        public static readonly Color AccentLight = 
+        public static readonly Color AccentLight =
             Color.FromArgb(129, 83, 207);
-        public static readonly Color AccentDark = 
+        public static readonly Color AccentDark =
             Color.FromArgb(77, 43, 137);
-        public static readonly Color TextPrimary = 
+        public static readonly Color TextPrimary =
             Color.FromArgb(255, 255, 255);
-        public static readonly Color TextSecondary = 
+        public static readonly Color TextSecondary =
             Color.FromArgb(200, 200, 200);
-        public static readonly Color TextDisabled = 
+        public static readonly Color TextDisabled =
             Color.FromArgb(150, 150, 150);
         public static readonly Color Border = Color.FromArgb(60, 60, 60);
-        public static readonly Color GridBackground = 
+        public static readonly Color GridBackground =
             Color.FromArgb(40, 40, 45);
-        public static readonly Color GridRowAlternate = 
+        public static readonly Color GridRowAlternate =
             Color.FromArgb(50, 50, 58);
-        public static readonly Color GridHeader = 
+        public static readonly Color GridHeader =
             Color.FromArgb(45, 45, 52);
+
+        // Общий шрифт для всех элементов
+        private static readonly Font DefaultFont = new Font(
+            "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+
+        //TODO: duplication+
+        /// <summary>
+        /// Применяет базовый стиль к элементу управления.
+        /// </summary>
+        private static void ApplyBaseStyle(Control control, Color? backColor = null)
+        {
+            control.BackColor = backColor ?? BackgroundPrimary;
+            control.ForeColor = TextPrimary;
+            control.Font = DefaultFont;
+        }
 
         /// <summary>
         /// Применяет стиль Windows 11 Dark к форме.
         /// </summary>
         public static void ApplyFormStyle(Form form)
         {
-            //TODO: duplication
-            form.BackColor = BackgroundPrimary;
-            form.ForeColor = TextPrimary;
-            form.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ApplyBaseStyle(form);
         }
 
         /// <summary>
@@ -58,8 +69,7 @@ namespace View
             button.FlatAppearance.BorderSize = 0;
             button.FlatAppearance.MouseOverBackColor = AccentLight;
             button.FlatAppearance.MouseDownBackColor = AccentDark;
-            button.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button.Font = DefaultFont;
             button.Cursor = Cursors.Hand;
         }
 
@@ -68,12 +78,8 @@ namespace View
         /// </summary>
         public static void ApplyTextBoxStyle(TextBox textBox)
         {
-            //TODO: duplication
-            textBox.BackColor = BackgroundSecondary;
-            textBox.ForeColor = TextPrimary;
+            ApplyBaseStyle(textBox, BackgroundSecondary);
             textBox.BorderStyle = BorderStyle.FixedSingle;
-            textBox.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -81,11 +87,7 @@ namespace View
         /// </summary>
         public static void ApplyLabelStyle(Label label)
         {
-            //TODO: duplication
-            label.BackColor = Color.Transparent;
-            label.ForeColor = TextPrimary;
-            label.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ApplyBaseStyle(label, Color.Transparent);
         }
 
         /// <summary>
@@ -93,11 +95,8 @@ namespace View
         /// </summary>
         public static void ApplyComboBoxStyle(ComboBox comboBox)
         {
-            comboBox.BackColor = BackgroundSecondary;
-            comboBox.ForeColor = TextPrimary;
+            ApplyBaseStyle(comboBox, BackgroundSecondary);
             comboBox.FlatStyle = FlatStyle.Flat;
-            comboBox.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
         }
 
         /// <summary>
@@ -105,11 +104,7 @@ namespace View
         /// </summary>
         public static void ApplyGroupBoxStyle(GroupBox groupBox)
         {
-            //TODO: duplication
-            groupBox.BackColor = Color.Transparent;
-            groupBox.ForeColor = TextPrimary;
-            groupBox.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ApplyBaseStyle(groupBox, Color.Transparent);
         }
 
         /// <summary>
@@ -117,11 +112,7 @@ namespace View
         /// </summary>
         public static void ApplyRadioButtonStyle(RadioButton radioButton)
         {
-            //TODO: duplication
-            radioButton.BackColor = Color.Transparent;
-            radioButton.ForeColor = TextPrimary;
-            radioButton.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ApplyBaseStyle(radioButton, Color.Transparent);
         }
 
         /// <summary>
@@ -138,21 +129,19 @@ namespace View
             dataGridView.DefaultCellStyle.ForeColor = TextPrimary;
             dataGridView.DefaultCellStyle.SelectionBackColor = Accent;
             dataGridView.DefaultCellStyle.SelectionForeColor = TextPrimary;
-            dataGridView.DefaultCellStyle.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridView.AlternatingRowsDefaultCellStyle.BackColor = 
+            dataGridView.DefaultCellStyle.Font = DefaultFont;
+            dataGridView.AlternatingRowsDefaultCellStyle.BackColor =
                 GridRowAlternate;
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = GridHeader;
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = TextPrimary;
-            dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font(
-                "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridView.ColumnHeadersDefaultCellStyle.Alignment = 
+            dataGridView.ColumnHeadersDefaultCellStyle.Font = DefaultFont;
+            dataGridView.ColumnHeadersDefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleLeft;
             dataGridView.ColumnHeadersHeight = 30;
             dataGridView.RowHeadersDefaultCellStyle.BackColor = GridHeader;
             dataGridView.RowHeadersDefaultCellStyle.ForeColor = TextPrimary;
             dataGridView.RowHeadersDefaultCellStyle.SelectionBackColor = Accent;
-            dataGridView.RowHeadersDefaultCellStyle.SelectionForeColor = 
+            dataGridView.RowHeadersDefaultCellStyle.SelectionForeColor =
                 TextPrimary;
             dataGridView.EnableHeadersVisualStyles = false;
         }

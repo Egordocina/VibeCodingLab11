@@ -4,16 +4,15 @@ using Model;
 namespace View
 {
     //TODO: refactor
-    /// <summary>
-    /// Форма для добавления нового гонщика.
-    /// </summary>
-    public partial class AddEmployeeForm : Form
+	/// <summary>
+	/// Форма для добавления нового гонщика.
+	/// </summary>
+	public partial class AddEmployeeForm : Form
     {
-        //TODO: refactor
         /// <summary>
-        /// Созданный гонщик или null, если не создан.
+        /// Событие создания сотрудника (для слабой связанности с MainForm).
         /// </summary>
-        public EmployeeBase? CreatedEmployee { get; private set; }
+        public event EventHandler<EmployeeBase>? EmployeeCreated;
 
         /// <summary>
         /// Инициализирует компоненты формы и настраивает события.
@@ -24,11 +23,11 @@ namespace View
             ApplyStyles();
             LoadComboBoxes();
             UpdateParameterLabels();
-            hourlyRadioButton.CheckedChanged += 
+            hourlyRadioButton.CheckedChanged +=
                 (sender, eventArgs) => UpdateParameterLabels();
-            salariedRadioButton.CheckedChanged += 
+            salariedRadioButton.CheckedChanged +=
                 (sender, eventArgs) => UpdateParameterLabels();
-            commissionRadioButton.CheckedChanged += 
+            commissionRadioButton.CheckedChanged +=
                 (sender, eventArgs) => UpdateParameterLabels();
         }
 
@@ -159,12 +158,14 @@ namespace View
                     nameTextBox.Text.Trim());
                 employee.LastName = CapitalizeFirstLetter(
                     lastNameTextBox.Text.Trim());
-                employee.Position = 
+                employee.Position =
                     positionComboBox.SelectedItem?.ToString() ?? string.Empty;
-                employee.Country = 
+                employee.Country =
                     countryComboBox.SelectedItem?.ToString() ?? string.Empty;
-                CreatedEmployee = employee;
-                DialogResult = DialogResult.OK;
+                
+                // Вызываем событие создания сотрудника
+                EmployeeCreated?.Invoke(this, employee);
+                Close();
             }
             catch (Exception exception)
             {
@@ -182,7 +183,7 @@ namespace View
         /// </summary>
         private void CancelButton_Click(object sender, EventArgs eventArgs)
         {
-            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         /// <summary>
