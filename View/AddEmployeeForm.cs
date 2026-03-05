@@ -381,7 +381,5 @@ namespace View
 
             return string.Join(" ", capitalizedWords);
         }
-
-        //TODO: remove+
     }
 }

@@ -39,7 +39,6 @@ namespace View
         private static readonly Font DefaultFont = new Font(
             "Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
 
-        //TODO: duplication+
         /// <summary>
         /// Применяет базовый стиль к элементу управления.
         /// </summary>

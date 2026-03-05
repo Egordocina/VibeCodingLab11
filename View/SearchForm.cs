@@ -7,6 +7,7 @@ namespace View
     /// </summary>
     public partial class SearchForm : Form
     {
+        //TODO: RSDN
         /// <summary>
         /// Исходный список гонщиков для поиска.
         /// </summary>

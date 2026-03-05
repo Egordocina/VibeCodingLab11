@@ -9,7 +9,6 @@ namespace View
 	/// </summary>
 	public static class EmployeeSerializer
 	{
-		//TODO: XML+
 		/// <summary>
 		/// Параметры сериализации и десериализации JSON.
 		/// </summary>
@@ -43,7 +42,7 @@ namespace View
 		public static List<EmployeeBase> Load(string path) =>
 			JsonSerializer.Deserialize<List<EmployeeBase>>(
 				File.ReadAllText(path), _jsonOptions)
-			//TODO: rewrite+
-			?? throw new JsonException("Не удалось десериализовать параметры сотрудников.");
+			?? throw new JsonException(
+				"Не удалось десериализовать параметры сотрудников.");
 	}
 }
