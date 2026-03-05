@@ -12,7 +12,7 @@ namespace View
         /// </summary>
         private List<EmployeeBase> sourceEmployees;
 
-        //TODO: нарушение инкапсуляции+
+        //TODO: EventHandler
         /// <summary>
         /// Событие выбора гонщиков (для слабой связанности с MainForm).
         /// </summary>

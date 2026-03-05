@@ -40,6 +40,7 @@ namespace View
         /// </summary>
         public static void ApplyFormStyle(Form form)
         {
+            //TODO: duplication
             form.BackColor = BackgroundPrimary;
             form.ForeColor = TextPrimary;
             form.Font = new Font(
@@ -67,6 +68,7 @@ namespace View
         /// </summary>
         public static void ApplyTextBoxStyle(TextBox textBox)
         {
+            //TODO: duplication
             textBox.BackColor = BackgroundSecondary;
             textBox.ForeColor = TextPrimary;
             textBox.BorderStyle = BorderStyle.FixedSingle;
@@ -79,6 +81,7 @@ namespace View
         /// </summary>
         public static void ApplyLabelStyle(Label label)
         {
+            //TODO: duplication
             label.BackColor = Color.Transparent;
             label.ForeColor = TextPrimary;
             label.Font = new Font(
@@ -102,6 +105,7 @@ namespace View
         /// </summary>
         public static void ApplyGroupBoxStyle(GroupBox groupBox)
         {
+            //TODO: duplication
             groupBox.BackColor = Color.Transparent;
             groupBox.ForeColor = TextPrimary;
             groupBox.Font = new Font(
@@ -113,6 +117,7 @@ namespace View
         /// </summary>
         public static void ApplyRadioButtonStyle(RadioButton radioButton)
         {
+            //TODO: duplication
             radioButton.BackColor = Color.Transparent;
             radioButton.ForeColor = TextPrimary;
             radioButton.Font = new Font(

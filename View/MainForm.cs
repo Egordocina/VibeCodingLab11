@@ -58,7 +58,6 @@ namespace View
             employeesDataGridView.AutoGenerateColumns = true;
             employeesDataGridView.Columns.Clear();
             
-            //TODO: datagrid binding+
             employeesDataGridView.ColumnAdded += (s, e) =>
             {
                 if (e.Column.DataPropertyName == nameof(EmployeeBase.Salary))
@@ -68,7 +67,6 @@ namespace View
             };
         }
 
-        //TODO: RSDN+
         /// <summary>
         /// Обработчик клика по кнопке "Добавить":
         /// открывает форму добавления.
@@ -201,7 +199,6 @@ namespace View
             }
         }
 
-        //TODO: нарушение инкапсуляции+
         /// <summary>
         /// Обновляет данные в DataGridView (для поиска).
         /// </summary>
