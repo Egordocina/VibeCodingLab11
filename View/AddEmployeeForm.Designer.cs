@@ -508,7 +508,6 @@ namespace View
 			pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBox2.TabIndex = 14;
 			pictureBox2.TabStop = false;
-			pictureBox2.Click += PictureBox2_Click;
 			// 
 			// pictureBox3
 			// 
