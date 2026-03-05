@@ -222,7 +222,7 @@ namespace View
             findButton.TabIndex = 0;
             findButton.Text = "Найти";
             findButton.UseVisualStyleBackColor = false;
-            findButton.Click += findButton_Click;
+            findButton.Click += FindButton_Click;
             // 
             // resetButton
             //
@@ -241,7 +241,7 @@ namespace View
             resetButton.TabIndex = 1;
             resetButton.Text = "Сброс";
             resetButton.UseVisualStyleBackColor = false;
-            resetButton.Click += resetButton_Click;
+            resetButton.Click += ResetButton_Click;
             // 
             // cancelButton
             //
@@ -260,7 +260,7 @@ namespace View
             cancelButton.TabIndex = 2;
             cancelButton.Text = "Отмена";
             cancelButton.UseVisualStyleBackColor = false;
-            cancelButton.Click += cancelButton_Click;
+            cancelButton.Click += CancelButton_Click;
             // 
             // pictureBox4
             // 

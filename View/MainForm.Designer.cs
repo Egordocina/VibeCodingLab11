@@ -103,13 +103,11 @@ namespace View
             employeesDataGridView.ReadOnly = true;
             employeesDataGridView.RowHeadersWidth = 51;
             employeesDataGridView.RowTemplate.Height = 25;
-            employeesDataGridView.SelectionMode = 
+            employeesDataGridView.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
             employeesDataGridView.Size = new Size(983, 533);
             employeesDataGridView.TabIndex = 0;
-            employeesDataGridView.CellContentClick += 
-                employeesDataGridView_CellContentClick;
-            // 
+            //
             // addButton
             //
             addButton.BackColor = Color.FromArgb(103, 58, 183);
@@ -128,7 +126,7 @@ namespace View
             addButton.TabIndex = 1;
             addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = false;
-            addButton.Click += addButton_Click;
+            addButton.Click += AddButton_Click;
             // 
             // removeButton
             //
@@ -148,7 +146,7 @@ namespace View
             removeButton.TabIndex = 2;
             removeButton.Text = "Удалить";
             removeButton.UseVisualStyleBackColor = false;
-            removeButton.Click += removeButton_Click;
+            removeButton.Click += RemoveButton_Click;
             // 
             // searchButton
             //
@@ -169,7 +167,7 @@ namespace View
             searchButton.TabIndex = 3;
             searchButton.Text = "Поиск";
             searchButton.UseVisualStyleBackColor = false;
-            searchButton.Click += searchButton_Click;
+            searchButton.Click += SearchButton_Click;
             // 
             // saveButton
             //
@@ -189,7 +187,7 @@ namespace View
             saveButton.TabIndex = 4;
             saveButton.Text = "Сохранить";
             saveButton.UseVisualStyleBackColor = false;
-            saveButton.Click += saveButton_Click;
+            saveButton.Click += SaveButton_Click;
             // 
             // loadButton
             //
@@ -209,7 +207,7 @@ namespace View
             loadButton.TabIndex = 5;
             loadButton.Text = "Загрузить";
             loadButton.UseVisualStyleBackColor = false;
-            loadButton.Click += loadButton_Click;
+            loadButton.Click += LoadButton_Click;
             // 
             // pictureBox1
             // 
@@ -221,10 +219,9 @@ namespace View
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
-            // 
+            //
             // pictureBox2
-            // 
+            //
             pictureBox2.BackColor = Color.FromArgb(103, 58, 183);
             pictureBox2.Image = Properties.Resources.delete;
             pictureBox2.Location = new Point(223, 580);

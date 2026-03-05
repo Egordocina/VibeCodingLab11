@@ -1,8 +1,15 @@
-﻿namespace Model
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
+
+namespace Model
 {
 	/// <summary>
 	/// Базовый класс гонщика с фиксированным окладом по разряду.
 	/// </summary>
+	[JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+	[JsonDerivedType(typeof(HourlyEmployee), "hourly")]
+	[JsonDerivedType(typeof(CommissionEmployee), "commission")]
+	[JsonDerivedType(typeof(SalariedEmployee), "salaried")]
 	public abstract class EmployeeBase : IEmployee
 	{
 		/// <summary>
@@ -59,11 +66,13 @@
 		/// <summary>
 		/// Русское название типа сотрудника.
 		/// </summary>
+		[DisplayName("Тип")]
 		public abstract string TypeName { get; }
 
 		/// <summary>
 		/// Имя гонщика.
 		/// </summary>
+		[DisplayName("Имя")]
 		public string Name
 		{
 			get => _name;
@@ -73,6 +82,7 @@
 		/// <summary>
 		/// Фамилия гонщика.
 		/// </summary>
+		[DisplayName("Фамилия")]
 		public string LastName
 		{
 			get => _lastName;
@@ -82,6 +92,7 @@
 		/// <summary>
 		/// Разряд гонщика (определяет оклад).
 		/// </summary>
+		[DisplayName("Разряд")]
 		public string Position
 		{
 			get => _position;
@@ -91,6 +102,7 @@
 		/// <summary>
 		/// Страна гонщика.
 		/// </summary>
+		[DisplayName("Страна")]
 		public string Country
 		{
 			get => _country;
@@ -172,5 +184,12 @@
 		/// </summary>
 		/// <returns>Оклад в рублях.</returns>
 		public abstract double CalculateSalary();
+
+		/// <summary>
+		/// Зарплата (для привязки к DataGridView).
+		/// </summary>
+		[Browsable(true)]
+		[DisplayName("Зарплата (руб.)")]
+		public double Salary => Math.Round(CalculateSalary(), 2);
 	}
 }

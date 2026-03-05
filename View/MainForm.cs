@@ -1,4 +1,5 @@
 using Model;
+using System.ComponentModel;
 using View;
 
 namespace View
@@ -15,11 +16,21 @@ namespace View
         private List<EmployeeBase> employees = new List<EmployeeBase>();
 
         /// <summary>
+        /// Источник данных для привязки к DataGridView.
+        /// </summary>
+        private readonly BindingSource _bindingSource = new();
+
+        /// <summary>
         /// Инициализирует компоненты формы.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+
+            // Инициализация BindingSource
+            _bindingSource.DataSource = employees;
+            employeesDataGridView.DataSource = _bindingSource;
+
             ApplyStyles();
             InitializeGridColumns();
             RefreshGrid();
@@ -44,53 +55,25 @@ namespace View
         /// </summary>
         private void InitializeGridColumns()
         {
-            employeesDataGridView.AutoGenerateColumns = false;
+            employeesDataGridView.AutoGenerateColumns = true;
             employeesDataGridView.Columns.Clear();
-            //TODO: refactor
-            //TODO: datagrid binding
-            employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            
+            //TODO: datagrid binding+
+            employeesDataGridView.ColumnAdded += (s, e) =>
             {
-                HeaderText = "Имя",
-                DataPropertyName = "Name"
-            });
-
-            employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Фамилия",
-                DataPropertyName = "LastName"
-            });
-
-            employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Разряд",
-                DataPropertyName = "Position"
-            });
-
-            employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Страна",
-                DataPropertyName = "Country"
-            });
-
-            employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Тип",
-                DataPropertyName = "TypeName"
-            });
-
-            employeesDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Зарплата (руб.)",
-                DataPropertyName = "Salary"
-            });
+                if (e.Column.DataPropertyName == nameof(EmployeeBase.Salary))
+                {
+                    e.Column.ReadOnly = true;
+                }
+            };
         }
 
-        //TODO: RSDN
+        //TODO: RSDN+
         /// <summary>
-        /// Обработчик клика по кнопке "Добавить": 
+        /// Обработчик клика по кнопке "Добавить":
         /// открывает форму добавления.
         /// </summary>
-        private void addButton_Click(object sender, EventArgs eventArgs)
+        private void AddButton_Click(object sender, EventArgs eventArgs)
         {
             using var addEmployeeForm = new AddEmployeeForm();
             if (addEmployeeForm.ShowDialog() == DialogResult.OK)
@@ -98,7 +81,7 @@ namespace View
                 if (addEmployeeForm.CreatedEmployee != null)
                 {
                     employees.Add(addEmployeeForm.CreatedEmployee);
-                    RefreshGrid();
+                    _bindingSource.ResetBindings(false);
                 }
             }
         }
@@ -107,7 +90,7 @@ namespace View
         /// Обработчик клика по кнопке "Удалить":
         /// удаляет выбранного гонщика.
         /// </summary>
-        private void removeButton_Click(object sender, EventArgs eventArgs)
+        private void RemoveButton_Click(object sender, EventArgs eventArgs)
         {
             if (employeesDataGridView.SelectedRows.Count == 0)
             {
@@ -129,7 +112,7 @@ namespace View
                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     employees.RemoveAt(index);
-                    RefreshGrid();
+                    _bindingSource.ResetBindings(false);
                 }
             }
         }
@@ -137,9 +120,10 @@ namespace View
         /// <summary>
         /// Обработчик клика по кнопке "Поиск": открывает форму поиска.
         /// </summary>
-        private void searchButton_Click(object sender, EventArgs eventArgs)
+        private void SearchButton_Click(object sender, EventArgs eventArgs)
         {
-            var searchForm = new SearchForm(employees, this);
+            var searchForm = new SearchForm(employees);
+            searchForm.EmployeesSelected += RefreshGrid;
             searchForm.Show();
         }
 
@@ -147,7 +131,7 @@ namespace View
         /// Обработчик клика по кнопке "Сохранить":
         /// сохраняет данные в файл.
         /// </summary>
-        private void saveButton_Click(object sender, EventArgs eventArgs)
+        private void SaveButton_Click(object sender, EventArgs eventArgs)
         {
             using var saveFileDialog = new SaveFileDialog
             {
@@ -183,7 +167,7 @@ namespace View
         /// Обработчик клика по кнопке "Загрузить":
         /// загружает данные из файла.
         /// </summary>
-        private void loadButton_Click(object sender, EventArgs eventArgs)
+        private void LoadButton_Click(object sender, EventArgs eventArgs)
         {
             using var openFileDialog = new OpenFileDialog
             {
@@ -199,7 +183,7 @@ namespace View
                     var loadedList = EmployeeSerializer.Load(
                         openFileDialog.FileName);
                     employees = new List<EmployeeBase>(loadedList);
-                    RefreshGrid();
+                    _bindingSource.DataSource = employees;
                     MessageBox.Show(
                         "Загружено.",
                         "Успех",
@@ -217,35 +201,13 @@ namespace View
             }
         }
 
-        //TODO: нарушение инкапсуляции
+        //TODO: нарушение инкапсуляции+
         /// <summary>
-        /// Обновляет данные в DataGridView.
+        /// Обновляет данные в DataGridView (для поиска).
         /// </summary>
-        public void RefreshGrid(IEnumerable<EmployeeBase>? source = null)
+        private void RefreshGrid(IEnumerable<EmployeeBase>? source = null)
         {
-            var dataSource = (source ?? employees).Select(employee => new
-            {
-                employee.Name,
-                employee.LastName,
-                employee.Position,
-                employee.Country,
-                employee.TypeName,
-                Salary = Math.Round(employee.CalculateSalary(), 2)
-            }).ToList();
-
-            employeesDataGridView.DataSource = null;
-            employeesDataGridView.DataSource = dataSource;
-        }
-
-        private void employeesDataGridView_CellContentClick(
-            object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            _bindingSource.DataSource = source ?? employees;
         }
     }
 }

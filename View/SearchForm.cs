@@ -1,5 +1,4 @@
 ﻿using Model;
-using View;
 
 namespace View
 {
@@ -13,19 +12,18 @@ namespace View
         /// </summary>
         private List<EmployeeBase> sourceEmployees;
 
-        //TODO: нарушение инкапсуляции
+        //TODO: нарушение инкапсуляции+
         /// <summary>
-        /// Ссылка на главную форму.
+        /// Событие выбора гонщиков (для слабой связанности с MainForm).
         /// </summary>
-        private MainForm mainForm;
+        public event Action<List<EmployeeBase>>? EmployeesSelected;
 
         /// <summary>
         /// Инициализирует форму поиска с исходным списком гонщиков.
         /// </summary>
-        public SearchForm(List<EmployeeBase> source, MainForm parentForm)
+        public SearchForm(List<EmployeeBase> source)
         {
             sourceEmployees = source;
-            mainForm = parentForm;
             InitializeComponent();
             ApplyStyles();
         }
@@ -52,13 +50,13 @@ namespace View
         /// <summary>
         /// Обработчик клика по кнопке "Найти": выполняет поиск.
         /// </summary>
-        private void findButton_Click(object sender, EventArgs eventArgs)
+        private void FindButton_Click(object sender, EventArgs eventArgs)
         {
             var queryName = nameTextBox.Text?.Trim();
             var queryLastName = lastNameTextBox.Text?.Trim();
             var queryPosition = positionTextBox.Text?.Trim();
             var queryCountry = countryTextBox.Text?.Trim();
-            const StringComparison comparison = 
+            const StringComparison comparison =
                 StringComparison.OrdinalIgnoreCase;
 
             var filteredEmployees = sourceEmployees.Where(
@@ -77,25 +75,25 @@ namespace View
                             queryCountry, comparison) >= 0)
             ).ToList();
 
-            mainForm.RefreshGrid(filteredEmployees);
+            EmployeesSelected?.Invoke(filteredEmployees);
         }
 
         /// <summary>
         /// Обработчик клика по кнопке "Сброс": очищает поля.
         /// </summary>
-        private void resetButton_Click(object sender, EventArgs eventArgs)
+        private void ResetButton_Click(object sender, EventArgs eventArgs)
         {
             nameTextBox.Clear();
             lastNameTextBox.Clear();
             positionTextBox.Clear();
             countryTextBox.Clear();
-            mainForm.RefreshGrid(sourceEmployees);
+            EmployeesSelected?.Invoke(sourceEmployees);
         }
 
         /// <summary>
         /// Обработчик клика по кнопке "Отмена": закрывает форму.
         /// </summary>
-        private void cancelButton_Click(object sender, EventArgs eventArgs)
+        private void CancelButton_Click(object sender, EventArgs eventArgs)
         {
             Close();
         }

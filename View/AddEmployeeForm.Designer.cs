@@ -445,7 +445,7 @@ namespace View
 			okButton.TabIndex = 10;
 			okButton.Text = "ОК";
 			okButton.UseVisualStyleBackColor = false;
-			okButton.Click += okButton_Click;
+			okButton.Click += OkButton_Click;
 			// 
 			// cancelButton
 			//
@@ -465,7 +465,7 @@ namespace View
 			cancelButton.TabIndex = 11;
 			cancelButton.Text = "Отмена";
 			cancelButton.UseVisualStyleBackColor = false;
-			cancelButton.Click += cancelButton_Click;
+			cancelButton.Click += CancelButton_Click;
 			// 
 			// randomButton
 			//
@@ -485,7 +485,7 @@ namespace View
 			randomButton.TabIndex = 12;
 			randomButton.Text = "Создать случайного гонщика";
 			randomButton.UseVisualStyleBackColor = false;
-			randomButton.Click += randomButton_Click;
+			randomButton.Click += RandomButton_Click;
 			// 
 			// pictureBox1
 			// 
@@ -508,7 +508,7 @@ namespace View
 			pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBox2.TabIndex = 14;
 			pictureBox2.TabStop = false;
-			pictureBox2.Click += pictureBox2_Click;
+			pictureBox2.Click += PictureBox2_Click;
 			// 
 			// pictureBox3
 			// 

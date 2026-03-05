@@ -9,6 +9,11 @@ namespace View
 	/// </summary>
 	public static class EmployeeSerializer
 	{
+		private static readonly JsonSerializerOptions _jsonOptions = new()
+		{
+			WriteIndented = true
+		};
+
 		/// <summary>
 		/// Сохраняет список гонщиков в файл в формате JSON.
 		/// </summary>
@@ -17,20 +22,8 @@ namespace View
 		/// <exception cref="System.IO.IOException">
 		/// Если произошла ошибка записи в файл.
 		/// </exception>
-		public static void Save(IEnumerable<EmployeeBase> employees, string path)
-		{
-			var list = new List<object>();
-			foreach (var employee in employees)
-			{
-				list.Add(employee);
-			}
-
-			var json = JsonSerializer.Serialize(
-				list,
-				new JsonSerializerOptions { WriteIndented = true });
-
-			File.WriteAllText(path, json);
-		}
+		public static void Save(IEnumerable<EmployeeBase> employees, string path) =>
+			File.WriteAllText(path, JsonSerializer.Serialize(employees, _jsonOptions));
 
 		/// <summary>
 		/// Загружает список гонщиков из файла в формате JSON.
@@ -43,41 +36,9 @@ namespace View
 		/// <exception cref="System.Text.Json.JsonException">
 		/// Если файл содержит некорректный JSON.
 		/// </exception>
-		public static List<EmployeeBase> Load(string path)
-		{
-			var text = File.ReadAllText(path);
-
-			using var document = JsonDocument.Parse(text);
-			var root = document.RootElement;
-			var result = new List<EmployeeBase>();
-
-			foreach (var element in root.EnumerateArray())
-			{
-				//TODO: refactor
-				if (element.TryGetProperty(
-					nameof(HourlyEmployee.HourlyRate), out _))
-				{
-					var hourlyEmployee = JsonSerializer
-						.Deserialize<HourlyEmployee>(element.GetRawText())!;
-					result.Add(hourlyEmployee);
-					continue;
-				}
-
-				if (element.TryGetProperty(
-					nameof(CommissionEmployee.CommissionRate), out _))
-				{
-					var commissionEmployee = JsonSerializer
-						.Deserialize<CommissionEmployee>(element.GetRawText())!;
-					result.Add(commissionEmployee);
-					continue;
-				}
-
-				var salariedEmployee = JsonSerializer
-					.Deserialize<SalariedEmployee>(element.GetRawText())!;
-				result.Add(salariedEmployee);
-			}
-
-			return result;
-		}
+		public static List<EmployeeBase> Load(string path) =>
+			JsonSerializer.Deserialize<List<EmployeeBase>>(
+				File.ReadAllText(path), _jsonOptions)
+			?? throw new JsonException("Не удалось десериализовать сотрудников.");
 	}
 }

@@ -121,7 +121,7 @@ namespace View
         /// Обработчик клика по кнопке "ОК":
         /// валидирует данные и создает гонщика.
         /// </summary>
-        private void okButton_Click(object sender, EventArgs eventArgs)
+        private void OkButton_Click(object sender, EventArgs eventArgs)
         {
             try
             {
@@ -177,7 +177,7 @@ namespace View
         /// Обработчик клика по кнопке "Отмена":
         /// закрывает форму без сохранения.
         /// </summary>
-        private void cancelButton_Click(object sender, EventArgs eventArgs)
+        private void CancelButton_Click(object sender, EventArgs eventArgs)
         {
             DialogResult = DialogResult.Cancel;
         }
@@ -186,7 +186,7 @@ namespace View
         /// Обработчик клика по кнопке "Создать случайного 
         /// гонщика": заполняет поля случайными данными.
         /// </summary>
-        private void randomButton_Click(object sender, EventArgs eventArgs)
+        private void RandomButton_Click(object sender, EventArgs eventArgs)
         {
             var random = new Random();
             var cultureInfo = CultureInfo.InvariantCulture;
@@ -378,7 +378,7 @@ namespace View
             return string.Join(" ", capitalizedWords);
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void PictureBox2_Click(object sender, EventArgs e)
         {
 
         }
