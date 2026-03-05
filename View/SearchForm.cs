@@ -7,11 +7,11 @@ namespace View
     /// </summary>
     public partial class SearchForm : Form
     {
-        //TODO: RSDN
+        //TODO: RSDN+
         /// <summary>
         /// Исходный список гонщиков для поиска.
         /// </summary>
-        private List<EmployeeBase> sourceEmployees;
+        private List<EmployeeBase> _sourceEmployees;
 
         /// <summary>
         /// Событие выбора сотрудников (для слабой связанности с MainForm).
@@ -23,7 +23,7 @@ namespace View
         /// </summary>
         public SearchForm(List<EmployeeBase> source)
         {
-            sourceEmployees = source;
+            _sourceEmployees = source;
             InitializeComponent();
             ApplyStyles();
             FormClosing += SearchForm_FormClosing;
@@ -34,7 +34,7 @@ namespace View
         /// </summary>
         private void SearchForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            EmployeesSelected?.Invoke(this, sourceEmployees);
+            EmployeesSelected?.Invoke(this, _sourceEmployees);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace View
             const StringComparison comparison =
                 StringComparison.OrdinalIgnoreCase;
 
-            var filteredEmployees = sourceEmployees.Where(
+            var filteredEmployees = _sourceEmployees.Where(
                 employee =>
                     (string.IsNullOrEmpty(queryName)
                      || employee.Name.IndexOf(
@@ -96,7 +96,7 @@ namespace View
             lastNameTextBox.Clear();
             positionTextBox.Clear();
             countryTextBox.Clear();
-            EmployeesSelected?.Invoke(this, sourceEmployees);
+            EmployeesSelected?.Invoke(this, _sourceEmployees);
         }
 
         /// <summary>

@@ -144,5 +144,30 @@ namespace View
                 TextPrimary;
             dataGridView.EnableHeadersVisualStyles = false;
         }
+
+        /// <summary>
+        /// Применяет стиль Windows 11 Dark к ToolStrip.
+        /// </summary>
+        public static void ApplyToolStripStyle(ToolStrip toolStrip)
+        {
+            toolStrip.BackColor = BackgroundSecondary;
+            toolStrip.ForeColor = TextPrimary;
+            toolStrip.Font = DefaultFont;
+            toolStrip.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip.Padding = new Padding(5);
+            
+            foreach (ToolStripItem item in toolStrip.Items)
+            {
+                if (item is ToolStripButton button)
+                {
+                    button.BackColor = Accent;
+                    button.ForeColor = TextPrimary;
+                    button.Font = DefaultFont;
+                    button.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                    button.Margin = new Padding(2);
+                    button.Padding = new Padding(10, 5, 10, 5);
+                }
+            }
+        }
     }
 }

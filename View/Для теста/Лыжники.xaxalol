@@ -1,69 +1,181 @@
 [
   {
+    "$type": "hourly",
     "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
-    "HourlyRate": 123.4,
-    "HoursWorked": 197,
-    "Name": "\u0417\u0432\u0435\u043D\u0438\u0441\u043B\u0430\u0432\u0430",
-    "LastName": "\u041A\u043E\u0432\u0430\u043B\u044C",
-    "Position": "1 \u0440\u0430\u0437\u0440\u044F\u0434",
-    "Country": "\u0413\u0415\u0420\u041C\u0410\u041D\u0418\u042F"
-  },
-  {
-    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
-    "Name": "\u0414\u043E\u0431\u0440\u043E\u0441\u043B\u0430\u0432\u0430",
-    "LastName": "\u0418\u0437\u044F\u0441\u043B\u0430\u0432\u0438\u0447",
-    "Position": "\u041C\u0421\u041C\u041A",
-    "Country": "\u0418\u0422\u0410\u041B\u0418\u042F"
-  },
-  {
-    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
-    "Name": "\u0414\u043E\u0431\u0440\u043E\u0441\u043B\u0430\u0432\u0430",
-    "LastName": "\u0418\u0437\u044F\u0441\u043B\u0430\u0432\u0438\u0447",
-    "Position": "\u041C\u0421",
-    "Country": "\u0418\u0422\u0410\u041B\u0418\u042F"
-  },
-  {
-    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
-    "HourlyRate": 150,
-    "HoursWorked": 179,
-    "Name": "\u041C\u043B\u0430\u0434\u0430",
-    "LastName": "\u041E\u0431\u043E\u043B\u0435\u043D\u0441\u043A\u0430\u044F",
-    "Position": "\u041C\u0421\u041C\u041A",
-    "Country": "\u0413\u0415\u0420\u041C\u0410\u041D\u0418\u042F"
-  },
-  {
-    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
-    "Name": "\u0421\u0432\u044F\u0442\u043E\u0441\u043B\u0430\u0432\u0430",
-    "LastName": "\u041A\u0443\u0437\u043D\u0435\u0446\u043E\u0432\u0430",
-    "Position": "3 \u0440\u0430\u0437\u0440\u044F\u0434",
-    "Country": "\u0424\u0418\u041D\u041B\u042F\u041D\u0414\u0418\u042F"
-  },
-  {
-    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
-    "BaseSalary": 716.18,
-    "CommissionRate": 21,
-    "BonusAmount": 103.64,
-    "Name": "\u0421\u0432\u044F\u0442\u043E\u0441\u043B\u0430\u0432\u0430",
-    "LastName": "\u041A\u0443\u0437\u043D\u0435\u0446\u043E\u0432\u0430",
-    "Position": "2 \u0440\u0430\u0437\u0440\u044F\u0434",
-    "Country": "\u0427\u0415\u0425\u0418\u042F"
-  },
-  {
-    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
-    "HourlyRate": 197.5,
-    "HoursWorked": 180,
-    "Name": "\u041C\u0438\u0440\u043E\u0441\u043B\u0430\u0432",
-    "LastName": "\u041C\u043E\u043B\u0447\u0443\u043D",
-    "Position": "3 \u0440\u0430\u0437\u0440\u044F\u0434",
-    "Country": "\u0424\u0420\u0410\u041D\u0426\u0418\u042F"
-  },
-  {
-    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
-    "HourlyRate": 132.7,
+    "HourlyRate": 125.5,
     "HoursWorked": 160,
-    "Name": "\u0414\u043E\u0431\u0440\u043E\u0441\u043B\u0430\u0432\u0430",
+    "Name": "\u0422\u0432\u0435\u0440\u0434\u0438\u0441\u043B\u0430\u0432",
+    "LastName": "\u0418\u0437\u044F\u0441\u043B\u0430\u0432\u0438\u0447",
+    "Position": "\u041C\u0421\u041C\u041A",
+    "Country": "\u0421\u0442\u0440\u0430\u043D\u0430 404",
+    "Salary": 20080
+  },
+  {
+    "$type": "commission",
+    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
+    "BaseSalary": 370.95,
+    "CommissionRate": 13,
+    "BonusAmount": 212.93,
+    "Name": "\u0422\u0432\u0435\u0440\u0434\u0438\u0441\u043B\u0430\u0432",
     "LastName": "\u041C\u043E\u043B\u0447\u0443\u043D",
+    "Position": "\u041C\u0421",
+    "Country": "\u0413\u0435\u0440\u043C\u0430\u043D\u0438\u044F",
+    "Salary": 398.63
+  },
+  {
+    "$type": "hourly",
+    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
+    "HourlyRate": 180.3,
+    "HoursWorked": 192,
+    "Name": "\u041F\u0435\u0440\u0432\u0443\u0448\u0430",
+    "LastName": "\u0420\u044E\u0440\u0438\u043A\u043E\u0432\u0438\u0447",
+    "Position": "\u041C\u0421\u041C\u041A",
+    "Country": "\u0427\u0435\u0445\u0438\u044F",
+    "Salary": 34617.6
+  },
+  {
+    "$type": "salaried",
+    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
+    "Name": "\u0422\u0432\u0435\u0440\u0434\u0438\u0441\u043B\u0430\u0432",
+    "LastName": "\u0421\u043C\u0435\u044F\u043D",
+    "Position": "\u041C\u0421",
+    "Country": "\u0427\u0435\u0445\u0438\u044F",
+    "Salary": 130000
+  },
+  {
+    "$type": "hourly",
+    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
+    "HourlyRate": 176.4,
+    "HoursWorked": 163,
+    "Name": "\u041C\u0438\u043B\u043E\u0441\u043B\u0430\u0432\u0430",
+    "LastName": "\u041D\u043E\u0432\u0433\u043E\u0440\u043E\u0434\u0435\u0446",
+    "Position": "1 \u0440\u0430\u0437\u0440\u044F\u0434",
+    "Country": "\u0420\u043E\u0441\u0441\u0438\u044F",
+    "Salary": 28753.2
+  },
+  {
+    "$type": "salaried",
+    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
+    "Name": "\u041F\u0440\u0435\u0434\u0441\u043B\u0430\u0432\u0430",
+    "LastName": "\u041C\u043E\u043B\u0447\u0443\u043D",
+    "Position": "\u041C\u0421",
+    "Country": "\u041A\u0430\u043D\u0430\u0434\u0430",
+    "Salary": 130000
+  },
+  {
+    "$type": "salaried",
+    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
+    "Name": "\u041F\u0435\u0440\u0432\u0443\u0448\u0430",
+    "LastName": "\u041D\u043E\u0432\u0433\u043E\u0440\u043E\u0434\u0435\u0446",
+    "Position": "\u041C\u0421",
+    "Country": "\u0413\u0435\u0440\u043C\u0430\u043D\u0438\u044F",
+    "Salary": 130000
+  },
+  {
+    "$type": "hourly",
+    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
+    "HourlyRate": 175.3,
+    "HoursWorked": 160,
+    "Name": "\u041C\u0441\u0442\u0438\u0441\u043B\u0430\u0432",
+    "LastName": "\u0411\u0435\u043B",
+    "Position": "\u041C\u0421\u041C\u041A",
+    "Country": "\u0421\u0442\u0440\u0430\u043D\u0430 404",
+    "Salary": 28048
+  },
+  {
+    "$type": "salaried",
+    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
+    "Name": "\u0411\u0440\u043E\u043D\u0438\u0441\u043B\u0430\u0432\u0430",
+    "LastName": "\u041E\u0431\u043E\u043B\u0435\u043D\u0441\u043A\u0430\u044F",
     "Position": "3 \u0440\u0430\u0437\u0440\u044F\u0434",
-    "Country": "\u041A\u0410\u041D\u0410\u0414\u0410"
+    "Country": "\u0413\u0435\u0440\u043C\u0430\u043D\u0438\u044F",
+    "Salary": 60000
+  },
+  {
+    "$type": "salaried",
+    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
+    "Name": "\u0416\u0434\u0430\u043D\u0430",
+    "LastName": "\u0421\u043C\u0435\u044F\u043D",
+    "Position": "\u041A\u041C\u0421",
+    "Country": "\u0424\u0440\u0430\u043D\u0446\u0438\u044F",
+    "Salary": 110000
+  },
+  {
+    "$type": "commission",
+    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
+    "BaseSalary": 456.4,
+    "CommissionRate": 17,
+    "BonusAmount": 166.66,
+    "Name": "\u0417\u0432\u0435\u043D\u0438\u0441\u043B\u0430\u0432\u0430",
+    "LastName": "\u041D\u043E\u0432\u0433\u043E\u0440\u043E\u0434\u0435\u0446",
+    "Position": "\u041C\u0421",
+    "Country": "\u0427\u0435\u0445\u0438\u044F",
+    "Salary": 484.73
+  },
+  {
+    "$type": "commission",
+    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
+    "BaseSalary": 479.89,
+    "CommissionRate": 12,
+    "BonusAmount": 141.37,
+    "Name": "\u0414\u043E\u0431\u0440\u043E\u0441\u043B\u0430\u0432\u0430",
+    "LastName": "\u041C\u043E\u043D\u043E\u043C\u0430\u0445\u043E\u0432\u0430",
+    "Position": "3 \u0440\u0430\u0437\u0440\u044F\u0434",
+    "Country": "\u0428\u0432\u0435\u0446\u0438\u044F",
+    "Salary": 496.85
+  },
+  {
+    "$type": "hourly",
+    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
+    "HourlyRate": 104.9,
+    "HoursWorked": 189,
+    "Name": "\u0414\u043E\u0431\u0440\u043E\u043C\u0438\u0440",
+    "LastName": "\u0421\u043C\u0435\u044F\u043D",
+    "Position": "1 \u0440\u0430\u0437\u0440\u044F\u0434",
+    "Country": "\u041D\u043E\u0440\u0432\u0435\u0433\u0438\u044F",
+    "Salary": 19826.1
+  },
+  {
+    "$type": "salaried",
+    "TypeName": "\u041F\u043E \u043E\u043A\u043B\u0430\u0434\u0443",
+    "Name": "\u0414\u043E\u0431\u0440\u043E\u0441\u043B\u0430\u0432\u0430",
+    "LastName": "\u0420\u044B\u0431\u0430\u0440\u044C",
+    "Position": "3 \u0440\u0430\u0437\u0440\u044F\u0434",
+    "Country": "\u041A\u0430\u043D\u0430\u0434\u0430",
+    "Salary": 60000
+  },
+  {
+    "$type": "hourly",
+    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
+    "HourlyRate": 177.1,
+    "HoursWorked": 174,
+    "Name": "\u0412\u0442\u043E\u0440\u0430\u043A",
+    "LastName": "\u041C\u043E\u043B\u0447\u0443\u043D",
+    "Position": "\u041A\u041C\u0421",
+    "Country": "\u041A\u0430\u043D\u0430\u0434\u0430",
+    "Salary": 30815.4
+  },
+  {
+    "$type": "hourly",
+    "TypeName": "\u041F\u043E\u0447\u0430\u0441\u043E\u0432\u0430\u044F",
+    "HourlyRate": 127.7,
+    "HoursWorked": 185,
+    "Name": "\u041F\u0435\u0440\u0432\u0443\u0448\u0430",
+    "LastName": "\u0418\u0437\u044F\u0441\u043B\u0430\u0432\u0438\u0447",
+    "Position": "1 \u0440\u0430\u0437\u0440\u044F\u0434",
+    "Country": "\u0427\u0435\u0445\u0438\u044F",
+    "Salary": 23624.5
+  },
+  {
+    "$type": "commission",
+    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
+    "BaseSalary": 427.02,
+    "CommissionRate": 19,
+    "BonusAmount": 110.64,
+    "Name": "\u0416\u0434\u0430\u043D\u0430",
+    "LastName": "\u0421\u043C\u0435\u044F\u043D",
+    "Position": "\u041C\u0421",
+    "Country": "\u0428\u0432\u0435\u0446\u0438\u044F",
+    "Salary": 448.04
   }
 ]
