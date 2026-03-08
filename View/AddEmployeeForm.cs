@@ -3,7 +3,7 @@ using Model;
 
 namespace View
 {
-    //TODO: refactor
+    //TODO: refactor+
 	/// <summary>
 	/// Форма для добавления нового гонщика.
 	/// </summary>
@@ -37,28 +37,7 @@ namespace View
         private void ApplyStyles()
         {
             StyleHelper.ApplyFormStyle(this);
-            StyleHelper.ApplyLabelStyle(nameLabel);
-            StyleHelper.ApplyTextBoxStyle(nameTextBox);
-            StyleHelper.ApplyLabelStyle(lastNameLabel);
-            StyleHelper.ApplyTextBoxStyle(lastNameTextBox);
-            StyleHelper.ApplyLabelStyle(positionLabel);
-            StyleHelper.ApplyComboBoxStyle(positionComboBox);
-            StyleHelper.ApplyLabelStyle(countryLabel);
-            StyleHelper.ApplyComboBoxStyle(countryComboBox);
-            StyleHelper.ApplyGroupBoxStyle(typeGroupBox);
-            StyleHelper.ApplyRadioButtonStyle(hourlyRadioButton);
-            StyleHelper.ApplyRadioButtonStyle(salariedRadioButton);
-            StyleHelper.ApplyRadioButtonStyle(commissionRadioButton);
-            StyleHelper.ApplyGroupBoxStyle(parametersGroupBox);
-            StyleHelper.ApplyLabelStyle(parameter1Label);
-            StyleHelper.ApplyTextBoxStyle(parameter1TextBox);
-            StyleHelper.ApplyLabelStyle(parameter2Label);
-            StyleHelper.ApplyTextBoxStyle(parameter2TextBox);
-            StyleHelper.ApplyLabelStyle(parameter3Label);
-            StyleHelper.ApplyTextBoxStyle(parameter3TextBox);
-            StyleHelper.ApplyButtonStyle(okButton);
-            StyleHelper.ApplyButtonStyle(cancelButton);
-            StyleHelper.ApplyButtonStyle(randomButton);
+            this.ApplyStyle();
         }
 
         /// <summary>

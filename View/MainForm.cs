@@ -51,11 +51,7 @@ namespace View
 		private void ApplyStyles()
 		{
 			StyleHelper.ApplyFormStyle(this);
-			StyleHelper.ApplyButtonStyle(addButton);
-			StyleHelper.ApplyButtonStyle(searchButton);
-			StyleHelper.ApplyButtonStyle(saveButton);
-			StyleHelper.ApplyButtonStyle(loadButton);
-			StyleHelper.ApplyDataGridViewStyle(employeesDataGridView);
+			this.ApplyStyle();
 		}
 
 		/// <summary>

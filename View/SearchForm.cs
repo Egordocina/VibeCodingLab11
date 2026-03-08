@@ -41,25 +41,15 @@ namespace View
         /// Применяет стиль Windows 11 Dark ко всем элементам формы.
         /// </summary>
         private void ApplyStyles()
-        {
-            StyleHelper.ApplyFormStyle(this);
-            StyleHelper.ApplyLabelStyle(nameLabel);
-            StyleHelper.ApplyTextBoxStyle(nameTextBox);
-            StyleHelper.ApplyLabelStyle(lastNameLabel);
-            StyleHelper.ApplyTextBoxStyle(lastNameTextBox);
-            StyleHelper.ApplyLabelStyle(positionLabel);
-            StyleHelper.ApplyTextBoxStyle(positionTextBox);
-            StyleHelper.ApplyLabelStyle(countryLabel);
-            StyleHelper.ApplyTextBoxStyle(countryTextBox);
-            StyleHelper.ApplyButtonStyle(findButton);
-            StyleHelper.ApplyButtonStyle(resetButton);
-            StyleHelper.ApplyButtonStyle(cancelButton);
-        }
+		{
+			StyleHelper.ApplyFormStyle(this);
+			this.ApplyStyle();
+		}
 
-        /// <summary>
-        /// Обработчик клика по кнопке "Найти": выполняет поиск.
-        /// </summary>
-        private void FindButton_Click(object sender, EventArgs eventArgs)
+		/// <summary>
+		/// Обработчик клика по кнопке "Найти": выполняет поиск.
+		/// </summary>
+		private void FindButton_Click(object sender, EventArgs eventArgs)
         {
             var queryName = nameTextBox.Text?.Trim();
             var queryLastName = lastNameTextBox.Text?.Trim();
