@@ -15,6 +15,7 @@ namespace View.Services
             grid.ClearSelection();
             foreach (DataGridViewRow row in grid.Rows)
             {
+                //TODO: {}
                 if (!row.IsNewRow)
                     row.Selected = true;
             }
@@ -33,6 +34,7 @@ namespace View.Services
         {
             foreach (DataGridViewRow row in grid.Rows)
             {
+                //TODO: {}
                 if (!row.IsNewRow)
                     row.Selected = !row.Selected;
             }
@@ -49,6 +51,7 @@ namespace View.Services
                 .OrderByDescending(i => i)
                 .ToList();
 
+            //TODO: {}
             foreach (var index in indices)
                 source.RemoveAt(index);
         }

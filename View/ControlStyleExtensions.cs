@@ -14,6 +14,7 @@ namespace View
         public static void ApplyStyle(this Control control)
         {
             // Применяем стиль по типу элемента
+            //TODO: {}
             switch (control)
             {
                 case Button button:

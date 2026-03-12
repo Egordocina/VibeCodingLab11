@@ -3,7 +3,6 @@ using Model;
 
 namespace View
 {
-    //TODO: refactor+
 	/// <summary>
 	/// Форма для добавления нового гонщика.
 	/// </summary>

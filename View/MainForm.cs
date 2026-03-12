@@ -10,7 +10,6 @@ namespace View
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		//TODO: мультиделит + шизоделитинг
 		/// <summary>
 		/// Список гонщиков.
 		/// </summary>
@@ -80,6 +79,7 @@ namespace View
 		{
 			var toolStrip = new ToolStrip();
 
+			//TODO: RSDN
 			var selectAllBtn = new ToolStripButton("Выделить все");
 			selectAllBtn.Click += (s, e) => _selectionService.SelectAll(employeesDataGridView);
 
