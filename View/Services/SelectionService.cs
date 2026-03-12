@@ -15,9 +15,11 @@ namespace View.Services
             grid.ClearSelection();
             foreach (DataGridViewRow row in grid.Rows)
             {
-                //TODO: {}
+                //TODO: {}+
                 if (!row.IsNewRow)
-                    row.Selected = true;
+                {
+				    row.Selected = true;
+				}
             }
         }
 
@@ -34,9 +36,11 @@ namespace View.Services
         {
             foreach (DataGridViewRow row in grid.Rows)
             {
-                //TODO: {}
+                //TODO: {}+
                 if (!row.IsNewRow)
-                    row.Selected = !row.Selected;
+                {
+					row.Selected = !row.Selected;
+				}
             }
         }
 
@@ -51,9 +55,11 @@ namespace View.Services
                 .OrderByDescending(i => i)
                 .ToList();
 
-            //TODO: {}
+            //TODO: {}+
             foreach (var index in indices)
-                source.RemoveAt(index);
+            {
+				source.RemoveAt(index);
+			}
         }
 
         /// <summary>

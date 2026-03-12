@@ -466,14 +466,14 @@ namespace View
 			cancelButton.Text = "Отмена";
 			cancelButton.UseVisualStyleBackColor = false;
 			cancelButton.Click += CancelButton_Click;
-			// 
+			//
 			// randomButton
 			//
 			randomButton.BackColor = Color.FromArgb(103, 58, 183);
 			randomButton.FlatAppearance.BorderSize = 0;
-			randomButton.FlatAppearance.MouseDownBackColor = 
+			randomButton.FlatAppearance.MouseDownBackColor =
 				Color.FromArgb(77, 43, 137);
-			randomButton.FlatAppearance.MouseOverBackColor = 
+			randomButton.FlatAppearance.MouseOverBackColor =
 				Color.FromArgb(129, 83, 207);
 			randomButton.FlatStyle = FlatStyle.Flat;
 			randomButton.Font = new Font("Segoe UI", 9F);
@@ -486,9 +486,9 @@ namespace View
 			randomButton.Text = "Создать случайного гонщика";
 			randomButton.UseVisualStyleBackColor = false;
 			randomButton.Click += RandomButton_Click;
-			// 
+			//
 			// pictureBox1
-			// 
+			//
 			pictureBox1.Image = Properties.Resources.ski;
 			pictureBox1.Location = new Point(10, 9);
 			pictureBox1.Margin = new Padding(3, 2, 3, 2);

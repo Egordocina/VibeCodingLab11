@@ -54,6 +54,21 @@ namespace View
             var queryLastName = lastNameTextBox.Text?.Trim();
             var queryPosition = positionTextBox.Text?.Trim();
             var queryCountry = countryTextBox.Text?.Trim();
+
+            // Проверяем, что хотя бы одно поле заполнено
+            if (string.IsNullOrEmpty(queryName) &&
+                string.IsNullOrEmpty(queryLastName) &&
+                string.IsNullOrEmpty(queryPosition) &&
+                string.IsNullOrEmpty(queryCountry))
+            {
+                MessageBox.Show(
+                    "Введите хотя бы одно значение для поиска.",
+                    "Предупреждение",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             const StringComparison comparison =
                 StringComparison.OrdinalIgnoreCase;
 

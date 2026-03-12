@@ -22,6 +22,11 @@ namespace View
             ApplyStyles();
             LoadComboBoxes();
             UpdateParameterLabels();
+            
+            #if !DEBUG
+            randomButton.Visible = false;
+            #endif
+            
             hourlyRadioButton.CheckedChanged +=
                 (sender, eventArgs) => UpdateParameterLabels();
             salariedRadioButton.CheckedChanged +=
@@ -165,7 +170,7 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик клика по кнопке "Создать случайного 
+        /// Обработчик клика по кнопке "Создать случайного
         /// гонщика": заполняет поля случайными данными.
         /// </summary>
         private void RandomButton_Click(object sender, EventArgs eventArgs)
@@ -290,6 +295,13 @@ namespace View
                     "и не быть пустой.");
             }
 
+            // Проверяем, что имя и фамилия введены на одном языке
+            if (!AreSameLanguage(nameTextBox.Text.Trim(), lastNameTextBox.Text.Trim()))
+            {
+                throw new IncorrectArgumentException(
+                    "Имя и фамилия должны быть введены на одном языке.");
+            }
+
             if (positionComboBox.SelectedIndex < 0 ||
                 string.IsNullOrEmpty(
                     positionComboBox.SelectedItem?.ToString()))
@@ -308,17 +320,56 @@ namespace View
         }
 
         /// <summary>
-        /// Парсит строку в double с валидацией.
+        /// Проверяет, что оба текста введены на одном языке (кириллица или латиница).
         /// </summary>
-        private double ParseDouble(string input, string field)
+        private bool AreSameLanguage(string text1, string text2)
         {
-            if (string.IsNullOrWhiteSpace(input) ||
-                !double.TryParse(
-                    input,NumberStyles.Any,
-                    CultureInfo.InvariantCulture,out var value))
+            if (string.IsNullOrWhiteSpace(text1) || string.IsNullOrWhiteSpace(text2))
+            {
+                return true;
+            }
+
+            // Проверяем первую букву каждого текста
+            bool isCyrillic1 = IsCyrillic(text1[0]);
+            bool isCyrillic2 = IsCyrillic(text2[0]);
+
+            return isCyrillic1 == isCyrillic2;
+        }
+
+        /// <summary>
+        /// Проверяет, является ли символ кириллическим.
+        /// </summary>
+        private bool IsCyrillic(char c)
+        {
+            return (c >= 'а' && c <= 'я') || (c >= 'А' && c <= 'Я') || c == 'ё' || c == 'Ё';
+        }
+
+		/// <summary>
+		/// Парсит строку в double с валидацией.
+		/// </summary>
+		private double ParseDouble(string input, string field)
+		{
+			if (string.IsNullOrWhiteSpace(input))
+			{
+				throw new IncorrectArgumentException(
+					$"{field} должно быть числом.");
+			}
+            //TODO проблема с запятыми, точками и NaN+
+			// Нормализуем: точка - запятая
+			var normalized = input.Trim().Replace('.', ',');
+
+			if (!double.TryParse(
+				normalized, NumberStyles.Any,
+				CultureInfo.CurrentCulture, out var value))
+			{
+				throw new IncorrectArgumentException(
+					$"{field} должно быть числом.");
+			}
+
+			if (double.IsNaN(value) || double.IsInfinity(value))
             {
                 throw new IncorrectArgumentException(
-                    $"{field} должно быть числом.");
+                    $"{field} должно быть корректным числом.");
             }
 
             if (value < 0)

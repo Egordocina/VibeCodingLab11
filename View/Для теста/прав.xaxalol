@@ -1,0 +1,26 @@
+[
+  {
+    "$type": "commission",
+    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
+    "BaseSalary": 363.85,
+    "CommissionRate": 21,
+    "BonusAmount": 70.74,
+    "Name": "\u0418\u0441\u0442\u043E\u043C\u0430",
+    "LastName": "\u041E\u0431\u043E\u043B\u0435\u043D\u0441\u043A\u0438\u0439",
+    "Position": "1 \u0440\u0430\u0437\u0440\u044F\u0434",
+    "Country": "\u0418\u0442\u0430\u043B\u0438\u044F",
+    "Salary": 378.71
+  },
+  {
+    "$type": "commission",
+    "TypeName": "\u0421 \u043A\u043E\u043C\u0438\u0441\u0441\u0438\u0435\u0439",
+    "BaseSalary": 545.19,
+    "CommissionRate": 19,
+    "BonusAmount": 60.04,
+    "Name": "\u041C\u0438\u0440\u043E\u0441\u043B\u0430\u0432",
+    "LastName": "\u041A\u043E\u0432\u0430\u043B\u044C",
+    "Position": "\u041A\u041C\u0421",
+    "Country": "\u0428\u0432\u0435\u0446\u0438\u044F",
+    "Salary": 556.6
+  }
+]

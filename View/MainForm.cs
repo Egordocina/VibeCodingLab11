@@ -79,20 +79,24 @@ namespace View
 		{
 			var toolStrip = new ToolStrip();
 
-			//TODO: RSDN
+			//TODO: RSDN+
 			var selectAllBtn = new ToolStripButton("Выделить все");
-			selectAllBtn.Click += (s, e) => _selectionService.SelectAll(employeesDataGridView);
+			selectAllBtn.Click += 
+				(s, e) => _selectionService.SelectAll(employeesDataGridView);
 
 			var deselectAllBtn = new ToolStripButton("Снять выделение");
-			deselectAllBtn.Click += (s, e) => _selectionService.DeselectAll(employeesDataGridView);
+			deselectAllBtn.Click += 
+				(s, e) => _selectionService.DeselectAll(employeesDataGridView);
 
 			var invertBtn = new ToolStripButton("Инвертировать");
-			invertBtn.Click += (s, e) => _selectionService.InvertSelection(employeesDataGridView);
+			invertBtn.Click += 
+				(s, e) => _selectionService.InvertSelection(employeesDataGridView);
 
 			var deleteBtn = new ToolStripButton("Удалить выбранные");
 			deleteBtn.Click += DeleteSelected_Click;
 
-			toolStrip.Items.AddRange(new ToolStripItem[] { selectAllBtn, deselectAllBtn, invertBtn, deleteBtn });
+			toolStrip.Items.AddRange(new ToolStripItem[] 
+			    { selectAllBtn, deselectAllBtn, invertBtn, deleteBtn });
 
 			StyleHelper.ApplyToolStripStyle(toolStrip);
 			Controls.Add(toolStrip);
