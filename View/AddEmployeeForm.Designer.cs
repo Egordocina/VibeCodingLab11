@@ -428,67 +428,61 @@ namespace View
 			parameter3TextBox.TabIndex = 5;
 			// 
 			// okButton
-			//
+			// 
 			okButton.BackColor = Color.FromArgb(103, 58, 183);
 			okButton.FlatAppearance.BorderSize = 0;
-			okButton.FlatAppearance.MouseDownBackColor = 
-				Color.FromArgb(77, 43, 137);
-			okButton.FlatAppearance.MouseOverBackColor = 
-				Color.FromArgb(129, 83, 207);
+			okButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
+			okButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
 			okButton.FlatStyle = FlatStyle.Flat;
 			okButton.Font = new Font("Segoe UI", 9F);
 			okButton.ForeColor = Color.FromArgb(255, 255, 255);
-			okButton.Location = new Point(11, 274);
+			okButton.Location = new Point(10, 274);
 			okButton.Margin = new Padding(3, 2, 3, 2);
 			okButton.Name = "okButton";
-			okButton.Size = new Size(65, 28);
+			okButton.Size = new Size(84, 28);
 			okButton.TabIndex = 10;
 			okButton.Text = "ОК";
 			okButton.UseVisualStyleBackColor = false;
 			okButton.Click += OkButton_Click;
 			// 
 			// cancelButton
-			//
+			// 
 			cancelButton.BackColor = Color.FromArgb(103, 58, 183);
 			cancelButton.FlatAppearance.BorderSize = 0;
-			cancelButton.FlatAppearance.MouseDownBackColor = 
-				Color.FromArgb(77, 43, 137);
-			cancelButton.FlatAppearance.MouseOverBackColor = 
-				Color.FromArgb(129, 83, 207);
+			cancelButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
+			cancelButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
 			cancelButton.FlatStyle = FlatStyle.Flat;
 			cancelButton.Font = new Font("Segoe UI", 9F);
 			cancelButton.ForeColor = Color.FromArgb(255, 255, 255);
-			cancelButton.Location = new Point(81, 274);
+			cancelButton.Location = new Point(100, 274);
 			cancelButton.Margin = new Padding(3, 2, 3, 2);
 			cancelButton.Name = "cancelButton";
-			cancelButton.Size = new Size(79, 28);
+			cancelButton.Size = new Size(84, 28);
 			cancelButton.TabIndex = 11;
 			cancelButton.Text = "Отмена";
 			cancelButton.UseVisualStyleBackColor = false;
 			cancelButton.Click += CancelButton_Click;
-			//
+			// 
 			// randomButton
-			//
+			// 
 			randomButton.BackColor = Color.FromArgb(103, 58, 183);
 			randomButton.FlatAppearance.BorderSize = 0;
-			randomButton.FlatAppearance.MouseDownBackColor =
-				Color.FromArgb(77, 43, 137);
-			randomButton.FlatAppearance.MouseOverBackColor =
-				Color.FromArgb(129, 83, 207);
+			randomButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(77, 43, 137);
+			randomButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(129, 83, 207);
 			randomButton.FlatStyle = FlatStyle.Flat;
 			randomButton.Font = new Font("Segoe UI", 9F);
 			randomButton.ForeColor = Color.FromArgb(255, 255, 255);
-			randomButton.Location = new Point(165, 274);
+			randomButton.Location = new Point(190, 274);
 			randomButton.Margin = new Padding(3, 2, 3, 2);
 			randomButton.Name = "randomButton";
-			randomButton.Size = new Size(220, 28);
+			randomButton.Size = new Size(194, 28);
 			randomButton.TabIndex = 12;
-			randomButton.Text = "Создать случайного гонщика";
+			randomButton.Text = "Создать случайного перца";
 			randomButton.UseVisualStyleBackColor = false;
 			randomButton.Click += RandomButton_Click;
-			//
+			// 
 			// pictureBox1
-			//
+			// 
 			pictureBox1.Image = Properties.Resources.ski;
 			pictureBox1.Location = new Point(10, 9);
 			pictureBox1.Margin = new Padding(3, 2, 3, 2);
@@ -532,7 +526,7 @@ namespace View
 			pictureBox4.TabStop = false;
 			// 
 			// AddEmployeeForm
-			//
+			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(32, 32, 32);
@@ -543,6 +537,7 @@ namespace View
 			Controls.Add(pictureBox1);
 			Controls.Add(nameLabel);
 			Controls.Add(nameTextBox);
+			Controls.Add(randomButton);
 			Controls.Add(lastNameLabel);
 			Controls.Add(lastNameTextBox);
 			Controls.Add(positionLabel);
@@ -553,7 +548,6 @@ namespace View
 			Controls.Add(parametersGroupBox);
 			Controls.Add(okButton);
 			Controls.Add(cancelButton);
-			Controls.Add(randomButton);
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			Margin = new Padding(3, 2, 3, 2);
 			MaximizeBox = false;
