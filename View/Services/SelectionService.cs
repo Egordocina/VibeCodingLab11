@@ -3,7 +3,7 @@ using System.Windows.Forms;
 namespace View.Services
 {
     /// <summary>
-    /// Реализация сервиса управления выделением.
+    /// Реализация сервиса управления выделением. 
     /// </summary>
     public class SelectionService<T> : ISelectionService<T>
     {
