@@ -321,42 +321,6 @@ namespace View
 		}
 
 		/// <summary>
-		/// Парсит строку в double с валидацией.
-		/// </summary>
-		private double ParseDouble(string input, string field)
-		{
-			if (string.IsNullOrWhiteSpace(input))
-			{
-				throw new IncorrectArgumentException(
-					$"{field} должно быть числом.");
-			}
-			// Нормализуем: точка - запятая
-			var normalized = input.Trim().Replace('.', ',');
-
-			if (!double.TryParse(
-				normalized, NumberStyles.Any,
-				CultureInfo.CurrentCulture, out var value))
-			{
-				throw new IncorrectArgumentException(
-					$"{field} должно быть числом.");
-			}
-
-			if (double.IsNaN(value) || double.IsInfinity(value))
-			{
-				throw new IncorrectArgumentException(
-					$"{field} должно быть корректным числом.");
-			}
-
-			if (value < 0)
-			{
-				throw new IncorrectArgumentException(
-					$"{field} не может быть отрицательным.");
-			}
-
-			return value;
-		}
-
-		/// <summary>
 		/// Преобразует первую букву каждого слова в заглавную.
 		/// </summary>
 		/// <param name="text">Исходный текст.</param>
