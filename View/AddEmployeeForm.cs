@@ -17,6 +17,8 @@ namespace View
 		/// Массивы контролов для полиморфной обработки параметров.
 		/// </summary>
 		private readonly Control[] _parameterLabels;
+
+		//TODO: XML
 		private readonly Control[] _parameterTextBoxes;
 
 		/// <summary>
@@ -86,9 +88,11 @@ namespace View
 		private void UpdateParameterLabels(object? sender = null, 
 			EventArgs? e = null)
 		{
-			var configIndex = hourlyRadioButton.Checked ? 0
-				: salariedRadioButton.Checked ? 1
-				: 2;
+			var configIndex = hourlyRadioButton.Checked 
+								? 0 
+								: salariedRadioButton.Checked 
+									? 1
+									: 2;
 			var config = _labelConfigs[configIndex];
 
 			// Полиморфная обработка контролов через массивы
@@ -143,9 +147,11 @@ namespace View
 		/// </summary>
 		private EmployeeBase CreateEmployee()
 		{
+			//TODO: {}
 			if (hourlyRadioButton.Checked)
 				return CreateHourlyEmployee();
 
+			//TODO: {}
 			if (commissionRadioButton.Checked)
 				return CreateCommissionEmployee();
 
@@ -380,7 +386,6 @@ namespace View
 				throw new IncorrectArgumentException(
 					$"{field} должно быть числом.");
 			}
-			// TODO проблема с запятыми, точками и NaN+
 			// Нормализуем: точка - запятая
 			var normalized = input.Trim().Replace('.', ',');
 
