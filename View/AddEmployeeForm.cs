@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Model;
+using View.страдания;
 
 namespace View
 {
@@ -14,19 +15,9 @@ namespace View
 		public event EventHandler<EmployeeBase>? EmployeeCreated;
 
 		/// <summary>
-		/// Массивы контролов.
+		/// Текущая панель параметров сотрудника.
 		/// </summary>
-		private readonly Control[] _parameterLabels;
-
-		/// <summary>
-		/// Массивы текстовых полей.
-		/// </summary>
-		private readonly Control[] _parameterTextBoxes;
-
-		/// <summary>
-		/// Текущая конфигурация UI в зависимости от типа сотрудника.
-		/// </summary>
-		private EmployeeUiConfigBase _currentConfig = new SalariedEmployeeUiConfig();
+		private EmployeeParameterPanel? _currentParameterPanel;
 
 		/// <summary>
 		/// Инициализирует компоненты формы и настраивает события.
@@ -37,22 +28,16 @@ namespace View
 			ApplyStyles();
 			LoadComboBoxes();
 
-			// Инициализация массивов контролов для полиморфной обработки
-			_parameterLabels =
-				[parameter1Label, parameter2Label, parameter3Label];
-			_parameterTextBoxes =
-				[parameter1TextBox, parameter2TextBox, parameter3TextBox];
-
-			// Применяем конфигурацию по умолчанию
-			ApplyParameterConfigs(_currentConfig);
+			// Создаём панель параметров по умолчанию
+			UpdateParameterPanel();
 
 #if !DEBUG
 			randomButton.Visible = false;
 #endif
 
-			hourlyRadioButton.CheckedChanged += UpdateParameterLabels;
-			salariedRadioButton.CheckedChanged += UpdateParameterLabels;
-			commissionRadioButton.CheckedChanged += UpdateParameterLabels;
+			hourlyRadioButton.CheckedChanged += OnPaymentTypeChanged;
+			salariedRadioButton.CheckedChanged += OnPaymentTypeChanged;
+			commissionRadioButton.CheckedChanged += OnPaymentTypeChanged;
 		}
 
 		/// <summary>
@@ -81,38 +66,42 @@ namespace View
 		}
 
 		/// <summary>
-		/// Обновляет лейблы и видимость параметров в зависимости от типа оплаты.
+		/// Обновляет панель параметров при изменении типа оплаты.
 		/// </summary>
-		private void UpdateParameterLabels(object? sender = null,
+		private void OnPaymentTypeChanged(object? sender = null,
 			EventArgs? e = null)
 		{
-			_currentConfig = GetSelectedEmployeeUiConfig();
-			ApplyParameterConfigs(_currentConfig);
+			UpdateParameterPanel();
 		}
 
 		/// <summary>
-		/// Применяет конфигурацию параметров к контролам формы.
+		/// Обновляет панель параметров в зависимости от выбранного типа сотрудника.
 		/// </summary>
-		/// <param name="config">Конфигурация UI для текущего типа сотрудника.</param>
-		private void ApplyParameterConfigs(EmployeeUiConfigBase config)
+		private void UpdateParameterPanel()
 		{
-			// Полиморфный вызов: выполняется код конкретного класса конфигурации
-			config.ApplyTo(_parameterLabels, _parameterTextBoxes);
+			// Очищаем старую панель
+			parametersGroupBox.Controls.Clear();
+			_currentParameterPanel?.Dispose();
+
+			// Создаём новую панель
+			_currentParameterPanel = CreateParameterPanel();
+			parametersGroupBox.Controls.Add(_currentParameterPanel);
+			_currentParameterPanel.Dock = DockStyle.Fill;
 		}
 
 		/// <summary>
-		/// Получает конфигурацию UI для выбранного типа сотрудника.
+		/// Создаёт панель параметров для выбранного типа сотрудника.
 		/// </summary>
-		/// <returns>Конфигурация UI.</returns>
-		private EmployeeUiConfigBase GetSelectedEmployeeUiConfig()
+		/// <returns>Панель параметров.</returns>
+		private EmployeeParameterPanel CreateParameterPanel()
 		{
 			if (hourlyRadioButton.Checked)
-				return new HourlyEmployeeUiConfig();
-			
+				return new HourlyEmployeeParameterPanel();
+
 			if (commissionRadioButton.Checked)
-				return new CommissionEmployeeUiConfig();
-			
-			return new SalariedEmployeeUiConfig();
+				return new CommissionEmployeeParameterPanel();
+
+			return new SalariedEmployeeParameterPanel();
 		}
 
 		/// <summary>
@@ -171,26 +160,29 @@ namespace View
 		/// <summary>
 		/// Создает почасового сотрудника.
 		/// </summary>
-		private HourlyEmployee CreateHourlyEmployee() => new()
+		private HourlyEmployee CreateHourlyEmployee()
 		{
-			HourlyRate = ParseDouble(
-				parameter1TextBox.Text, "Почасовая ставка"),
-			HoursWorked = ParseDouble(
-				parameter2TextBox.Text, "Отработанные часы")
-		};
+			var panel = (HourlyEmployeeParameterPanel)_currentParameterPanel!;
+			return new HourlyEmployee
+			{
+				HourlyRate = panel.HourlyRate,
+				HoursWorked = panel.HoursWorked
+			};
+		}
 
 		/// <summary>
 		/// Создает сотрудника с комиссией.
 		/// </summary>
-		private CommissionEmployee CreateCommissionEmployee() => new()
+		private CommissionEmployee CreateCommissionEmployee()
 		{
-			BaseSalary = ParseDouble(
-				parameter1TextBox.Text, "Базовая зарплата"),
-			CommissionRate = ParseDouble(
-				parameter2TextBox.Text, "Ставка премии"),
-			BonusAmount = ParseDouble(
-				parameter3TextBox.Text, "Сумма премии")
-		};
+			var panel = (CommissionEmployeeParameterPanel)_currentParameterPanel!;
+			return new CommissionEmployee
+			{
+				BaseSalary = panel.BaseSalary,
+				CommissionRate = panel.CommissionRate,
+				BonusAmount = panel.BonusAmount
+			};
+		}
 
 		/// <summary>
 		/// Обработчик клика по кнопке "Отмена":
@@ -285,39 +277,30 @@ namespace View
 			salariedRadioButton.Checked = type == 1;
 			commissionRadioButton.Checked = type == 2;
 
-			// Очищаем все поля параметров
-			foreach (var textBox in _parameterTextBoxes)
-				textBox.Text = string.Empty;
-
-			// Получаем текущую конфигурацию и заполняем поля
-			_currentConfig = GetSelectedEmployeeUiConfig();
-			ApplyParameterConfigs(_currentConfig);
+			// Обновляем панель и заполняем случайными значениями
+			UpdateParameterPanel();
 			FillRandomParameterValues(random, cultureInfo);
 		}
 
 		/// <summary>
-		/// Заполняет случайными значениями поля параметров в зависимости от конфигурации.
+		/// Заполняет случайными значениями поля параметров в зависимости от типа панели.
 		/// </summary>
 		/// <param name="random">Генератор случайных чисел.</param>
 		/// <param name="cultureInfo">Культура для форматирования чисел.</param>
 		private void FillRandomParameterValues(Random random, CultureInfo cultureInfo)
 		{
-			if (_currentConfig is HourlyEmployeeUiConfig)
+			if (_currentParameterPanel is HourlyEmployeeParameterPanel hourlyPanel)
 			{
-				parameter1TextBox.Text = (random.Next(1000, 2000) / 10.0)
-					.ToString("F1", cultureInfo);
-				parameter2TextBox.Text = random.Next(160, 200).ToString();
+				hourlyPanel.HourlyRate = random.Next(1000, 2000) / 10.0;
+				hourlyPanel.HoursWorked = random.Next(160, 200);
 			}
-			else if (_currentConfig is CommissionEmployeeUiConfig)
+			else if (_currentParameterPanel is CommissionEmployeeParameterPanel commissionPanel)
 			{
-				parameter1TextBox.Text =
-					(random.Next(30000, 80000) / 100.0).ToString(
-						"F2", cultureInfo);
-				parameter2TextBox.Text = random.Next(10, 25).ToString();
-				parameter3TextBox.Text =
-					(random.Next(5000, 30000) / 100.0).ToString(
-						"F2", cultureInfo);
+				commissionPanel.BaseSalary = random.Next(30000, 80000) / 100.0;
+				commissionPanel.CommissionRate = random.Next(10, 25);
+				commissionPanel.BonusAmount = random.Next(5000, 30000) / 100.0;
 			}
+			// SalariedEmployeeParameterPanel не имеет полей для заполнения
 		}
 
 		/// <summary>

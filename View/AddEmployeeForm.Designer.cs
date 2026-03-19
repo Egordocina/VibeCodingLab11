@@ -78,36 +78,6 @@ namespace View
         private System.Windows.Forms.GroupBox parametersGroupBox;
 
         /// <summary>
-        /// Лейбл для первого параметра.
-        /// </summary>
-        private System.Windows.Forms.Label parameter1Label;
-
-        /// <summary>
-        /// Текстовое поле для первого параметра.
-        /// </summary>
-        private System.Windows.Forms.TextBox parameter1TextBox;
-
-        /// <summary>
-        /// Лейбл для второго параметра.
-        /// </summary>
-        private System.Windows.Forms.Label parameter2Label;
-
-        /// <summary>
-        /// Текстовое поле для второго параметра.
-        /// </summary>
-        private System.Windows.Forms.TextBox parameter2TextBox;
-
-        /// <summary>
-        /// Лейбл для третьего параметра.
-        /// </summary>
-        private System.Windows.Forms.Label parameter3Label;
-
-        /// <summary>
-        /// Текстовое поле для третьего параметра.
-        /// </summary>
-        private System.Windows.Forms.TextBox parameter3TextBox;
-
-        /// <summary>
         /// Кнопка ОК.
         /// </summary>
         private System.Windows.Forms.Button okButton;
@@ -157,12 +127,6 @@ namespace View
 			hourlyRadioButton = new RadioButton();
 			salariedRadioButton = new RadioButton();
 			parametersGroupBox = new GroupBox();
-			parameter1Label = new Label();
-			parameter1TextBox = new TextBox();
-			parameter2Label = new Label();
-			parameter2TextBox = new TextBox();
-			parameter3Label = new Label();
-			parameter3TextBox = new TextBox();
 			okButton = new Button();
 			cancelButton = new Button();
 			randomButton = new Button();
@@ -171,7 +135,6 @@ namespace View
 			pictureBox3 = new PictureBox();
 			pictureBox4 = new PictureBox();
 			typeGroupBox.SuspendLayout();
-			parametersGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -338,94 +301,16 @@ namespace View
 			// 
 			// parametersGroupBox
 			// 
-			parametersGroupBox.Controls.Add(parameter1Label);
-			parametersGroupBox.Controls.Add(parameter1TextBox);
-			parametersGroupBox.Controls.Add(parameter2Label);
-			parametersGroupBox.Controls.Add(parameter2TextBox);
-			parametersGroupBox.Controls.Add(parameter3Label);
-			parametersGroupBox.Controls.Add(parameter3TextBox);
 			parametersGroupBox.Font = new Font("Segoe UI", 9F);
 			parametersGroupBox.ForeColor = Color.FromArgb(255, 255, 255);
 			parametersGroupBox.Location = new Point(10, 165);
 			parametersGroupBox.Margin = new Padding(3, 2, 3, 2);
 			parametersGroupBox.Name = "parametersGroupBox";
 			parametersGroupBox.Padding = new Padding(3, 2, 3, 2);
-			parametersGroupBox.Size = new Size(374, 105);
+			parametersGroupBox.Size = new Size(374, 120);
 			parametersGroupBox.TabIndex = 9;
 			parametersGroupBox.TabStop = false;
 			parametersGroupBox.Text = "Параметры";
-			// 
-			// parameter1Label
-			// 
-			parameter1Label.AutoSize = true;
-			parameter1Label.BackColor = Color.Transparent;
-			parameter1Label.Font = new Font("Segoe UI", 9F);
-			parameter1Label.ForeColor = Color.FromArgb(255, 255, 255);
-			parameter1Label.Location = new Point(10, 22);
-			parameter1Label.Name = "parameter1Label";
-			parameter1Label.Size = new Size(74, 15);
-			parameter1Label.TabIndex = 0;
-			parameter1Label.Text = "Параметр 1:";
-			// 
-			// parameter1TextBox
-			// 
-			parameter1TextBox.BackColor = Color.FromArgb(45, 45, 45);
-			parameter1TextBox.BorderStyle = BorderStyle.FixedSingle;
-			parameter1TextBox.Font = new Font("Segoe UI", 9F);
-			parameter1TextBox.ForeColor = Color.FromArgb(255, 255, 255);
-			parameter1TextBox.Location = new Point(196, 20);
-			parameter1TextBox.Margin = new Padding(3, 2, 3, 2);
-			parameter1TextBox.Name = "parameter1TextBox";
-			parameter1TextBox.Size = new Size(154, 23);
-			parameter1TextBox.TabIndex = 1;
-			// 
-			// parameter2Label
-			// 
-			parameter2Label.AutoSize = true;
-			parameter2Label.BackColor = Color.Transparent;
-			parameter2Label.Font = new Font("Segoe UI", 9F);
-			parameter2Label.ForeColor = Color.FromArgb(255, 255, 255);
-			parameter2Label.Location = new Point(10, 46);
-			parameter2Label.Name = "parameter2Label";
-			parameter2Label.Size = new Size(74, 15);
-			parameter2Label.TabIndex = 2;
-			parameter2Label.Text = "Параметр 2:";
-			// 
-			// parameter2TextBox
-			// 
-			parameter2TextBox.BackColor = Color.FromArgb(45, 45, 45);
-			parameter2TextBox.BorderStyle = BorderStyle.FixedSingle;
-			parameter2TextBox.Font = new Font("Segoe UI", 9F);
-			parameter2TextBox.ForeColor = Color.FromArgb(255, 255, 255);
-			parameter2TextBox.Location = new Point(196, 44);
-			parameter2TextBox.Margin = new Padding(3, 2, 3, 2);
-			parameter2TextBox.Name = "parameter2TextBox";
-			parameter2TextBox.Size = new Size(154, 23);
-			parameter2TextBox.TabIndex = 3;
-			// 
-			// parameter3Label
-			// 
-			parameter3Label.AutoSize = true;
-			parameter3Label.BackColor = Color.Transparent;
-			parameter3Label.Font = new Font("Segoe UI", 9F);
-			parameter3Label.ForeColor = Color.FromArgb(255, 255, 255);
-			parameter3Label.Location = new Point(10, 71);
-			parameter3Label.Name = "parameter3Label";
-			parameter3Label.Size = new Size(74, 15);
-			parameter3Label.TabIndex = 4;
-			parameter3Label.Text = "Параметр 3:";
-			// 
-			// parameter3TextBox
-			// 
-			parameter3TextBox.BackColor = Color.FromArgb(45, 45, 45);
-			parameter3TextBox.BorderStyle = BorderStyle.FixedSingle;
-			parameter3TextBox.Font = new Font("Segoe UI", 9F);
-			parameter3TextBox.ForeColor = Color.FromArgb(255, 255, 255);
-			parameter3TextBox.Location = new Point(196, 69);
-			parameter3TextBox.Margin = new Padding(3, 2, 3, 2);
-			parameter3TextBox.Name = "parameter3TextBox";
-			parameter3TextBox.Size = new Size(154, 23);
-			parameter3TextBox.TabIndex = 5;
 			// 
 			// okButton
 			// 
@@ -436,7 +321,7 @@ namespace View
 			okButton.FlatStyle = FlatStyle.Flat;
 			okButton.Font = new Font("Segoe UI", 9F);
 			okButton.ForeColor = Color.FromArgb(255, 255, 255);
-			okButton.Location = new Point(10, 274);
+			okButton.Location = new Point(10, 295);
 			okButton.Margin = new Padding(3, 2, 3, 2);
 			okButton.Name = "okButton";
 			okButton.Size = new Size(84, 28);
@@ -454,7 +339,7 @@ namespace View
 			cancelButton.FlatStyle = FlatStyle.Flat;
 			cancelButton.Font = new Font("Segoe UI", 9F);
 			cancelButton.ForeColor = Color.FromArgb(255, 255, 255);
-			cancelButton.Location = new Point(100, 274);
+			cancelButton.Location = new Point(100, 295);
 			cancelButton.Margin = new Padding(3, 2, 3, 2);
 			cancelButton.Name = "cancelButton";
 			cancelButton.Size = new Size(84, 28);
@@ -472,7 +357,7 @@ namespace View
 			randomButton.FlatStyle = FlatStyle.Flat;
 			randomButton.Font = new Font("Segoe UI", 9F);
 			randomButton.ForeColor = Color.FromArgb(255, 255, 255);
-			randomButton.Location = new Point(190, 274);
+			randomButton.Location = new Point(190, 295);
 			randomButton.Margin = new Padding(3, 2, 3, 2);
 			randomButton.Name = "randomButton";
 			randomButton.Size = new Size(194, 28);
@@ -530,7 +415,7 @@ namespace View
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(32, 32, 32);
-			ClientSize = new Size(396, 307);
+			ClientSize = new Size(396, 336);
 			Controls.Add(pictureBox4);
 			Controls.Add(pictureBox3);
 			Controls.Add(pictureBox2);
@@ -556,8 +441,6 @@ namespace View
 			Text = "Добавить гонщика";
 			typeGroupBox.ResumeLayout(false);
 			typeGroupBox.PerformLayout();
-			parametersGroupBox.ResumeLayout(false);
-			parametersGroupBox.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
