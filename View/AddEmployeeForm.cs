@@ -86,7 +86,6 @@ namespace View
 		private void UpdateParameterLabels(object? sender = null,
 			EventArgs? e = null)
 		{
-			// Получаем конфигурацию через полиморфную фабрику
 			_currentConfig = GetSelectedEmployeeUiConfig();
 			ApplyParameterConfigs(_currentConfig);
 		}
@@ -97,20 +96,8 @@ namespace View
 		/// <param name="config">Конфигурация UI для текущего типа сотрудника.</param>
 		private void ApplyParameterConfigs(EmployeeUiConfigBase config)
 		{
-			// Полиморфная обработка контролов через массивы
-			for (int i = 0; i < 3; i++)
-			{
-				var visible = i < config.ParameterCount;
-				_parameterLabels[i].Visible = visible;
-				_parameterTextBoxes[i].Visible = visible;
-
-				if (visible && i < config.ParameterLabels.Count)
-					((Label)_parameterLabels[i]).Text = config.ParameterLabels[i];
-				
-				// Сохраняем имя свойства в Tag для последующего использования
-				if (visible && i < config.PropertyNames.Count)
-					_parameterTextBoxes[i].Tag = config.PropertyNames[i];
-			}
+			// Полиморфный вызов: выполняется код конкретного класса конфигурации
+			config.ApplyTo(_parameterLabels, _parameterTextBoxes);
 		}
 
 		/// <summary>

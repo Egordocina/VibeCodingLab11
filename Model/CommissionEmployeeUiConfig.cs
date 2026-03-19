@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace Model
 {
 	/// <summary>
@@ -24,5 +26,29 @@ namespace Model
 			nameof(CommissionEmployee.CommissionRate),
 			nameof(CommissionEmployee.BonusAmount)
 		};
+
+		/// <summary>
+		/// Применяет конфигурацию к контролам формы.
+		/// </summary>
+		/// <param name="labels">Массив меток для параметров.</param>
+		/// <param name="textBoxes">Массив текстовых полей для параметров.</param>
+		public override void ApplyTo(Control[] labels, Control[] textBoxes)
+		{
+			// Скрываем все контролы сначала
+			for (int i = 0; i < 3; i++)
+			{
+				labels[i].Visible = false;
+				textBoxes[i].Visible = false;
+			}
+
+			// Показываем и настраиваем все 3 поля
+			for (int i = 0; i < 3; i++)
+			{
+				labels[i].Visible = true;
+				textBoxes[i].Visible = true;
+				((Label)labels[i]).Text = ParameterLabels[i];
+				textBoxes[i].Tag = PropertyNames[i];
+			}
+		}
 	}
 }
