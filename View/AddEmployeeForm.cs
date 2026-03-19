@@ -14,12 +14,12 @@ namespace View
 		public event EventHandler<EmployeeBase>? EmployeeCreated;
 
 		/// <summary>
-		/// Массивы контролов для полиморфной обработки параметров.
+		/// Массивы контролов.
 		/// </summary>
 		private readonly Control[] _parameterLabels;
 
 		/// <summary>
-		/// Массивы текстовых полей для полиморфной обработки параметров.
+		/// Массивы текстовых полей.
 		/// </summary>
 		private readonly Control[] _parameterTextBoxes;
 
