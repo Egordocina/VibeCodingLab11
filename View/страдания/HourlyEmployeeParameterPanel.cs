@@ -9,6 +9,16 @@ namespace View.страдания
 	public partial class HourlyEmployeeParameterPanel : EmployeeParameterPanel
 	{
 		/// <summary>
+		/// Минимальное значение для рандомайзера.
+		/// </summary>
+		public override double MinRandomValue => 100.0;
+
+		/// <summary>
+		/// Максимальное значение для рандомайзера.
+		/// </summary>
+		public override double MaxRandomValue => 200.0;
+
+		/// <summary>
 		/// Имена свойств для привязки данных.
 		/// </summary>
 		public override IReadOnlyList<string> PropertyNames => new[]
@@ -30,8 +40,31 @@ namespace View.страдания
 		/// </summary>
 		public override void ClearValues()
 		{
-			hourlyRateTextBox.Clear();
-			hoursWorkedTextBox.Clear();
+			HourlyRate = 0;
+			HoursWorked = 0;
+		}
+
+		/// <summary>
+		/// Заполняет панель случайными значениями.
+		/// </summary>
+		/// <param name="random">Генератор случайных чисел.</param>
+		public override void FillRandomValues(Random random)
+		{
+			HourlyRate = random.Next((int)MinRandomValue, (int)MaxRandomValue) / 10.0;
+			HoursWorked = random.Next(160, 200);
+		}
+
+		/// <summary>
+		/// Создаёт сотрудника с данными из панели.
+		/// </summary>
+		/// <returns>Экземпляр сотрудника.</returns>
+		public override EmployeeBase CreateEmployee()
+		{
+			return new HourlyEmployee
+			{
+				HourlyRate = HourlyRate,
+				HoursWorked = HoursWorked
+			};
 		}
 
 		/// <summary>
@@ -49,7 +82,7 @@ namespace View.страдания
 		public double HoursWorked
 		{
 			get => double.Parse(hoursWorkedTextBox.Text.Replace(".", ","));
-			set => hoursWorkedTextBox.Text = value.ToString(CultureInfo.InvariantCulture);
+			set => hoursWorkedTextBox.Text = value.ToString("F0");
 		}
 	}
 }

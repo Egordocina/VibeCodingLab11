@@ -140,48 +140,11 @@ namespace View
 		}
 
 		/// <summary>
-		/// Создает сотрудника нужного типа.
+		/// Создает сотрудника с данными из текущей панели.
 		/// </summary>
 		private EmployeeBase CreateEmployee()
 		{
-			if (hourlyRadioButton.Checked)
-			{
-				return CreateHourlyEmployee();
-			}
-
-			if (commissionRadioButton.Checked)
-			{
-				return CreateCommissionEmployee();
-			}
-
-			return new SalariedEmployee();
-		}
-
-		/// <summary>
-		/// Создает почасового сотрудника.
-		/// </summary>
-		private HourlyEmployee CreateHourlyEmployee()
-		{
-			var panel = (HourlyEmployeeParameterPanel)_currentParameterPanel!;
-			return new HourlyEmployee
-			{
-				HourlyRate = panel.HourlyRate,
-				HoursWorked = panel.HoursWorked
-			};
-		}
-
-		/// <summary>
-		/// Создает сотрудника с комиссией.
-		/// </summary>
-		private CommissionEmployee CreateCommissionEmployee()
-		{
-			var panel = (CommissionEmployeeParameterPanel)_currentParameterPanel!;
-			return new CommissionEmployee
-			{
-				BaseSalary = panel.BaseSalary,
-				CommissionRate = panel.CommissionRate,
-				BonusAmount = panel.BonusAmount
-			};
+			return _currentParameterPanel!.CreateEmployee();
 		}
 
 		/// <summary>
@@ -200,7 +163,6 @@ namespace View
 		private void RandomButton_Click(object sender, EventArgs eventArgs)
 		{
 			var random = new Random();
-			var cultureInfo = CultureInfo.InvariantCulture;
 			string[] maleNames = {
 				"Мирослав",
 				"Борислав",
@@ -279,28 +241,7 @@ namespace View
 
 			// Обновляем панель и заполняем случайными значениями
 			UpdateParameterPanel();
-			FillRandomParameterValues(random, cultureInfo);
-		}
-
-		/// <summary>
-		/// Заполняет случайными значениями поля параметров в зависимости от типа панели.
-		/// </summary>
-		/// <param name="random">Генератор случайных чисел.</param>
-		/// <param name="cultureInfo">Культура для форматирования чисел.</param>
-		private void FillRandomParameterValues(Random random, CultureInfo cultureInfo)
-		{
-			if (_currentParameterPanel is HourlyEmployeeParameterPanel hourlyPanel)
-			{
-				hourlyPanel.HourlyRate = random.Next(1000, 2000) / 10.0;
-				hourlyPanel.HoursWorked = random.Next(160, 200);
-			}
-			else if (_currentParameterPanel is CommissionEmployeeParameterPanel commissionPanel)
-			{
-				commissionPanel.BaseSalary = random.Next(30000, 80000) / 100.0;
-				commissionPanel.CommissionRate = random.Next(10, 25);
-				commissionPanel.BonusAmount = random.Next(5000, 30000) / 100.0;
-			}
-			// SalariedEmployeeParameterPanel не имеет полей для заполнения
+			_currentParameterPanel.FillRandomValues(random);
 		}
 
 		/// <summary>

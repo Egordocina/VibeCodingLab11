@@ -1,11 +1,12 @@
 using System.ComponentModel;
+using Model;
 
 namespace View.страдания
 {
 	/// <summary>
 	/// Базовая панель для параметров сотрудника.
 	/// </summary>
-	public partial class EmployeeParameterPanel : UserControl
+	public abstract partial class EmployeeParameterPanel : UserControl
 	{
 		/// <summary>
 		/// Имена свойств для привязки данных.
@@ -14,9 +15,21 @@ namespace View.страдания
 		public virtual IReadOnlyList<string> PropertyNames => Array.Empty<string>();
 
 		/// <summary>
+		/// Минимальное значение для рандомайзера.
+		/// </summary>
+		[Browsable(false)]
+		public abstract double MinRandomValue { get; }
+
+		/// <summary>
+		/// Максимальное значение для рандомайзера.
+		/// </summary>
+		[Browsable(false)]
+		public abstract double MaxRandomValue { get; }
+
+		/// <summary>
 		/// Инициализирует компоненты панели.
 		/// </summary>
-		public EmployeeParameterPanel()
+		protected EmployeeParameterPanel()
 		{
 			InitializeComponent();
 		}
@@ -24,24 +37,18 @@ namespace View.страдания
 		/// <summary>
 		/// Очищает значения всех полей на панели.
 		/// </summary>
-		public virtual void ClearValues()
-		{
-			foreach (Control control in Controls)
-			{
-				if (control is TextBox textBox)
-				{
-					textBox.Clear();
-				}
-			}
-		}
+		public abstract void ClearValues();
 
 		/// <summary>
-		/// Валидирует данные на панели.
+		/// Заполняет панель случайными значениями.
 		/// </summary>
-		/// <exception cref="Exception">Если данные невалидны.</exception>
-		public virtual void ValidateData()
-		{
-			// Базовая реализация — всегда успешно
-		}
+		/// <param name="random">Генератор случайных чисел.</param>
+		public abstract void FillRandomValues(Random random);
+
+		/// <summary>
+		/// Создаёт сотрудника с данными из панели.
+		/// </summary>
+		/// <returns>Экземпляр сотрудника.</returns>
+		public abstract EmployeeBase CreateEmployee();
 	}
 }
