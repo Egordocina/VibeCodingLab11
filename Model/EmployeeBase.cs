@@ -15,22 +15,22 @@ namespace Model
 		/// <summary>
 		/// Имя гонщика.
 		/// </summary>
-		private string _name;
+		private string _name = string.Empty;
 
 		/// <summary>
 		/// Фамилия гонщика.
 		/// </summary>
-		private string _lastName;
+		private string _lastName = string.Empty;
 
 		/// <summary>
 		/// Разряд гонщика.
 		/// </summary>
-		private string _position;
+		private string _position = string.Empty;
 
 		/// <summary>
 		/// Страна гонщика.
 		/// </summary>
-		private string _country;
+		private string _country = string.Empty;
 
 		/// <summary>
 		/// Данные о разрядах: номер (название, оклад).

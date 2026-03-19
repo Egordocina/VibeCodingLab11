@@ -1,5 +1,6 @@
 using Model;
 using System.ComponentModel;
+using System.Linq;
 using View;
 using View.Services;
 
@@ -14,6 +15,11 @@ namespace View
 		/// Список гонщиков.
 		/// </summary>
 		private List<EmployeeBase> _employees = new List<EmployeeBase>();
+
+		/// <summary>
+		/// Текущий отображаемый список (может быть отфильтрованным).
+		/// </summary>
+		private List<EmployeeBase>? _currentDisplayList;
 
 		/// <summary>
 		/// Источник данных для привязки к DataGridView.
@@ -140,6 +146,16 @@ namespace View
 				MessageBoxIcon.Question) == DialogResult.Yes)
 			{
 				_selectionService.DeleteSelected(_employees, employeesDataGridView);
+				
+				// Пересоздаём отображаемый список из актуальных данных
+				if (_currentDisplayList != null)
+				{
+					_currentDisplayList = _currentDisplayList
+						.Where(e => _employees.Contains(e))
+						.ToList();
+					_bindingSource.DataSource = _currentDisplayList;
+				}
+				
 				_bindingSource.ResetBindings(false);
 			}
 		}
@@ -147,7 +163,7 @@ namespace View
 		/// <summary>
 		/// Обработчик кнопки "Удалить выбранные" на панели инструментов.
 		/// </summary>
-		private void DeleteSelected_Click(object sender, EventArgs e)
+		private void DeleteSelected_Click(object? sender, EventArgs e)
 		{
 			DeleteSelected();
 		}
@@ -241,7 +257,18 @@ namespace View
 		/// </summary>
 		private void RefreshGrid(IEnumerable<EmployeeBase>? source = null)
 		{
-			_bindingSource.DataSource = source ?? _employees;
+			if (source != null && source != _employees)
+			{
+				// Это отфильтрованный список
+				_currentDisplayList = source.ToList();
+				_bindingSource.DataSource = _currentDisplayList;
+			}
+			else
+			{
+				// Полный список
+				_currentDisplayList = null;
+				_bindingSource.DataSource = _employees;
+			}
 		}
 	}
 }

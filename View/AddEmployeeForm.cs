@@ -147,13 +147,17 @@ namespace View
 		/// </summary>
 		private EmployeeBase CreateEmployee()
 		{
-			//TODO: {}
+			//TODO: {}+
 			if (hourlyRadioButton.Checked)
+			{
 				return CreateHourlyEmployee();
+			}
 
-			//TODO: {}
+			//TODO: {}+
 			if (commissionRadioButton.Checked)
+			{
 				return CreateCommissionEmployee();
+			}
 
 			return new SalariedEmployee();
 		}

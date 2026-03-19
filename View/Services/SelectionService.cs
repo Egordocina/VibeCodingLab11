@@ -49,17 +49,16 @@ namespace View.Services
         /// </summary>
         public void DeleteSelected(List<T> source, DataGridView grid)
         {
-            var indices = grid.SelectedRows
+            var selectedItems = grid.SelectedRows
                 .Cast<DataGridViewRow>()
-                .Select(r => r.Index)
-                .OrderByDescending(i => i)
+                .Where(r => r.DataBoundItem != null)
+                .Select(r => (T)r.DataBoundItem)
                 .ToList();
 
-            //TODO: {}+
-            foreach (var index in indices)
+            foreach (var item in selectedItems)
             {
-				source.RemoveAt(index);
-			}
+                source.Remove(item);
+            }
         }
 
         /// <summary>
