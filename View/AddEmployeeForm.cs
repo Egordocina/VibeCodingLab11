@@ -18,18 +18,15 @@ namespace View
 		/// </summary>
 		private readonly Control[] _parameterLabels;
 
-		//TODO: XML
+		/// <summary>
+		/// Массивы текстовых полей для полиморфной обработки параметров.
+		/// </summary>
 		private readonly Control[] _parameterTextBoxes;
 
 		/// <summary>
-		/// Конфигурация текстов лейблов для каждого типа сотрудника.
+		/// Текущая конфигурация UI в зависимости от типа сотрудника.
 		/// </summary>
-		private static readonly string[][] _labelConfigs =
-		[
-			["Почасовая ставка:", "Отработанные часы:"],
-			[],
-			["Базовая зарплата:", "Ставка премии (%):", "Сумма премии:"]
-		];
+		private EmployeeUiConfigBase _currentConfig = new SalariedEmployeeUiConfig();
 
 		/// <summary>
 		/// Инициализирует компоненты формы и настраивает события.
@@ -41,12 +38,13 @@ namespace View
 			LoadComboBoxes();
 
 			// Инициализация массивов контролов для полиморфной обработки
-			_parameterLabels = 
+			_parameterLabels =
 				[parameter1Label, parameter2Label, parameter3Label];
-			_parameterTextBoxes = 
+			_parameterTextBoxes =
 				[parameter1TextBox, parameter2TextBox, parameter3TextBox];
 
-			UpdateParameterLabels();
+			// Применяем конфигурацию по умолчанию
+			ApplyParameterConfigs(_currentConfig);
 
 #if !DEBUG
 			randomButton.Visible = false;
@@ -85,26 +83,49 @@ namespace View
 		/// <summary>
 		/// Обновляет лейблы и видимость параметров в зависимости от типа оплаты.
 		/// </summary>
-		private void UpdateParameterLabels(object? sender = null, 
+		private void UpdateParameterLabels(object? sender = null,
 			EventArgs? e = null)
 		{
-			var configIndex = hourlyRadioButton.Checked 
-								? 0 
-								: salariedRadioButton.Checked 
-									? 1
-									: 2;
-			var config = _labelConfigs[configIndex];
+			// Получаем конфигурацию через полиморфную фабрику
+			_currentConfig = GetSelectedEmployeeUiConfig();
+			ApplyParameterConfigs(_currentConfig);
+		}
 
+		/// <summary>
+		/// Применяет конфигурацию параметров к контролам формы.
+		/// </summary>
+		/// <param name="config">Конфигурация UI для текущего типа сотрудника.</param>
+		private void ApplyParameterConfigs(EmployeeUiConfigBase config)
+		{
 			// Полиморфная обработка контролов через массивы
 			for (int i = 0; i < 3; i++)
 			{
-				var visible = i < config.Length;
+				var visible = i < config.ParameterCount;
 				_parameterLabels[i].Visible = visible;
 				_parameterTextBoxes[i].Visible = visible;
 
-				if (visible && i < config.Length)
-					((Label)_parameterLabels[i]).Text = config[i];
+				if (visible && i < config.ParameterLabels.Count)
+					((Label)_parameterLabels[i]).Text = config.ParameterLabels[i];
+				
+				// Сохраняем имя свойства в Tag для последующего использования
+				if (visible && i < config.PropertyNames.Count)
+					_parameterTextBoxes[i].Tag = config.PropertyNames[i];
 			}
+		}
+
+		/// <summary>
+		/// Получает конфигурацию UI для выбранного типа сотрудника.
+		/// </summary>
+		/// <returns>Конфигурация UI.</returns>
+		private EmployeeUiConfigBase GetSelectedEmployeeUiConfig()
+		{
+			if (hourlyRadioButton.Checked)
+				return new HourlyEmployeeUiConfig();
+			
+			if (commissionRadioButton.Checked)
+				return new CommissionEmployeeUiConfig();
+			
+			return new SalariedEmployeeUiConfig();
 		}
 
 		/// <summary>
@@ -283,14 +304,26 @@ namespace View
 			foreach (var textBox in _parameterTextBoxes)
 				textBox.Text = string.Empty;
 
-			// Заполняем в зависимости от типа
-			if (hourlyRadioButton.Checked)
+			// Получаем текущую конфигурацию и заполняем поля
+			_currentConfig = GetSelectedEmployeeUiConfig();
+			ApplyParameterConfigs(_currentConfig);
+			FillRandomParameterValues(random, cultureInfo);
+		}
+
+		/// <summary>
+		/// Заполняет случайными значениями поля параметров в зависимости от конфигурации.
+		/// </summary>
+		/// <param name="random">Генератор случайных чисел.</param>
+		/// <param name="cultureInfo">Культура для форматирования чисел.</param>
+		private void FillRandomParameterValues(Random random, CultureInfo cultureInfo)
+		{
+			if (_currentConfig is HourlyEmployeeUiConfig)
 			{
 				parameter1TextBox.Text = (random.Next(1000, 2000) / 10.0)
 					.ToString("F1", cultureInfo);
 				parameter2TextBox.Text = random.Next(160, 200).ToString();
 			}
-			else if (commissionRadioButton.Checked)
+			else if (_currentConfig is CommissionEmployeeUiConfig)
 			{
 				parameter1TextBox.Text =
 					(random.Next(30000, 80000) / 100.0).ToString(
@@ -300,8 +333,6 @@ namespace View
 					(random.Next(5000, 30000) / 100.0).ToString(
 						"F2", cultureInfo);
 			}
-
-			UpdateParameterLabels();
 		}
 
 		/// <summary>
