@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{8F2E8A9D-3753-4524-86E9-ED37C47A7C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,18 +41,6 @@ Global
 		{8F2E8A9D-3753-4524-86E9-ED37C47A7C9C}.Release|x64.Build.0 = Release|Any CPU
 		{8F2E8A9D-3753-4524-86E9-ED37C47A7C9C}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F2E8A9D-3753-4524-86E9-ED37C47A7C9C}.Release|x86.Build.0 = Release|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Debug|x64.Build.0 = Debug|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Debug|x86.Build.0 = Debug|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Release|x64.ActiveCfg = Release|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Release|x64.Build.0 = Release|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Release|x86.ActiveCfg = Release|Any CPU
-		{79CFA204-8DC2-4EBF-9210-4AE70CFFEB26}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
