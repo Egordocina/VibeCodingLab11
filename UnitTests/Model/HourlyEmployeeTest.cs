@@ -82,5 +82,35 @@ namespace UnitTests.Model
             var result = employee.CalculateSalary();
             Assert.That(result, Is.EqualTo(expected).Within(0.01));
         }
+
+        /// <summary>
+        /// Тестирование свойства TypeName.
+        /// </summary>
+        [Test]
+        [TestCase("Почасовая", TestName = "Тестирование TypeName для HourlyEmployee.")]
+        public void TypeNameTest(string expected)
+        {
+            var employee = new HourlyEmployee();
+            Assert.That(employee.TypeName, Is.EqualTo(expected));
+        }
+
+        /// <summary>
+        /// Тестирование свойства Salary (округление результата CalculateSalary).
+        /// </summary>
+        [Test]
+        [TestCase(100.0, 10, 1000.0, TestName = "Тестирование Salary при стандартных значениях.")]
+        [TestCase(33.333333, 3, 99.999999, TestName = "Тестирование Salary с дробным округлением.")]
+        [TestCase(0.005, 1, 0.01, TestName = "Тестирование Salary с округлением до копеек.")]
+        [TestCase(0.004, 1, 0.0, TestName = "Тестирование Salary с округлением вниз.")]
+        public void SalaryTest_Rounding(double rate, double hours, double expected)
+        {
+            var employee = new HourlyEmployee
+            {
+                HourlyRate = rate,
+                HoursWorked = hours
+            };
+            var result = employee.Salary;
+            Assert.That(result, Is.EqualTo(Math.Round(expected, 2)).Within(0.01));
+        }
     }
 }
