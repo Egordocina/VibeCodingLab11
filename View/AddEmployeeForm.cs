@@ -114,7 +114,7 @@ namespace View
 			{
 				ValidateCommonFields();
 
-				var employee = CreateEmployee(); 
+				var employee = CreateEmployee();
 
 				employee.Name = CapitalizeFirstLetter(
 					nameTextBox.Text.Trim());
@@ -133,7 +133,7 @@ namespace View
 			{
 				MessageBox.Show(
 					exception.Message,
-					"Ошибка",
+					"Ошиибка",
 					MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
 			}
