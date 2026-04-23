@@ -17,7 +17,7 @@ namespace View
 		/// <summary>
 		/// Текущая панель параметров сотрудника.
 		/// </summary>
-		private EmployeeParameterPanel? _currentParameterPanel;
+		private EmployeeParameterPanelBase? _currentParameterPanel;
 
 		/// <summary>
 		/// Инициализирует компоненты формы и настраивает события.
@@ -93,7 +93,7 @@ namespace View
 		/// Создаёт панель параметров для выбранного типа сотрудника.
 		/// </summary>
 		/// <returns>Панель параметров.</returns>
-		private EmployeeParameterPanel CreateParameterPanel()
+		private EmployeeParameterPanelBase CreateParameterPanel()
 		{
 			if (hourlyRadioButton.Checked)
 				return new HourlyEmployeeParameterPanel();

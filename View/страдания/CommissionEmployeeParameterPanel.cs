@@ -6,7 +6,7 @@ namespace View.страдания
 	/// <summary>
 	/// Панель параметров для сотрудника с комиссией.
 	/// </summary>
-	public partial class CommissionEmployeeParameterPanel : EmployeeParameterPanel
+	public partial class CommissionEmployeeParameterPanel : EmployeeParameterPanelBase
 	{
 		/// <summary>
 		/// Минимальное значение для рандомайзера.

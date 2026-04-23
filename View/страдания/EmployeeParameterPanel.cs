@@ -6,7 +6,7 @@ namespace View.страдания
 	/// <summary>
 	/// Базовая панель для параметров сотрудника.
 	/// </summary>
-	public abstract partial class EmployeeParameterPanel : UserControl
+	public abstract partial class EmployeeParameterPanelBase : UserControl
 	{
 		/// <summary>
 		/// Имена свойств для привязки данных.
@@ -29,7 +29,7 @@ namespace View.страдания
 		/// <summary>
 		/// Инициализирует компоненты панели.
 		/// </summary>
-		protected EmployeeParameterPanel()
+		protected EmployeeParameterPanelBase()
 		{
 			InitializeComponent();
 		}

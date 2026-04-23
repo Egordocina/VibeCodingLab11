@@ -6,7 +6,7 @@ namespace View.страдания
 	/// <summary>
 	/// Панель параметров для почасового сотрудника.
 	/// </summary>
-	public partial class HourlyEmployeeParameterPanel : EmployeeParameterPanel
+	public partial class HourlyEmployeeParameterPanel : EmployeeParameterPanelBase
 	{
 		/// <summary>
 		/// Минимальное значение для рандомайзера.

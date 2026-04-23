@@ -1,6 +1,6 @@
 namespace View.страдания
 {
-	partial class EmployeeParameterPanel
+	partial class EmployeeParameterPanelBase
 	{
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -28,11 +28,11 @@ namespace View.страдания
 		{
 			SuspendLayout();
 			// 
-			// EmployeeParameterPanel
+			// EmployeeParameterPanelBase
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Name = "EmployeeParameterPanel";
+			Name = "EmployeeParameterPanelBase";
 			Size = new Size(370, 82);
 			ResumeLayout(false);
 		}
