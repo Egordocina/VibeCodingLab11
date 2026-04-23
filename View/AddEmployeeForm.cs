@@ -114,7 +114,7 @@ namespace View
 			{
 				ValidateCommonFields();
 
-				var employee = CreateEmployee();
+				var employee = CreateEmployee(); 
 
 				employee.Name = CapitalizeFirstLetter(
 					nameTextBox.Text.Trim());
